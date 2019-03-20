@@ -13,7 +13,7 @@ class CreateSessionCoachTable extends Migration
      */
     public function up()
     {
-        Schema::create('session_coach_', function (Blueprint $table) {
+        Schema::create('session_coach', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('session_id');
@@ -36,6 +36,6 @@ class CreateSessionCoachTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('session_coach_');
+        Schema::dropIfExists('session_coach');
     }
 }
