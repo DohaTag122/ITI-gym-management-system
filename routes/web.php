@@ -18,3 +18,59 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//! Please write your Routes on your specified space to avoid merge conflicts
+//Ziad Routes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Doha Routes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Nour Routes
+
+
+
+
+
+
+
+
+
+
+
+//Sherouk Routes
+
+
+
+
+
+
+
+
+
