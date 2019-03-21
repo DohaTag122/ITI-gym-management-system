@@ -23,7 +23,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+Route::get('/test', function () {
+    return view('home');
+});
 
+Route::post('/data_source', function () {
+    return datatables()->query(\Illuminate\Support\Facades\DB::table('users'))->toJson();
+});
+
+Route::DELETE('/users/{user}',function ($user) {
+
+    $user_data = \App\User::find($user);
+    \App\User::find($user)->delete();
+    return response()->json(array('user'=>$user_data));
+});
 
 
 
