@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Package extends Model
 {
-    protected $fillable = ["number_of_sessions", "name"];
+    protected $fillable = ["number_of_sessions", "name","gym_id"];
 
     public function sessions()
     {

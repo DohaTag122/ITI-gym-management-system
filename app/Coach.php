@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Coach extends Model
 {
-    protected $fillable = ["name"];
+    protected $fillable = ["name","gym_id"];
     
     public function session()
     {
