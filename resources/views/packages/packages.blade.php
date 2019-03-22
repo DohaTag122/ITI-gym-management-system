@@ -91,7 +91,7 @@
             columns: [
                 { data: 'id', name: 'id' },
                 { data: 'name', name: 'name' },
-                { data: 'gym_id', name: 'gym_id' },
+                { data: 'gyms.name', name: 'gyms.name' },
                 { data: 'number_of_sessions', name: 'number_of_sessions' },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'updated_at', name: 'updated_at' },
