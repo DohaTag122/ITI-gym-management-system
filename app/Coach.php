@@ -12,4 +12,9 @@ class Coach extends Model
     {
         return $this->belongsToMany('App\Session', 'session_coach', 'coach_id', 'session_id');
     }
+
+    public function Gym()
+    {
+        return $this->belongsTo('App\Gym');
+    }
 }
