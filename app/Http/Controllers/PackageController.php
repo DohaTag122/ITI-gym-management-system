@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-
+use App\Package;
 class PackageController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return packagesView
      */
     public function index()
     {
@@ -82,7 +82,14 @@ class PackageController extends Controller
     {
         //
     }
+    /**
+     * Get the packages table as a json for jquery to render in DataTables .
+     *
+     * @return packagesTable(JSON)
+     */
+
     public function get_table(){
-        return datatables()->query(\Illuminate\Support\Facades\DB::table('packages'))->toJson();
+        return datatables(Package::all())->toJson();
+
     }
 }

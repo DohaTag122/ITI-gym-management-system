@@ -44,7 +44,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Are you to delete this item</h5>
+                    <h3 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this Package</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -53,7 +53,7 @@
                     <div>
                         <div id="csrf_value"  hidden >@csrf</div>
                         {{--@method('DELETE')--}}
-                        <button type="button" row_delete="" id="delete_item"  class="btn btn-primary" data-dismiss="modal">Yes</button>
+                        <button type="button" row_delete="" id="delete_item"  class="btn btn-danger" data-dismiss="modal">Yes</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
                     </div>
 
