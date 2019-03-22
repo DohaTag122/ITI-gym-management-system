@@ -12,4 +12,11 @@ class Package extends Model
     {
         return $this->belongsToMany('App\Session', 'session_package', 'package_id', 'session_id');
     }
+
+    public function gyms()
+    {
+        return $this->belongsTo('App\Gym','gym_id','id');
+    }
+
+
 }

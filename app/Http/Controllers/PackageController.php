@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Package;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -83,6 +84,10 @@ class PackageController extends Controller
         //
     }
     public function get_table(){
-        return datatables()->query(\Illuminate\Support\Facades\DB::table('packages'))->toJson();
+//        return datatables()->query(\Illuminate\Support\Facades\DB::table('packages'))->toJson();
+
+
+        return datatables()->of(Package::with('gyms'))->toJson();
+//        dd(Package::with('gyms')->get());
     }
 }
