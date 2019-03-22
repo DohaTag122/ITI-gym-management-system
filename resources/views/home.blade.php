@@ -68,9 +68,9 @@
         </section>
         <!-- /.content -->
 
-
-
-
+        @role('admin')
+        <a href="user/create" class="btn btn-success">AddUser</a>
+        @endrole
 
 
 
@@ -122,6 +122,7 @@
                         return '<a href="/'+row.id+'" class="table-edit" data-id="' + row.id + '">EDIT</a>'
                     }
                 },
+                
                 /* DELETE */ {
                     mRender: function (data, type, row) {
                         return '<a href="#" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
@@ -167,5 +168,8 @@
             });
         });
 
-    </script>
+    </script>}
+    
+
+
 @endsection

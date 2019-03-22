@@ -22,22 +22,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Ziad Routes
 
 
-
-Route::get('/test', function () {
+/*
+Route::get('/home', function () {
     return view('home');
-});
+});*/
 
 Route::post('/data_source', function () {
     return datatables()->query(\Illuminate\Support\Facades\DB::table('users'))->toJson();
 });
 
-Route::DELETE('/users/{user}',function ($user) {
-
-    $user_data = \App\User::find($user);
-    \App\User::find($user)->delete();
-    return response()->json(array('user'=>$user_data));
-});
-
+Route::DELETE('/users/{user}','UserController@delete');
 
 
 
@@ -48,6 +42,10 @@ Route::DELETE('/users/{user}',function ($user) {
 
 
 //Doha Routes
+Route::get('/user/create', 'UserController@create')
+->name('users.create');
+Route::post('/store', 'UserController@store')
+->name('users.store');
 
 
 
