@@ -14,7 +14,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Packages Table</h3><br>
-                    <button style="margin-top: 10px;" class="btn btn-success">Create Package</button>
+                    <a href='/packages/create' style="margin-top: 10px;" class="btn btn-success">Create Package</a>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -25,6 +25,7 @@
                             <th>Name</th>
                             <th>Gym</th>
                             <th>No of Sessions</th>
+                            <th>Package Price (usd)</th>
                             <th>Created At</th>
                             <th>Updated At</th>
                             <th>Show</th>
@@ -94,6 +95,7 @@
                 { data: 'name', name: 'name' },
                 { data: 'gyms.name', name: 'gyms.name' },
                 { data: 'number_of_sessions', name: 'number_of_sessions' },
+                { data: 'package_price', name: 'package_price'},
                 { data: 'created_at', name: 'created_at' },
                 { data: 'updated_at', name: 'updated_at' },
 
@@ -104,7 +106,7 @@
                 },
                 /* EDIT */ {
                     mRender: function (data, type, row) {
-                        return '<a href="/'+row.id+'" class="table-edit btn btn-warning" data-id="' + row.id + '">EDIT</a>'
+                        return '<a href="/packages/'+row.id+'/edit" class="table-edit btn btn-warning" data-id="' + row.id + '">EDIT</a>'
                     }
                 },
                 /* DELETE */ {
@@ -132,7 +134,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/package/'+package_id,
+                url: '/packages/'+package_id,
                 type: 'DELETE',
                 success: function (data) {
                     console.log('success');
