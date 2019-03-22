@@ -101,7 +101,7 @@
 
                 /* Show */ {
                     mRender: function (data, type, row) {
-                        return '<a href="/'+row.id+'" class="table-delete btn btn-info" data-id="' + row.id + '">Show</a>'
+                        return '<a href="/packages/'+row.id+'" class="table-delete btn btn-info" data-id="' + row.id + '">Show</a>'
                     }
                 },
                 /* EDIT */ {
