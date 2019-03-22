@@ -13,7 +13,8 @@
             <meta name="csrf-token" content="{{ csrf_token() }}">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Data Table With Full Features</h3>
+                    <h3 class="box-title">Packages Table</h3><br>
+                    <button style="margin-top: 10px;" class="btn btn-success">Create Package</button>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -123,17 +124,16 @@
         $(document).on('click','#delete_toggle',function () {
             var delete_id = $(this).attr('row_id');
             $('#delete_item').attr('row_delete',delete_id);
-
         });
 
         $(document).on('click','#delete_item',function () {
-            var user_id = $(this).attr('row_delete');
+            var package_id = $(this).attr('row_delete');
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/packages/'+user_id,
-                type: 'Delete',
+                url: '/package/'+package_id,
+                type: 'DELETE',
                 success: function (data) {
                     console.log('success');
                     console.log(data);

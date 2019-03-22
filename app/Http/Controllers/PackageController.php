@@ -24,7 +24,7 @@ class PackageController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -80,7 +80,10 @@ class PackageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // dd($id);
+        Package::find($id)->delete();
+        return response()->json(array('user'=>$id));
+
     }
     /**
      * Get the packages table as a json for jquery to render in DataTables .
@@ -89,10 +92,6 @@ class PackageController extends Controller
      */
 
     public function get_table(){
-//        return datatables()->query(\Illuminate\Support\Facades\DB::table('packages'))->toJson();
-
-
         return datatables()->of(Package::with('gyms'))->toJson();
-//        dd(Package::with('gyms')->get());
     }
 }
