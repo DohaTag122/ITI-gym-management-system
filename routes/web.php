@@ -91,8 +91,17 @@ Route::get('data_packages', 'PackageController@get_table');
 //*Sherouk Routes
 
 
+Route::group(['middleware' => 'auth'], function () {
 
 
+Route::resource('cities', 'CityController');
+
+
+Route::post('cities_table', 'CityController@cities_table');
+
+
+});
+Auth::routes();
 
 
 
