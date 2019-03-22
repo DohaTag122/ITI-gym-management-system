@@ -43,7 +43,7 @@
             </li>
 
             <li>
-                <a href="pages/widgets.html">
+                <a href="cities">
                     <i class="fa fa-th"></i> <span>Cities</span>
                 </a>
             </li>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\City;
+use App\Http\Requests\cities\StoreCityRequest;
+use App\Http\Requests\cities\UpdateCityRequest;
 
 class CityController extends Controller
 {
@@ -36,10 +38,10 @@ class CityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCityRequest $request)
     {
         //
-        City::create($request->all());
+        City::create(request()->all());
         return redirect()->route('cities.index');
     }
 
@@ -95,10 +97,9 @@ class CityController extends Controller
     public function destroy($id)
     {
         //
-        $post = Post::find($id);
-        $post->delete();
-
-        return redirect()->route('cities.index')->with('success', 'City has been deleted Successfully');
+        $city = City::find($id);
+        $city->delete();
+        return response()->json(array('city'=>$id));
     }
 
     public function cities_table()

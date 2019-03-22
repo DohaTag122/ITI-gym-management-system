@@ -14,6 +14,11 @@
                     <meta name="csrf-token" content="{{ csrf_token() }}">
 
                     <div class="box">
+                    <div class="box-header">
+                            <h3 class="box-title">Insert New City</h3><br><br>
+                    <a href="{{route('cities.create')}}" class="btn btn-success">Add City</a>
+                    </div>
+
                         <div class="box-header">
                             <h3 class="box-title">Data Table With Full Features</h3>
                         </div>
@@ -108,17 +113,17 @@
 
                 /* Show */ {
                     mRender: function (data, type, row) {
-                        return '<a href="cities/'+row.id+'" class="table-delete" data-id="' + row.id + '">Show</a>'
+                        return '<a href="cities/'+row.id+'" class="btn btn-primary" data-id="' + row.id + '">Show</a>'
                     }
                 },
                 /* EDIT */ {
                     mRender: function (data, type, row) {
-                        return '<a href="cities/'+row.id+'/edit" class="table-edit" data-id="' + row.id + '">EDIT</a>'
+                        return '<a href="cities/'+row.id+'/edit" class="btn btn-warning" data-id="' + row.id + '">EDIT</a>'
                     }
                 },
                 /* DELETE */ {
                     mRender: function (data, type, row) {
-                        return '<a href="#" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
+                        return '<a href="" class="btn btn-danger" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
                     }
                 },
             ],
@@ -148,14 +153,14 @@
                 },
                 url: '/cities/'+city_id,
                 type: 'Delete',
-                success: function (data) {
+                success : function (data) {
                     console.log('success');
                     console.log(data);
                     var table = $('#example').DataTable();
                     table.ajax.reload();
                 },
-                error: function (response) {
-                    alert(' error');
+                error : function (response) {
+                    alert('error');
                     console.log(response);
                 }
             });
