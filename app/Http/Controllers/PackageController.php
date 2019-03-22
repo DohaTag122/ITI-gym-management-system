@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Package;
 use Illuminate\Http\Request;
+use App\Http\Requests\package\StorePackageRequest;
+use App\Http\Requests\package\UpdatePackageRequest;
 use App\User;
 use App\Gym;
 class PackageController extends Controller
@@ -38,7 +40,7 @@ class PackageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePackageRequest $request)
     {
         Package::create(request()->all());        
         return redirect()->route('packages.index');
@@ -51,9 +53,11 @@ class PackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Package $package)
     {
-        //
+        return view('packages.show', [
+            "package"=>$package
+        ]);
     }
 
     /**
@@ -62,9 +66,11 @@ class PackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Package $package)
     {
-        //
+        $gyms = Gym::all();
+        return view('packages.edit', compact('package', 'gyms'));
+
     }
 
     /**
@@ -74,9 +80,10 @@ class PackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePackageRequest $request, Package $package)
     {
-        //
+        $package->update($request->all());
+        return redirect()->route('packages.index');
     }
 
     /**
