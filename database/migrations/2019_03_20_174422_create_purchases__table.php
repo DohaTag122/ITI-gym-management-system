@@ -24,10 +24,10 @@ class CreatePurchasesTable extends Migration
             $table->foreign('session_id')
                 ->references('id')->on('sessions');
 
-            $table->string('name');
+//            $table->string('name');
 
             $table->float('init_price')->unsigned();
-            $table->string('credit_card');
+//            $table->string('credit_card');
             $table->boolean('attend')->default(0);
             $table->timestamps();
         });
