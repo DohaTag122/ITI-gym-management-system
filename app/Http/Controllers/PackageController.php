@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Package;
 use Illuminate\Http\Request;
 use App\User;
+use App\Gym;
 class PackageController extends Controller
 {
     /**
@@ -24,7 +25,11 @@ class PackageController extends Controller
      */
     public function create()
     {
-        
+        $gyms = Gym::all();
+        return view('packages.create', [
+            'gyms'=> $gyms,
+        ]);
+
     }
 
     /**
@@ -35,7 +40,9 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Package::create(request()->all());        
+        return redirect()->route('packages.index');
+
     }
 
     /**

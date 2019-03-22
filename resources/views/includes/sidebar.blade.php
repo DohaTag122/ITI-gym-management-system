@@ -55,7 +55,7 @@
             </li>
 
             <li>
-                <a href="{{route('package.index')}}">
+                <a href="{{route('packages.index')}}">
                     <i class="fa fa-th"></i> <span>Training Packages</span>
                 </a>
             </li>

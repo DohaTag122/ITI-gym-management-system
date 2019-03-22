@@ -75,7 +75,7 @@ Route::DELETE('/users/{user}',function ($user) {
 
 
 //* Nour Routes
-Route::resource('package', 'PackageController');
+Route::resource('packages', 'PackageController');
 Route::get('data_packages', 'PackageController@get_table');
 
 
