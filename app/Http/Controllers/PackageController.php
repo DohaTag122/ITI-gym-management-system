@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class PackageController extends Controller
 {
@@ -13,7 +14,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        //
+        return view('packages/packages');
     }
 
     /**
@@ -80,5 +81,8 @@ class PackageController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function get_table(){
+        return datatables()->query(\Illuminate\Support\Facades\DB::table('packages'))->toJson();
     }
 }
