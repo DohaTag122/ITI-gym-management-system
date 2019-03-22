@@ -17,6 +17,7 @@ class CreatePackagesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('number_of_sessions');
             $table->string('name');
+            $table->float('package_price', 10, 3);
             $table->unsignedBigInteger('gym_id');
             $table->foreign('gym_id')
                 ->references('id')->on('gyms');
