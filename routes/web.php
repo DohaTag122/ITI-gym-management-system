@@ -21,6 +21,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 //! Please write your Routes on your specified space to avoid merge conflicts
 //*Ziad Routes
 
+Route::get('/relation', function () {
+    $sessions = \App\Session::first();
+    $packages = \App\Package::first();
+
+//    dd($sessions->packages);
+    dd($packages->sessions);
+
+//    dd($packages->sessions);
+});
 
 
 Route::get('/test', function () {
