@@ -43,7 +43,7 @@
             </li>
 
             <li>
-                <a href="pages/widgets.html">
+                <a href="cities">
                     <i class="fa fa-th"></i> <span>Cities</span>
                 </a>
             </li>
@@ -55,7 +55,7 @@
             </li>
 
             <li>
-                <a href="pages/widgets.html">
+                <a href="{{route('packages.index')}}">
                     <i class="fa fa-th"></i> <span>Training Packages</span>
                 </a>
             </li>

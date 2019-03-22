@@ -19,8 +19,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //! Please write your Routes on your specified space to avoid merge conflicts
-//Ziad Routes
+//*Ziad Routes
 
+Route::get('/relation', function () {
+    $sessions = \App\Session::first();
+    $packages = \App\Package::first();
+
+//    dd($sessions->packages);
+    dd($packages->sessions);
+
+//    dd($packages->sessions);
+});
 
 /*
 Route::get('/home', function () {
@@ -61,12 +70,9 @@ Route::post('/store', 'UserController@store')
 
 
 
-
-
-//Nour Routes
-
-
-
+//* Nour Routes
+Route::resource('packages', 'PackageController');
+Route::get('data_packages', 'PackageController@get_table');
 
 
 
@@ -75,11 +81,23 @@ Route::post('/store', 'UserController@store')
 
 
 
-//Sherouk Routes
 
 
 
+//*Sherouk Routes
 
+
+Route::group(['middleware' => 'auth'], function () {
+
+
+Route::resource('cities', 'CityController');
+
+
+Route::post('cities_table', 'CityController@cities_table');
+
+
+});
+Auth::routes();
 
 
 

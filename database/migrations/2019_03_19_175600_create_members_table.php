@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePackagesTable extends Migration
+class CreateMembersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreatePackagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('packages', function (Blueprint $table) {
+        Schema::create('members', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('number_of_sessions');
             $table->string('name');
-            $table->float('package_price', 10, 3);
-            $table->unsignedBigInteger('gym_id');
-            $table->foreign('gym_id')
-                ->references('id')->on('gyms');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('gender');
+            $table->date('date_of_birth');
+            $table->string('profile_image');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -32,6 +34,6 @@ class CreatePackagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('packages_');
+        Schema::dropIfExists('members');
     }
 }
