@@ -28,7 +28,7 @@ class CreatePurchasesTable extends Migration
 
             $table->float('init_price')->unsigned();
 //            $table->string('credit_card');
-            $table->boolean('attend')->default(0);
+//            $table->boolean('attend')->default(0);
             $table->timestamps();
         });
     }

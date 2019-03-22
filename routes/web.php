@@ -19,8 +19,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //! Please write your Routes on your specified space to avoid merge conflicts
-//Ziad Routes
+//*Ziad Routes
 
+Route::get('/relation', function () {
+    $sessions = \App\Session::first();
+    $packages = \App\Package::first();
+
+//    dd($sessions->packages);
+    dd($packages->sessions);
+
+//    dd($packages->sessions);
+});
 
 
 Route::get('/test', function () {
@@ -47,7 +56,7 @@ Route::DELETE('/users/{user}',function ($user) {
 
 
 
-//Doha Routes
+//*Doha Routes
 
 
 
@@ -65,7 +74,9 @@ Route::DELETE('/users/{user}',function ($user) {
 
 
 
-//Nour Routes
+//* Nour Routes
+Route::resource('package', 'PackageController');
+Route::get('data_packages', 'PackageController@get_table');
 
 
 
@@ -77,7 +88,7 @@ Route::DELETE('/users/{user}',function ($user) {
 
 
 
-//Sherouk Routes
+//*Sherouk Routes
 
 Route::group(['middleware' => 'auth'], function () {
 
