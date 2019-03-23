@@ -51,10 +51,11 @@ Route::DELETE('/users/{user}','UserController@delete');
 
 
 //Doha Routes
-Route::get('/user/create', 'UserController@create')
-->name('users.create');
-Route::post('/store', 'UserController@store')
-->name('users.store');
+Route::resource('users', 'UserController');
+// Route::get('/user/create', 'UserController@create')
+// ->name('users.create');
+// Route::post('/store', 'UserController@store')
+// ->name('users.store');
 
 
 
