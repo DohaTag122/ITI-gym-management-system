@@ -68,11 +68,13 @@
         </section>
         <!-- /.content -->
 
-        @role('admin')
+        @role('admin') 
         <a href="user/create" class="btn btn-success">AddUser</a>
         @endrole
 
-
+        @role('cityManger') 
+        <a href="user/create" class="btn btn-success">AddUser</a>
+        @endrole
 
 
 @endsection

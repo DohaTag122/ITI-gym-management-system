@@ -25,11 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-       // $role = Role::create(['name' => 'admin']);
+     //  $role = Role::create(['name' => 'admin']);
        // $role = Role::create(['name' => 'cityManger']);
-       // $role = Role::create(['name' => 'gymManger']);
+       //$role = Role::create(['name' => 'gymManger']);
        //$permission = Permission::create(['name' => 'addUser']);
-      // auth()->user()->assignRole('admin');
+    // auth()->user()->assignRole('admin');
         return view('home');
     }
 }
