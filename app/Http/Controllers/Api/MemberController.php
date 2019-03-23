@@ -12,10 +12,13 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class MemberController extends Controller
 {
-    public $loginAfterSignUp = true;
+    public $loginAfterSignUp = false;
 
     public function register(RegisterAuthRequest $request)
     {
+//        $data = $request->validated();
+//        return $data;
+
         $user = new Member();
         $user->name = $request->name;
         $user->email = $request->email;
