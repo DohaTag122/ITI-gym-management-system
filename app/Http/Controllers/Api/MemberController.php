@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Notifications\SignupActivate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterAuthRequest;
@@ -25,11 +26,14 @@ class MemberController extends Controller
         $user->gender = $request->gender;
         $user->date_of_birth = $request->date_of_birth;
         $user->password = bcrypt($request->password);
+        $user->activation_token = str_random(60);
+
         $user->save();
 
         if ($this->loginAfterSignUp) {
             return $this->login($request);
         }
+        $user->notify(new SignupActivate($user));
 
         return response()->json([
             'success' => true,
@@ -40,6 +44,8 @@ class MemberController extends Controller
     public function login(Request $request)
     {
         $input = $request->only('email', 'password');
+        $input['active'] = 1;
+        $input['deleted_at'] = null;
         $jwt_token = null;
         config()->set( 'auth.defaults.guard', 'api' );
 
@@ -86,5 +92,21 @@ class MemberController extends Controller
         $user = JWTAuth::authenticate($request->token);
 
         return response()->json(['user' => $user]);
+    }
+
+
+
+    public function signupActivate($token)
+    {
+        $user = Member::where('activation_token', $token)->first();
+        if (!$user) {
+            return response()->json([
+                'message' => 'This activation token is invalid.'
+            ], 404);
+        }
+        $user->active = true;
+        $user->activation_token = '';
+        $user->save();
+        return $user;
     }
 }
