@@ -29,6 +29,8 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Name</th>
+                                    <th>Created At</th>
+                                    <th>Updated At</th>
                                     <th>Show</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -110,6 +112,8 @@
             columns: [
                 { data: 'id', name: 'id' },
                 { data: 'name', name: 'name' },
+                { data: 'created_at', name: 'created_at' },
+                { data: 'updated_at', name: 'updated_at' },
 
                 /* Show */ {
                     mRender: function (data, type, row) {

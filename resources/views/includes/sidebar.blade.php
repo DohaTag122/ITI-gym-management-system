@@ -49,7 +49,7 @@
             </li>
 
             <li>
-                <a href="pages/widgets.html">
+                <a href="gyms">
                     <i class="fa fa-th"></i> <span>Gyms</span>
                 </a>
             </li>

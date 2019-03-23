@@ -91,10 +91,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::resource('cities', 'CityController');
-
-
 Route::post('cities_table', 'CityController@cities_table');
 
+Route::resource('gyms', 'GymController');
+Route::post('gyms_table', 'GymController@gyms_table');
 
 });
 Auth::routes();
