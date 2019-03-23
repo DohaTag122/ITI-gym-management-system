@@ -21,7 +21,7 @@ class CreateMembersTable extends Migration
             $table->string('password');
             $table->string('gender');
             $table->date('date_of_birth');
-            $table->string('profile_image');
+            $table->string('profile_image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
