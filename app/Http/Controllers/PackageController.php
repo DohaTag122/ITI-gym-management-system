@@ -9,6 +9,8 @@ use App\Http\Requests\package\UpdatePackageRequest;
 use App\User;
 use App\Gym;
 use App\Session;
+use Illuminate\Support\Facades\Input;
+
 
 class PackageController extends Controller
 {
@@ -45,12 +47,20 @@ class PackageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StorePackageRequest $request)
-    {
-        $answers = $request->input('session_id');
-        dd($answers);
-        Package::create(request()->all());        
-        return redirect()->route('packages.index');
+    {        
+        if(array_sum(Input::get('session_amount')) > Input::get('number_of_sessions')){
+            return redirect()->back()->withErrors('Session amounts were more than your number of sessions')->withInput();
+        }
+    
+        $package = Package::create(request()->all());
 
+        for ($i=0; $i < sizeof($request->input("session_amount")); $i++) {
+
+            $session = Session::find($request->get('session_id')[$i]);
+            $package->sessions()->attach($session, ["session_amount"=>Input::get('session_amount')[0]]);
+            
+        }
+        return redirect()->route('packages.index');
     }
 
     /**

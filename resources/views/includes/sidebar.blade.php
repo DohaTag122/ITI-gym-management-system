@@ -51,9 +51,6 @@
             <li class="{{ (request()->is('gyms*')) ? 'active' : '' }}">
                 <a href="{{route('gyms.index')}}">
                     <i class="fas fa-dumbbell"></i><span>&nbsp;Gyms</span>
-            <li>
-                <a href="gyms">
-                    <i class="fa fa-th"></i> <span>Gyms</span>
                 </a>
             </li>
             <li class="{{ (request()->is('packages*','sessions*')) ? 'active menu-open' : '' }} treeview">

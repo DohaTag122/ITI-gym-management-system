@@ -53,11 +53,9 @@
                 </div>
                 <div class="modal-footer">
                     <div>
-                        <button type="button" id="add-session" class="btn btn-success">Add More Sessions</button>
-                        <div id="csrf_value"  hidden >@csrf</div>
-                        {{--@method('DELETE')--}}
-                        <button type="button" row_delete="" id="delete_item"  class="btn btn-danger" data-dismiss="modal">Yes</button>
-                        <button type="button" class="btn btn-light" data-dismiss="modal">NO</button>
+                        <button type="button" id="add-session" class="btn btn-success">Add More Session</button>
+                        <button type="button" row_delete="" id="delete_item"  class="btn btn-primary" data-dismiss="modal">Done</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Dismiss</button>
                     </div>
 
                 </div>

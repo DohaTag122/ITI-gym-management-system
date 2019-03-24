@@ -13,7 +13,7 @@ class CreateSessionPackageTable extends Migration
      */
     public function up()
     {
-        Schema::create('session_package', function (Blueprint $table) {
+        Schema::create('package_session', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('session_id');
@@ -23,7 +23,7 @@ class CreateSessionPackageTable extends Migration
             $table->unsignedBigInteger('package_id');
             $table->foreign('package_id')
                 ->references('id')->on('packages');
-
+            $table->unsignedBigInteger('session_amount');
             $table->timestamps();
         });
     }
