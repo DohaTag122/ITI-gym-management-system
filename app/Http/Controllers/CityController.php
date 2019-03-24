@@ -68,7 +68,6 @@ class CityController extends Controller
     public function edit(City $city)
     {
         //
-        $cities = City::all();
         return view('cities.edit', [
             'city' => $city,
         ]);
@@ -81,7 +80,7 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, City $city)
+    public function update(UpdateCityRequest $request, City $city)
     {
         //
         $city->update($request->all());

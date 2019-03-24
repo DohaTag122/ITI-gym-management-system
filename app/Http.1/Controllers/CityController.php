@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Coach;
-use App\Gym;
-use App\Http\Requests\coaches\StoreCoachRequest;
-use App\Http\Requests\coaches\UpdateCoachRequest;
+use App\City;
+use App\Http\Requests\cities\StoreCityRequest;
+use App\Http\Requests\cities\UpdateCityRequest;
 
-class CoachController extends Controller
-{/**
+class CityController extends Controller
+{
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -17,7 +17,7 @@ class CoachController extends Controller
     public function index()
     {
         //
-        return view ('coaches.index');
+        return view ('cities.index');
     }
 
     /**
@@ -26,11 +26,9 @@ class CoachController extends Controller
      */
     public function create()
     {
-        $coaches = Coach::all();
-        $gyms = Gym::all();
-        return view('coaches.create',[
-            'coaches' => $coaches,
-            'gyms' => $gyms,
+        $cities = City::all();
+        return view('cities.create',[
+            'cities' => $cities,
         ]);
     }
 
@@ -40,11 +38,11 @@ class CoachController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCoachRequest $request)
+    public function store(StoreCityRequest $request)
     {
         //
-        Coach::create($request->all());
-        return redirect()->route('coaches.index');
+        City::create($request->all());
+        return redirect()->route('cities.index');
     }
 
     /**
@@ -56,11 +54,8 @@ class CoachController extends Controller
     public function show($id)
     {
         //
-       
-        return view('coaches.show', [
-            'coach' => Coach::find($id),
-            'gym' => Gym::find(Coach::find($id)->gym_id)
-
+        return view('cities.show', [
+            'city' => City::find($id)
         ]);
     }
 
@@ -70,14 +65,12 @@ class CoachController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Coach $coach)
+    public function edit(City $city)
     {
         //
-        $gyms = Gym::all();
-        return view('coaches.edit', [
-            'coach' => $coach,
-            'gyms' =>  $gyms, 
-
+        $cities = City::all();
+        return view('cities.edit', [
+            'city' => $city,
         ]);
     }
 
@@ -88,11 +81,11 @@ class CoachController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCoachRequest $request, Coach $coach)
+    public function update(Request $request, City $city)
     {
         //
-        $coach->update($request->all());
-        return redirect()->route('coaches.index');
+        $city->update($request->all());
+        return redirect()->route('cities.index');
     }
 
     /**
@@ -104,13 +97,13 @@ class CoachController extends Controller
     public function destroy($id)
     {
         //
-        $coach = Coach::find($id);
-        $coach->delete();
-        return response()->json(array('coach'=>$id));
+        $city = City::find($id);
+        $city->delete();
+        return response()->json(array('city'=>$id));
     }
 
-    public function coaches_table()
+    public function cities_table()
     {
-        return datatables()->of(Coach::query())->toJson();
+        return datatables()->of(City::query())->toJson();
     }
 }

@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Coach;
 use App\Gym;
-use App\Http\Requests\coaches\StoreCoachRequest;
-use App\Http\Requests\coaches\UpdateCoachRequest;
 
 class CoachController extends Controller
 {/**
@@ -27,7 +25,6 @@ class CoachController extends Controller
     public function create()
     {
         $coaches = Coach::all();
-        $gyms = Gym::all();
         return view('coaches.create',[
             'coaches' => $coaches,
             'gyms' => $gyms,
@@ -40,7 +37,7 @@ class CoachController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCoachRequest $request)
+    public function store(Request $request)
     {
         //
         Coach::create($request->all());
@@ -73,11 +70,9 @@ class CoachController extends Controller
     public function edit(Coach $coach)
     {
         //
-        $gyms = Gym::all();
-        return view('coaches.edit', [
+        $coaches = Coach::all();
+        return view('cities.edit', [
             'coach' => $coach,
-            'gyms' =>  $gyms, 
-
         ]);
     }
 
@@ -88,7 +83,7 @@ class CoachController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCoachRequest $request, Coach $coach)
+    public function update(Request $request, Coach $coach)
     {
         //
         $coach->update($request->all());

@@ -15,8 +15,8 @@
 
                     <div class="box">
                     <div class="box-header">
-                            <h3 class="box-title">Insert New City</h3><br><br>
-                    <a href="{{route('gyms.create')}}" class="btn btn-success">Add Gym</a>
+                            <h3 class="box-title">Insert New Coach</h3><br><br>
+                    <a href="{{route('coaches.create')}}" class="btn btn-success">Add Coach</a>
                     </div>
 
                         <div class="box-header">
