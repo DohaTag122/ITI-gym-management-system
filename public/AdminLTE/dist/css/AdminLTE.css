@@ -512,8 +512,9 @@ a:focus {
 }
 .sidebar-menu > li > a > .fa,
 .sidebar-menu > li > a > .glyphicon,
+.sidebar-menu > li > a > .fas,
 .sidebar-menu > li > a > .ion {
-  width: 20px;
+  width: 25px;
 }
 .sidebar-menu > li .label,
 .sidebar-menu > li .badge {
@@ -3086,9 +3087,10 @@ table.text-center th {
   font-size: 14px;
 }
 .treeview-menu > li > a > .fa,
+.treeview-menu > li > a > .fas,
 .treeview-menu > li > a > .glyphicon,
 .treeview-menu > li > a > .ion {
-  width: 20px;
+  width: 32px;
 }
 .treeview-menu > li > a > .pull-right-container > .fa-angle-left,
 .treeview-menu > li > a > .pull-right-container > .fa-angle-down,

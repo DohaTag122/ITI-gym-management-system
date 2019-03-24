@@ -4,10 +4,10 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="{{asset('img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>{{ Auth::user()->name }}</p>
+                <p>{{ ucwords(Auth::user()->name) }}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -24,61 +24,70 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li>
+            <li class="{{ (request()->is('gym_managers*')) ? 'active' : '' }}">
                 <a href="pages/widgets.html">
                     <i class="fa fa-th"></i> <span>Gym Managers</span>
                 </a>
             </li>
 
-            <li>
+            <li class="{{ (request()->is('city_managers*')) ? 'active' : '' }}">
                 <a href="pages/widgets.html">
                     <i class="fa fa-th"></i> <span>City Managers</span>
                 </a>
             </li>
 
-            <li>
+            <li class="{{ (request()->is('users*')) ? 'active' : '' }}">
                 <a href="pages/widgets.html">
-                    <i class="fa fa-th"></i> <span>Users</span>
+                    <i class="fas fa-users"></i> <span>Users</span>
                 </a>
             </li>
 
-            <li>
-                <a href="cities">
-                    <i class="fa fa-th"></i> <span>Cities</span>
+            <li class="{{ (request()->is('cities*')) ? 'active' : '' }}">
+                <a href="{{route('cities.index')}}">
+                    <i class="fas fa-city"></i><span>&nbsp;Cities</span>
                 </a>
             </li>
 
-            <li>
+            <li class="{{ (request()->is('gyms*')) ? 'active' : '' }}">
                 <a href="pages/widgets.html">
-                    <i class="fa fa-th"></i> <span>Gyms</span>
+                    <i class="fas fa-dumbbell"></i><span>&nbsp;Gyms</span>
                 </a>
             </li>
-
-            <li>
-                <a href="{{route('packages.index')}}">
-                    <i class="fa fa-th"></i> <span>Training Packages</span>
+            <li class="{{ (request()->is('packages*','sessions*')) ? 'active menu-open' : '' }} treeview">
+                <a href="#">
+                    <i class="fas fa-box-open"></i>
+                    <span>Bundles</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
                 </a>
+                <ul class="treeview-menu">
+                    <li><a href="pages/charts/morris.html"><i class="fas fa-male"></i>&nbsp;Sessions</a></li>
+                    <li class="{{ (request()->is('packages*')) ? 'active' : '' }}">
+                        <a href="{{route('packages.index')}}"><i class="fas fa-people-carry"></i>&nbsp;Packages</a>
+                    </li>
+                </ul>
             </li>
 
-            <li>
+            <li class="{{ (request()->is('coaches*')) ? 'active' : '' }}">
                 <a href="pages/widgets.html">
-                    <i class="fa fa-th"></i> <span>Coaches</span>
+                    <i class="fas fa-clipboard-list"></i> <span>Coaches</span>
                 </a>
             </li>
 
-            <li>
+            <li class="{{ (request()->is('attendances*')) ? 'active' : '' }}">
                 <a href="pages/widgets.html">
                     <i class="fa fa-th"></i> <span>Attendance</span>
                 </a>
             </li>
 
-            <li>
+            <li class="{{ (request()->is('purchases*')) ? 'active' : '' }}">
                 <a href="pages/widgets.html">
-                    <i class="fa fa-th"></i> <span>Buy</span>
+                    <i class="fas fa-shopping-cart"></i><span>&nbsp;Purchase</span>
                 </a>
             </li>
 
-            <li>
+            <li class="{{ (request()->is('purchases*')) ? 'active' : '' }}">
                 <a href="pages/widgets.html">
                     <i class="fa fa-th"></i> <span>Revenue</span>
                 </a>

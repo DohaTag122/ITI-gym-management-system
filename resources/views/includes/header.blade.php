@@ -18,7 +18,7 @@
                 <!-- Messages: style can be found in dropdown.less-->
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-envelope-o"></i>
+                        <i class="fas fa-envelope-square"></i>
                         <span class="label label-success">0</span>
                     </a>
                     <ul class="dropdown-menu">
@@ -95,7 +95,7 @@
                 <!-- Notifications: style can be found in dropdown.less -->
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell-o"></i>
+                        <i class="fas fa-bell"></i>
                         <span class="label label-warning">0</span>
                     </a>
                     <ul class="dropdown-menu">
@@ -137,7 +137,7 @@
                 <!-- Tasks: style can be found in dropdown.less -->
                 <li class="dropdown tasks-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-flag-o"></i>
+                        <i class="fas fa-flag"></i>
                         <span class="label label-danger">0</span>
                     </a>
                     <ul class="dropdown-menu">
