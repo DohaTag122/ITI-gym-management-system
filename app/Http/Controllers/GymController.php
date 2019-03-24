@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Gym;
+use App\Http\Requests\gyms\StoreGymRequest;
+use App\Http\Requests\gyms\UpdateGymRequest;
 
 class GymController extends Controller
 {
@@ -14,19 +16,20 @@ class GymController extends Controller
      */
     public function index()
     {
-        return view('gyms.index', [
-            'gyms' => Gym::with('gym')->paginate(3)
-         ]);
+        //
+        return view ('gyms.index');
     }
 
     /**
      * Show the form for creating a new resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $gyms = Gym::all();
+        return view('gyms.create',[
+            'gyms' => $gyms,
+        ]);
     }
 
     /**
@@ -35,9 +38,11 @@ class GymController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreGymRequest $request)
     {
         //
+        Gym::create(request()->all());
+        return redirect()->route('gyms.index');
     }
 
     /**
@@ -49,6 +54,9 @@ class GymController extends Controller
     public function show($id)
     {
         //
+        return view('gyms.show', [
+            'gym' => Gym::find($id)
+        ]);
     }
 
     /**
@@ -57,9 +65,13 @@ class GymController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Gym $gym)
     {
         //
+        $gyms = Gym::all();
+        return view('gyms.edit', [
+            'gym' => $gym,
+        ]);
     }
 
     /**
@@ -69,9 +81,11 @@ class GymController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Gym $gym)
     {
         //
+        $gym->update($request->all());
+        return redirect()->route('gyms.index');
     }
 
     /**
@@ -83,5 +97,13 @@ class GymController extends Controller
     public function destroy($id)
     {
         //
+        $gym = Gym::find($id);
+        $gym->delete();
+        return response()->json(array('gym'=>$id));
+    }
+
+    public function gyms_table()
+    {
+        return datatables()->of(Gym::query())->toJson();
     }
 }

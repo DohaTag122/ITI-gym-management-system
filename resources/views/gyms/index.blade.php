@@ -14,6 +14,11 @@
                     <meta name="csrf-token" content="{{ csrf_token() }}">
 
                     <div class="box">
+                    <div class="box-header">
+                            <h3 class="box-title">Insert New City</h3><br><br>
+                    <a href="{{route('gyms.create')}}" class="btn btn-success">Add Gym</a>
+                    </div>
+
                         <div class="box-header">
                             <h3 class="box-title">Data Table With Full Features</h3>
                         </div>
@@ -22,9 +27,13 @@
                             <table id="example" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
+                                    <th>Id</th>
+                                    <th>City Manager Id</th>
+                                    <th>City Id</th>
                                     <th>Name</th>
+                                    <th>Image</th>
                                     <th>Created At</th>
-                                    <th>Cover Photo</th>
+                                    <th>Updated At</th>
                                     <th>Show</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -88,7 +97,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/data_source',
+                url: '/gyms_table',
                 dataType : 'json',
                 type: 'post',
                 // processData: false,
@@ -104,23 +113,32 @@
                 // }
             },
             columns: [
+                { data: 'id', name: 'id' },
+                { data: 'city_manager_id', name: 'city_manager_id' },
+                { data: 'city_id', name: 'city_id' },
                 { data: 'name', name: 'name' },
+                /* Image */ {
+                    mRender: function (data, type, row) {
+                        return '<img src="/img/'+row.image+'" height="50" width="50">'
+                    }
+                },
                 { data: 'created_at', name: 'created_at' },
-                { data: 'image', name: 'image' },
+                { data: 'updated_at', name: 'updated_at' },
 
+                
                 /* Show */ {
                     mRender: function (data, type, row) {
-                        return '<a href="/'+row.id+'" class="table-delete" data-id="' + row.id + '">Show</a>'
+                        return '<a href="gyms/'+row.id+'" class="btn btn-primary" data-id="' + row.id + '">Show</a>'
                     }
                 },
                 /* EDIT */ {
                     mRender: function (data, type, row) {
-                        return '<a href="/'+row.id+'" class="table-edit" data-id="' + row.id + '">EDIT</a>'
+                        return '<a href="gyms/'+row.id+'/edit" class="btn btn-warning" data-id="' + row.id + '">EDIT</a>'
                     }
                 },
                 /* DELETE */ {
                     mRender: function (data, type, row) {
-                        return '<a href="#" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
+                        return '<a href="" class="btn btn-danger" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
                     }
                 },
             ],
@@ -150,14 +168,14 @@
                 },
                 url: '/gyms/'+gym_id,
                 type: 'Delete',
-                success: function (data) {
+                success : function (data) {
                     console.log('success');
                     console.log(data);
                     var table = $('#example').DataTable();
                     table.ajax.reload();
                 },
-                error: function (response) {
-                    alert(' error');
+                error : function (response) {
+                    alert('error');
                     console.log(response);
                 }
             });

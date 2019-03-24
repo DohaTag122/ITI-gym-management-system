@@ -51,12 +51,18 @@ Route::DELETE('/users/{user}','UserController@delete');
 
 
 //Doha Routes
-Route::get('/user/create', 'UserController@create')
-->name('users.create');
-Route::post('/store', 'UserController@store')
-->name('users.store');
-
-
+Route::resource('users', 'UserController');
+ Route::get('/user/create', 'UserController@create')
+ ->name('users.create');
+ Route::post('/store', 'UserController@store')
+ ->name('users.store');
+ Route::get('/users/{id}/show', 'UserController@show')
+ ->name('users.show');
+ Route::get('/users/{id}/edit', 'UsersController@edit')
+ ->name('users.edit');
+ Route::put('/users/{id}', 'UsersController@update')
+ ->name('users.update')
+; 
 
 
 
@@ -91,10 +97,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::resource('cities', 'CityController');
-
-
 Route::post('cities_table', 'CityController@cities_table');
 
+Route::resource('gyms', 'GymController');
+Route::post('gyms_table', 'GymController@gyms_table');
 
 });
 Auth::routes();

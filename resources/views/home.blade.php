@@ -116,13 +116,13 @@
 
                 /* Show */ {
                     mRender: function (data, type, row) {
-                        return '<a href="/'+row.id+'" class="table-delete" data-id="' + row.id + '">Show</a>'
+                        return '<a href="/users/'+row.id+'/show" class="table-delete" data-id="' + row.id + '">Show</a>'
                     }
                 },
                 /* EDIT */ {
                     mRender: function (data, type, row) {
-                        return '<a href="/'+row.id+'" class="table-edit" data-id="' + row.id + '">EDIT</a>'
-                    }
+                        return '<a href="/users/'+row.id+'/edit " class="table-edit" data-id="' + row.id + '">EDIT</a>'
+                    }      
                 },
                 
                 /* DELETE */ {

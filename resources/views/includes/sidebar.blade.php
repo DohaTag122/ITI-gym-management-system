@@ -48,9 +48,15 @@
                 </a>
             </li>
 
+<<<<<<< HEAD
             <li class="{{ (request()->is('gyms*')) ? 'active' : '' }}">
                 <a href="pages/widgets.html">
                     <i class="fas fa-dumbbell"></i><span>&nbsp;Gyms</span>
+=======
+            <li>
+                <a href="gyms">
+                    <i class="fa fa-th"></i> <span>Gyms</span>
+>>>>>>> c43555f7f64ddebc40c095b696647436674addcd
                 </a>
             </li>
             <li class="{{ (request()->is('packages*','sessions*')) ? 'active menu-open' : '' }} treeview">
