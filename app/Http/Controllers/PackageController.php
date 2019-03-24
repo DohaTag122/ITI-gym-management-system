@@ -46,11 +46,24 @@ class PackageController extends Controller
      */
     public function store(StorePackageRequest $request)
     {
-        $answers = $request->input('session_id');
-        dd($answers);
-        Package::create(request()->all());        
+        
+        $all = $request->all();
+        $sum_of_session_amount = 0;
+        for ($i=0; $i < sizeof($request->input("session_amount")); $i++) {
+            $sum_of_session_amount += $all["session_amount"][$i];
+        }
+        if($sum_of_session_amount > $all["number_of_sessions"]){
+            return redirect()->back()->withErrors('Session amounts were more than your number of sessions')->withInput();
+        }
+    
+        $package = Package::create(request()->all());
+        for ($i=0; $i < sizeof($request->input("session_amount")); $i++) {
+            $sum_of_session_amount += $all["session_amount"][$i];
+        
+            $session = Session::find($request->get('session_id')[$i]);
+            $package->sessions()->attach($session, ["session_amount"=>$all["session_amount"][$i]]);
+        }
         return redirect()->route('packages.index');
-
     }
 
     /**
