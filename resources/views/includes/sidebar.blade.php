@@ -48,15 +48,12 @@
                 </a>
             </li>
 
-<<<<<<< HEAD
             <li class="{{ (request()->is('gyms*')) ? 'active' : '' }}">
-                <a href="pages/widgets.html">
+                <a href="{{route('gyms.index')}}">
                     <i class="fas fa-dumbbell"></i><span>&nbsp;Gyms</span>
-=======
             <li>
                 <a href="gyms">
                     <i class="fa fa-th"></i> <span>Gyms</span>
->>>>>>> c43555f7f64ddebc40c095b696647436674addcd
                 </a>
             </li>
             <li class="{{ (request()->is('packages*','sessions*')) ? 'active menu-open' : '' }} treeview">
@@ -76,7 +73,7 @@
             </li>
 
             <li class="{{ (request()->is('coaches*')) ? 'active' : '' }}">
-                <a href="pages/widgets.html">
+                <a href="{{route('coaches.index')}}">
                     <i class="fas fa-clipboard-list"></i> <span>Coaches</span>
                 </a>
             </li>

@@ -102,6 +102,8 @@ Route::post('cities_table', 'CityController@cities_table');
 Route::resource('gyms', 'GymController');
 Route::post('gyms_table', 'GymController@gyms_table');
 
+Route::resource('coaches', 'CoachController');
+Route::post('coaches_table', 'CoachController@coaches_table');
 });
 Auth::routes();
 

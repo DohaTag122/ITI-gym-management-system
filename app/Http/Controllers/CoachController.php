@@ -3,15 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Coach;
 use App\Gym;
-use App\City;
 
-use App\Http\Requests\gyms\StoreGymRequest;
-use App\Http\Requests\gyms\UpdateGymRequest;
-
-class GymController extends Controller
-{
-    /**
+class CoachController extends Controller
+{/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -19,7 +15,7 @@ class GymController extends Controller
     public function index()
     {
         //
-        return view ('gyms.index');
+        return view ('coaches.index');
     }
 
     /**
@@ -28,15 +24,11 @@ class GymController extends Controller
      */
     public function create()
     {
-        
-        $gyms = Gym::all();
-        $cities = City::all();
-        return view('gyms.create',[
+        $coaches = Coach::all();
+        return view('coaches.create',[
+            'coaches' => $coaches,
             'gyms' => $gyms,
-            'cities' => $cities,
         ]);
-
-    
     }
 
     /**
@@ -48,12 +40,8 @@ class GymController extends Controller
     public function store(Request $request)
     {
         //
-        $file = $request->file('image');
-        dd($request->all());
-        // $destinationPath = 'public/img';
-        // $file->move($destinationPath,$file->getClientOriginalName());
-        Gym::create($request->all());
-        return redirect()->route('gyms.index');
+        Coach::create($request->all());
+        return redirect()->route('coaches.index');
     }
 
     /**
@@ -65,8 +53,11 @@ class GymController extends Controller
     public function show($id)
     {
         //
-        return view('gyms.show', [
-            'gym' => Gym::find($id)
+       
+        return view('coaches.show', [
+            'coach' => Coach::find($id),
+            'gym' => Gym::find(Coach::find($id)->gym_id)
+
         ]);
     }
 
@@ -76,12 +67,12 @@ class GymController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gym $gym)
+    public function edit(Coach $coach)
     {
         //
-        $gyms = Gym::all();
-        return view('gyms.edit', [
-            'gym' => $gym,
+        $coaches = Coach::all();
+        return view('cities.edit', [
+            'coach' => $coach,
         ]);
     }
 
@@ -92,11 +83,11 @@ class GymController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gym $gym)
+    public function update(Request $request, Coach $coach)
     {
         //
-        $gym->update($request->all());
-        return redirect()->route('gyms.index');
+        $coach->update($request->all());
+        return redirect()->route('coaches.index');
     }
 
     /**
@@ -108,13 +99,13 @@ class GymController extends Controller
     public function destroy($id)
     {
         //
-        $gym = Gym::find($id);
-        $gym->delete();
-        return response()->json(array('gym'=>$id));
+        $coach = Coach::find($id);
+        $coach->delete();
+        return response()->json(array('coach'=>$id));
     }
 
-    public function gyms_table()
+    public function coaches_table()
     {
-        return datatables()->of(Gym::query())->toJson();
+        return datatables()->of(Coach::query())->toJson();
     }
 }
