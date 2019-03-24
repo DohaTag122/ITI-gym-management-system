@@ -8,6 +8,8 @@ use App\Http\Requests\package\StorePackageRequest;
 use App\Http\Requests\package\UpdatePackageRequest;
 use App\User;
 use App\Gym;
+use App\Session;
+
 class PackageController extends Controller
 {
     /**
@@ -28,8 +30,10 @@ class PackageController extends Controller
     public function create()
     {
         $gyms = Gym::all();
+        $sessions = Session::all();
         return view('packages.create', [
             'gyms'=> $gyms,
+            'sessions'=> $sessions
         ]);
 
     }
@@ -42,6 +46,8 @@ class PackageController extends Controller
      */
     public function store(StorePackageRequest $request)
     {
+        $answers = $request->input('session_id');
+        dd($answers);
         Package::create(request()->all());        
         return redirect()->route('packages.index');
 
