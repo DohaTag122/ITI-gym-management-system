@@ -8,6 +8,8 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Hash;
+
 class UserController extends Controller
 {
     /**
@@ -31,7 +33,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    { 
+        // dd(User::all());
         $users = User::all();
         return view('Users.create',[
             'users' => $users,
@@ -46,7 +49,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {  // dd( User::create(request()->all()));
-       $user= User::create(request()->all());
+        // dd(request()->all());
+       $user= User::create([
+            "name" => $request->name,
+            "email" => $request->email,
+            "password" => Hash::make($request->password),
+            "image" => $request->image,
+            "ban" => $request->ban,
+            "gymid" => $request->gymid,
+            "role" => $request->role,
+       ]);
        //dd($user);
         if(request()->all()['role']=="admin")
         { //here
@@ -70,8 +82,13 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        
+     
+    { 
+          $user = User::find($id);
+        return view('Users.show', [
+            'user' => $user,
+
+        ]);
     }
 
     /**
@@ -81,8 +98,10 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   $user = User::find($id);
+        return view('Users.edit', [
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -92,10 +111,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(User $user,Request $request)
+    { //dd($request);
+       User::where('id',$user->id)->update(['name'=>request()->name]); 
+       User::where('id',$user->id)->update(['password'=>Hash::make(request()->password)]);
+       User::where('id',$user->id)->update(['national_id'=>request()->national_id]);
+       return redirect()->route('home');
     }
+   
 
     /**
      * Remove the specified resource from storage.
