@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Gym;
 use App\City;
+use App\Http\Requests\cities\StoreCityRequest;
+use App\Http\Requests\cities\UpdateCityRequest;
 
-use App\Http\Requests\gyms\StoreGymRequest;
-use App\Http\Requests\gyms\UpdateGymRequest;
-
-class GymController extends Controller
+class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +17,7 @@ class GymController extends Controller
     public function index()
     {
         //
-        return view ('gyms.index');
+        return view ('cities.index');
     }
 
     /**
@@ -28,15 +26,10 @@ class GymController extends Controller
      */
     public function create()
     {
-        
-        $gyms = Gym::all();
         $cities = City::all();
-        return view('gyms.create',[
-            'gyms' => $gyms,
+        return view('cities.create',[
             'cities' => $cities,
         ]);
-
-    
     }
 
     /**
@@ -45,15 +38,11 @@ class GymController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCityRequest $request)
     {
         //
-        $file = $request->file('image');
-        dd($request->all());
-        // $destinationPath = 'public/img';
-        // $file->move($destinationPath,$file->getClientOriginalName());
-        Gym::create($request->all());
-        return redirect()->route('gyms.index');
+        City::create($request->all());
+        return redirect()->route('cities.index');
     }
 
     /**
@@ -65,8 +54,8 @@ class GymController extends Controller
     public function show($id)
     {
         //
-        return view('gyms.show', [
-            'gym' => Gym::find($id)
+        return view('cities.show', [
+            'city' => City::find($id)
         ]);
     }
 
@@ -76,12 +65,12 @@ class GymController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gym $gym)
+    public function edit(City $city)
     {
         //
-        $gyms = Gym::all();
-        return view('gyms.edit', [
-            'gym' => $gym,
+        $cities = City::all();
+        return view('cities.edit', [
+            'city' => $city,
         ]);
     }
 
@@ -92,11 +81,11 @@ class GymController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gym $gym)
+    public function update(Request $request, City $city)
     {
         //
-        $gym->update($request->all());
-        return redirect()->route('gyms.index');
+        $city->update($request->all());
+        return redirect()->route('cities.index');
     }
 
     /**
@@ -108,13 +97,13 @@ class GymController extends Controller
     public function destroy($id)
     {
         //
-        $gym = Gym::find($id);
-        $gym->delete();
-        return response()->json(array('gym'=>$id));
+        $city = City::find($id);
+        $city->delete();
+        return response()->json(array('city'=>$id));
     }
 
-    public function gyms_table()
+    public function cities_table()
     {
-        return datatables()->of(Gym::query())->toJson();
+        return datatables()->of(City::query())->toJson();
     }
 }

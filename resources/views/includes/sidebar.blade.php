@@ -49,7 +49,7 @@
             </li>
 
             <li class="{{ (request()->is('gyms*')) ? 'active' : '' }}">
-                <a href="pages/widgets.html">
+                <a href="{{route('gyms.index')}}">
                     <i class="fas fa-dumbbell"></i><span>&nbsp;Gyms</span>
                 </a>
             </li>
@@ -70,7 +70,7 @@
             </li>
 
             <li class="{{ (request()->is('coaches*')) ? 'active' : '' }}">
-                <a href="pages/widgets.html">
+                <a href="{{route('coaches.index')}}">
                     <i class="fas fa-clipboard-list"></i> <span>Coaches</span>
                 </a>
             </li>

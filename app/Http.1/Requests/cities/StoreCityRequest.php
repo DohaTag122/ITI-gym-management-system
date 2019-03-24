@@ -4,7 +4,7 @@ namespace App\Http\Requests\cities;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCityRequest extends FormRequest
+class StoreCityRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -38,4 +38,3 @@ class UpdateCityRequest extends FormRequest
         ];
     }
 }
-       

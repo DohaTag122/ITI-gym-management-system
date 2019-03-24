@@ -17,13 +17,20 @@
             </ul>
         </div>
 @endif
-<a href="{{route('cities.index')}}" class="btn btn-danger">Back</a>
-    <form action="{{ route('cities.update', $city->id) }}" method="POST">  
-    @method('PUT')  
+<a href="{{route('coaches.index')}}" class="btn btn-danger">Back</a>
+
+   <form action="{{route('coaches.store')}}" method="POST">
        @csrf
        <div class="form-group">
            <label for="exampleInputName1">Name</label>
-           <input name="name" type="text" class="form-control"  value="{{$city->name}}">
+           <input name="name" type="text" class="form-control"  placeholder="Enter Name">
+           
+           <label for="exampleInputName1">Gym Name</label>
+           <select class="form-control" name="gym_id">
+               @foreach($gyms as $gym)
+                   <option value="{{$gym->id}}">{{$gym->name}}</option>
+               @endforeach
+           </select>
        </div>
 
     
