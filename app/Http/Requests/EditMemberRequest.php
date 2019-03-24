@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\gyms;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreGymRequest extends FormRequest
+class EditMemberRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class StoreGymRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,14 @@ class StoreGymRequest extends FormRequest
      */
     public function rules()
     {
+
+
         return [
-            //
+            'name' => 'required|string',
+            'password' => 'required|string|min:6|max:10',
+            'gender'=> 'required|string',
+            'date_of_birth'=> 'required|date_format:Y-m-d',
+            'profile_image'=> 'string'
         ];
     }
 }

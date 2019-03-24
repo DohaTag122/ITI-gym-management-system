@@ -22,11 +22,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 //*Ziad Routes
 
 Route::get('/relation', function () {
-    $sessions = \App\Session::first();
-    $packages = \App\Package::first();
+    $city = \App\City::find('1');
+    dd($city->City_manager->count());
+//    $sessions = \App\Session::first();
+//    $packages = \App\Package::first();
 
 //    dd($sessions->packages);
-    dd($packages->sessions);
+//    dd($packages->sessions);
 
 //    dd($packages->sessions);
 });
