@@ -63,7 +63,7 @@ class SessionController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -97,7 +97,8 @@ class SessionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Session::find($id)->delete();
+        return response()->json(array('user'=>$id));
     }
     /**
      * Get the packages table as a json for jquery to render in DataTables .

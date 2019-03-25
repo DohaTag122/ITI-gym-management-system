@@ -234,6 +234,7 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
 //        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
+        'Carbon' => 'Carbon\Carbon',
 
     ],
 

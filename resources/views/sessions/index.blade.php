@@ -24,10 +24,7 @@
                             <th>Day</th>
                             <th>Starts At</th>
                             <th>Finishes At</th>
-                            <th>Price (usd)</th>
                             <th>Gym</th>
-                            <th>Created At</th>
-                            <th>Updated At</th>
                             <th>Show</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -96,10 +93,7 @@
                 { data: 'day', name: 'day' },
                 { data: 'start_at', name: 'start_at' },
                 { data: 'finish_at', name: 'finish_at' },
-                { data: 'price', name: 'price'},
                 { data: 'gym.name', name: 'gym.name' },
-                { data: 'created_at', name: 'created_at' },
-                { data: 'updated_at', name: 'updated_at' },
 
                 /* Show */ {
                     mRender: function (data, type, row) {
@@ -131,12 +125,12 @@
         });
 
         $(document).on('click','#delete_item',function () {
-            var package_id = $(this).attr('row_delete');
+            var session_id = $(this).attr('row_delete');
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/packages/'+package_id,
+                url: '/sessions/'+session_id,
                 type: 'DELETE',
                 success: function (data) {
                     console.log('success');

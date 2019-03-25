@@ -110,7 +110,6 @@ class PackageController extends Controller
      */
     public function destroy($id)
     {
-        // dd($id);
         Package::find($id)->delete();
         return response()->json(array('user'=>$id));
 
