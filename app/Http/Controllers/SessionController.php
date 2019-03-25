@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\session\StoreSessionRequest;
+use App\Http\Requests\session\UpdateSessionRequest;
 use Illuminate\Http\Request;
 use App\Gym;
 use App\Session;
@@ -72,9 +73,14 @@ class SessionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Session $session)
     {
-        //
+        // dd($session);
+        $gyms = Gym::all();
+        $coaches = Coach::all();
+        dd($session);
+        return view('sessions.edit', compact('session', 'gyms', 'coaches'));
+
     }
 
     /**
@@ -84,9 +90,12 @@ class SessionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSessionRequest $request, Session $session)
     {
-        //
+        dd($session);
+        $session->update($request->all());
+        return redirect()->route('packages.index');
+
     }
 
     /**
