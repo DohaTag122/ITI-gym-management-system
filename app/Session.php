@@ -18,4 +18,9 @@ class Session extends Model
         return $this->belongsToMany('App\Member', 'purchases', 'session_id', 'member_id');
     }
 
+    public function coaches()
+    {
+        return $this->belongsToMany('App\Coach', 'coach_session', 'session_id', 'coach_id');
+    }
+
 }

@@ -13,7 +13,7 @@ class CreateSessionCoachTable extends Migration
      */
     public function up()
     {
-        Schema::create('session_coach', function (Blueprint $table) {
+        Schema::create('coach_session', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('session_id');
@@ -23,8 +23,7 @@ class CreateSessionCoachTable extends Migration
             $table->unsignedBigInteger('coach_id');
             $table->foreign('coach_id')
                 ->references('id')->on('coaches');
-
-
+                
             $table->timestamps();
         });
     }
