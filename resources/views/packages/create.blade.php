@@ -13,15 +13,15 @@
         @csrf
         <div class="form-group">
             <label for="name">Package Name</label>
-            <input name="name" type="text" class="form-control" id="name"  placeholder="Enter Package Name">
+            <input name="name" type="text" class="form-control" id="name"  placeholder="Enter Package Name" value="{{old('name')}}">
         </div>
         <div class="form-group">
             <label for="number_of_sessions">No. Of sessions</label>
-            <input type="number" name="number_of_sessions" class="form-control">
+        <input type="number" name="number_of_sessions" class="form-control" value="{{old('number_of_sessions')}}">
         </div>
         <div class="form-group">
             <label for="package_price">Package Price (usd) </label>
-            <input class="form-control" type="number" name="package_price" id="package_price">
+            <input class="form-control" type="number" name="package_price" id="package_price" value="{{old('package_price')}}">
         </div>
 
         <div class="form-group">

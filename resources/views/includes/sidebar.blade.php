@@ -62,7 +62,9 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/charts/morris.html"><i class="fas fa-male"></i>&nbsp;Sessions</a></li>
+                    <li class="{{ (request()->is('sessions*')) ? 'active' : '' }}">
+                        <a href="{{route('sessions.index')}}"><i class="fas fa-male"></i>&nbsp;Sessions</a>
+                    </li>
                     <li class="{{ (request()->is('packages*')) ? 'active' : '' }}">
                         <a href="{{route('packages.index')}}"><i class="fas fa-people-carry"></i>&nbsp;Packages</a>
                     </li>
