@@ -115,7 +115,7 @@ class UserController extends Controller
     public function update(User $user,Request $request)
     { //dd($request);
        User::where('id',$user->id)->update(['name'=>request()->name]); 
-       User::where('id',$user->id)->update(['name'=>request()->email]); 
+       User::where('id',$user->id)->update(['email'=>request()->email]); 
        User::where('id',$user->id)->update(['password'=>Hash::make(request()->password)]);
        User::where('id',$user->id)->update(['national_id'=>request()->national_id]);
        return redirect()->route('home');

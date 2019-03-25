@@ -27,12 +27,10 @@
                                     <th>Email</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
-                                 
-                                    <th>Action </th>
-                                   
                                     <th>Show</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
+                                    <th>Action </th>
                                     
                                 </tr>
                                 </thead>

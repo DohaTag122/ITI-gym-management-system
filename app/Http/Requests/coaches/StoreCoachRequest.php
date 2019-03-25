@@ -25,7 +25,7 @@ class StoreCoachRequest extends FormRequest
     {
         return [
             'name' => 'bail|required|alpha|max:25',
-            'gym_id' => 'exists:gyms,id' ,
+            'gym_id' => 'required|exists:gyms,id' ,
         ];
     }
     public function messages()
