@@ -4,7 +4,7 @@
     @include('includes.head')
     @yield('extra_css')
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-black sidebar-mini">
 <div class="wrapper">
 
     @include('includes.header')

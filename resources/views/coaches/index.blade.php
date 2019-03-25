@@ -15,8 +15,8 @@
 
                     <div class="box">
                     <div class="box-header">
-                            <h3 class="box-title">Insert New City</h3><br><br>
-                    <a href="{{route('gyms.create')}}" class="btn btn-success">Add Gym</a>
+                            <h3 class="box-title">Insert New Coach</h3><br><br>
+                    <a href="{{route('coaches.create')}}" class="btn btn-success">Add Coach</a>
                     </div>
 
                         <div class="box-header">
@@ -28,10 +28,8 @@
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>City Manager Id</th>
-                                    <th>City Id</th>
+                                    <th>Gym Id</th>
                                     <th>Name</th>
-                                    <th>Image</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
                                     <th>Show</th>
@@ -97,7 +95,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/gyms_table',
+                url: '/coaches_table',
                 dataType : 'json',
                 type: 'post',
                 // processData: false,
@@ -114,26 +112,20 @@
             },
             columns: [
                 { data: 'id', name: 'id' },
-                { data: 'city_manager_id', name: 'city_manager_id' },
-                { data: 'city_id', name: 'city_id' },
+                { data: 'gym_id', name: 'gym_id' },
                 { data: 'name', name: 'name' },
-                /* Image */ {
-                    mRender: function (data, type, row) {
-                        return '<img src="/img/'+row.image+'" height="50" width="50">'
-                    }
-                },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'updated_at', name: 'updated_at' },
 
                 
                 /* Show */ {
                     mRender: function (data, type, row) {
-                        return '<a href="gyms/'+row.id+'" class="btn btn-primary" data-id="' + row.id + '">Show</a>'
+                        return '<a href="coaches/'+row.id+'" class="btn btn-primary" data-id="' + row.id + '">Show</a>'
                     }
                 },
                 /* EDIT */ {
                     mRender: function (data, type, row) {
-                        return '<a href="gyms/'+row.id+'/edit" class="btn btn-warning" data-id="' + row.id + '">EDIT</a>'
+                        return '<a href="coaches/'+row.id+'/edit" class="btn btn-warning" data-id="' + row.id + '">EDIT</a>'
                     }
                 },
                 /* DELETE */ {
@@ -161,12 +153,12 @@
         });
 
         $(document).on('click','#delete_item',function () {
-            var gym_id = $(this).attr('row_delete');
+            var coach_id = $(this).attr('row_delete');
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/gyms/'+gym_id,
+                url: '/coaches/'+coach_id,
                 type: 'Delete',
                 success : function (data) {
                     console.log('success');

@@ -22,11 +22,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 //*Ziad Routes
 
 Route::get('/relation', function () {
-    $sessions = \App\Session::first();
-    $packages = \App\Package::first();
+    $city = \App\City::find('1');
+    dd($city->City_manager->count());
+//    $sessions = \App\Session::first();
+//    $packages = \App\Package::first();
 
 //    dd($sessions->packages);
-    dd($packages->sessions);
+//    dd($packages->sessions);
 
 //    dd($packages->sessions);
 });
@@ -97,11 +99,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::resource('cities', 'CityController');
-
-
 Route::post('cities_table', 'CityController@cities_table');
 
+Route::resource('gyms', 'GymController');
+Route::post('gyms_table', 'GymController@gyms_table');
 
+Route::resource('coaches', 'CoachController');
+Route::post('coaches_table', 'CoachController@coaches_table');
 });
 Auth::routes();
 
