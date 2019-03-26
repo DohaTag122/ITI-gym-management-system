@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('posts.index', [
+        return view('Users.index', [
             'users' => User::all()
         ]);
 
@@ -60,12 +60,12 @@ class UserController extends Controller
             "gymid" => $request->gymid,
             "role" => $request->role,
        ]);
-       //dd($user);
+       
         if(request()->all()['role']=="admin")
-        { //here
-          //  $my_user = User::find(request()->all()['id']);
+        { 
+          
           $user->assignRole('admin');
-        }elseif(request()->all()['role']=="cityManger")
+        }elseif(request()->all()['role']=="cityManager")
         {
             auth()->user()->assignRole('cityManger');
         }elseif(request()->all()['role']=="gymManger")
@@ -133,5 +133,26 @@ class UserController extends Controller
         $user_data = \App\User::find($user);
         \App\User::find($user)->delete();
         return response()->json(array('user'=>$user_data));
+    }
+   
+   /* public function getdata(){
+        //return datatables()->of(User::role('cityManager')->get())->toJson();
+
+        return view('Users.index', [
+            'users' => User::role('cityManager')
+        ]);
+    }*/
+
+    public function ban($id)
+
+    {
+        $user = User::find($id)->ban();
+        return redirect()->route('home');
+    }
+    public function unban($id)
+
+    {
+        $user = User::find($id)->unban();
+        return redirect()->route('home');
     }
 }

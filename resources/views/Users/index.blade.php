@@ -134,7 +134,7 @@
               
                 /* DELETE */ {
                     mRender: function (data, type, row) {
-                        return '<a href="/users/'+row.id+'/delete" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
+                        return '<a href="#" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
                     }
 
                     
@@ -143,10 +143,10 @@
                 /*Banned*/
                 {
                     mRender: function (data, type, row) {
-                        if(row.banned_at==null)
-                        return '<a href="/users/'+row.id+'/ban"  row_id="' + row.id + '">Enable</a>'
+                        if(row.banned==0)
+                        return '<a href="#" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">Enable</a>'
                         else
-                        return '<a href="/users/'+row.id+'/unban" row_id="' + row.id + '" >Disable</a>'
+                        return '<a href="#" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">Disable</a>'
                         
                     }
                 },

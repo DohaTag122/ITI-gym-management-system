@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 //! Please write your Routes on your specified space to avoid merge conflicts
 //*Ziad Routes
 
@@ -42,7 +42,7 @@ Route::post('/data_source', function () {
     return datatables()->query(\Illuminate\Support\Facades\DB::table('users'))->toJson();
 });
 
-Route::DELETE('/users/{user}','UserController@delete');
+Route::DELETE('/users/{user}/delete','UserController@delete');
 
 
 
@@ -63,10 +63,13 @@ Route::resource('users', 'UserController');
  Route::get('/users/{id}/edit', 'UsersController@edit')
  ->name('users.edit');
  Route::put('/users/{id}', 'UsersController@update')
- ->name('users.update')
-; 
+ ->name('users.update');
 
-
+ Route::get('/users/{user}/ban', 'UserController@ban')
+ ->name('users.ban');
+ Route::get('/users/{user}/unban', 'UserController@unban')
+ ->name('users.unban');
+ Route::get('/home', ['uses'=>'HomeController@index', 'middleware' => 'forbid-banned-user'])->name('home');
 
 
 
