@@ -84,6 +84,9 @@ Route::resource('users', 'UserController');
 //* Nour Routes
 Route::resource('packages', 'PackageController');
 Route::get('data_packages', 'PackageController@get_table');
+Route::resource('sessions', 'SessionController');
+Route::get('data_sessions', 'SessionController@get_table');
+
 
 
 

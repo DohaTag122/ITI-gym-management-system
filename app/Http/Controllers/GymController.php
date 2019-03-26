@@ -49,7 +49,7 @@ class GymController extends Controller
     {
         //
         $file = $request->file('image');
-        dd($request->all());
+        // dd($request->all());
         // $destinationPath = 'public/img';
         // $file->move($destinationPath,$file->getClientOriginalName());
         Gym::create($request->all());

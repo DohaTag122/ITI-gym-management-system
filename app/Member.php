@@ -59,4 +59,14 @@ class Member extends Authenticatable implements JWTSubject , MustVerifyEmail
     {
         return $this->belongsToMany('App\Session', 'purchases', 'member_id', 'session_id');
     }
+
+    public function purchases()
+    {
+        return $this->hasMany('App\Purchase', 'member_id','id');
+    }
+
+    public function attendances()
+    {
+        return $this->hasMany('App\Attendance', 'member_id','id');
+    }
 }

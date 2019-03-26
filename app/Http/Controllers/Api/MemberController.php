@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Attendance;
 use App\Http\Requests\EditMemberRequest;
+use App\Http\Resources\AttendanceResource;
 use App\Notifications\SignupActivate;
+use App\Purchase;
+use App\Session;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterAuthRequest;
 use App\Member;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use JWTAuth;
 //use Tymon\JWTAuth\Facades\JWTAuth;
@@ -140,4 +146,100 @@ class MemberController extends Controller
         return response()->json(['data' => $member_data]);
 
     }
+
+
+    public function sessions_details()
+    {
+        $member_id = Auth::user()->id;
+        $purchases = Member::find($member_id)->purchases->count();
+        $attendances = Member::find($member_id)->attendances->count();
+        $remaining = $purchases - $attendances;
+
+
+        return response()->json(["total_sessions"=>$purchases,"remaining_sessions" => $remaining]);
+    }
+
+
+    public function sessions()
+    {
+        $member_id = Auth::user()->id;
+        $attended_sessions = Attendance::where('member_id',$member_id)->pluck('session_id')->toArray();
+        $sessions = Member::find($member_id)->sessions->whereNotIn('id', $attended_sessions);
+
+        return response()->json(["sessions"=>$sessions]);
+    }
+
+    public function attend($id)
+    {
+
+        $member_id = Auth::user()->id;
+        $session_exist = Member::find($member_id)->sessions->where('id', $id)->count();
+
+        if($session_exist > 0)
+        {
+            $member_id = Auth::user()->id;
+            $Current_day = Carbon::now()->setTimezone('Africa/Cairo');
+            $current_date = Carbon::now()->toDateString();
+            $current_time = Carbon::now()->toTimeString();
+
+            $session = Session::findorFail($id);
+            $Session_date = Carbon::parse($session->start_at);
+//            $date = $Session_date->format('Y-m-d');
+//            $time = $Session_date->format('H:i:s');
+//            dd($Current_day." / ".$Session_date);
+//            dd($Current_day->isSameDay($Session_date));
+//            dd($Session_date->isCurrentDay());
+//            dd($Session_date->isPast());
+//            dd($Session_date->isFuture());
+            if($Current_day->isSameDay($Session_date))
+            {
+                $attendance = new Attendance();
+                $attendance->member_id = $member_id;
+                $attendance->session_id = $id;
+                $attendance->attend = 1;
+                $attendance->attendance_date = $current_date;
+                $attendance->attendance_time = $current_time;
+                $attendance->save();
+            }
+
+            else
+                {
+                    $message = null ;
+                    if($Session_date->isPast())
+                    {
+                        $message = "already finished";
+                    }
+                    else if($Session_date->isFuture())
+                    {
+                        $message = "does't come yet";
+                    }
+
+                    $attendance = "You cant attend this session ".$message;
+                }
+        }
+        else
+            {
+                $attendance = "this session doesn't exist please buy training sessions first";
+            }
+
+      return response()->json(["attendance"=>$attendance]);
+    }
+
+
+
+    public function attendances_history()
+    {
+
+        $member_id = Auth::user()->id;
+        $attendances = Attendance::where('member_id',$member_id)->with('session')
+            ->get();
+
+        return new AttendanceResource($attendances);
+//        return response()->json(["attendances"=>$attendances]);
+    }
+
+
+
 }
+
+

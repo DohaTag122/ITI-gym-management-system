@@ -30,5 +30,13 @@ Route::middleware(['auth:api'])->group(function () {
 
     Route::PUT('/members/{member}','Api\MemberController@update');
 
+    Route::get('/sessions','Api\MemberController@sessions');
+
+    Route::get('/sessions_details','Api\MemberController@sessions_details');
+
+    Route::post('/sessions/{id}/attend','Api\MemberController@attend');
+
+
+    Route::get('/attendances','Api\MemberController@attendances_history');
 
 });

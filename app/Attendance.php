@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Attendance extends Model
 {
     //
-    protected $fillable = ["purchase_id","attend","attendance_date","attendance_time"];
+
+    protected $fillable = ["member_id","session_id","attend","attendance_date","attendance_time"];
+
+
+    public function session()
+    {
+        return $this->belongsTo('App\Session');
+    }
+
+
 }

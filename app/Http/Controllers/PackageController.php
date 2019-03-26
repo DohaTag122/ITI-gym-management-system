@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Package;
-use Illuminate\Http\Request;
-use App\Http\Requests\package\StorePackageRequest;
 use App\Http\Requests\package\UpdatePackageRequest;
+use App\Http\Requests\package\StorePackageRequest;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
+use App\Session;
+use App\Package;
 use App\User;
 use App\Gym;
-use App\Session;
-use Illuminate\Support\Facades\Input;
 
 
 class PackageController extends Controller
@@ -110,7 +110,6 @@ class PackageController extends Controller
      */
     public function destroy($id)
     {
-        // dd($id);
         Package::find($id)->delete();
         return response()->json(array('user'=>$id));
 
