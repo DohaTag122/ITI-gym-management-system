@@ -12,7 +12,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Packages Table</h3><br>
-                    <a href='/packages/create' style="margin-top: 10px;" class="btn btn-success">Create Package</a>
+                    <a href='/packages/create' style="margin-top: 10px;" class="btn btn-success"><i class="fas fa-folder-plus"></i>&nbsp;Create Package</a>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -23,7 +23,7 @@
                             <th>Name</th>
                             <th>Gym</th>
                             <th>No of Sessions</th>
-                            <th>Package Price (usd)</th>
+                            <th>Package Price</th>
                             <th>Created At</th>
                             <th>Updated At</th>
                             <th>Show</th>
@@ -99,17 +99,17 @@
 
                 /* Show */ {
                     mRender: function (data, type, row) {
-                        return '<a href="/packages/'+row.id+'" class="table-delete btn btn-info" data-id="' + row.id + '">Show</a>'
+                        return '<a href="/packages/'+row.id+'" class="table-delete btn btn-info" data-id="' + row.id + '"><i class="far fa-eye"></i>&nbsp;Show</a>'
                     }
                 },
                 /* EDIT */ {
                     mRender: function (data, type, row) {
-                        return '<a href="/packages/'+row.id+'/edit" class="table-edit btn btn-warning" data-id="' + row.id + '">EDIT</a>'
+                        return '<a href="/packages/'+row.id+'/edit" class="table-edit btn btn-warning" data-id="' + row.id + '"><i class="far fa-edit"></i>&nbsp;EDIT</a>'
                     }
                 },
                 /* DELETE */ {
                     mRender: function (data, type, row) {
-                        return '<a href="#" class="table-delete btn btn-danger" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
+                        return '<a href="#" class="table-delete btn btn-danger" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle"><i class="far fa-trash-alt"></i>&nbsp;DELETE</a>'
                     }
                 },
             ],

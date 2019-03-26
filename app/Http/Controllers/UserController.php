@@ -128,7 +128,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($user)
+    public function destroy($user)
     { 
         $user_data = \App\User::find($user);
         \App\User::find($user)->delete();

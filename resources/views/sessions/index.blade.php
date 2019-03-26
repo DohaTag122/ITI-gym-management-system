@@ -12,7 +12,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Session Table</h3><br>
-                    <a href='{{route('sessions.create')}}' style="margin-top: 10px;" class="btn btn-success">Create Session</a>
+                    <a href='{{route('sessions.create')}}' style="margin-top: 10px;" class="btn btn-success"><i class="fas fa-folder-plus"></i>&nbsp;Create Session</a>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -97,17 +97,17 @@
 
                 /* Show */ {
                     mRender: function (data, type, row) {
-                        return '<a href="/sessions/'+row.id+'" class="table-delete btn btn-info" data-id="' + row.id + '">Show</a>'
+                        return '<a href="/sessions/'+row.id+'" class="table-delete btn btn-info" data-id="' + row.id + '"><i class="far fa-eye"></i>&nbsp;Show</a>'
                     }
                 },
                 /* EDIT */ {
                     mRender: function (data, type, row) {
-                        return '<a href="/sessions/'+row.id+'/edit" class="table-edit btn btn-warning" data-id="' + row.id + '">EDIT</a>'
+                        return '<a href="/sessions/'+row.id+'/edit" class="table-edit btn btn-warning" data-id="' + row.id + '"><i class="far fa-edit"></i>&nbsp;EDIT</a>'
                     }
                 },
                 /* DELETE */ {
                     mRender: function (data, type, row) {
-                        return '<a href="#" class="table-delete btn btn-danger" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
+                        return '<a href="#" class="table-delete btn btn-danger" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle"><i class="far fa-trash-alt"></i>&nbsp;DELETE</a>'
                     }
                 },
             ],
