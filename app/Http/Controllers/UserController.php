@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\User\StoreUserRequest;
 
 class UserController extends Controller
 {
@@ -47,7 +48,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {  // dd( User::create(request()->all()));
         // dd(request()->all());
        $user= User::create([
@@ -114,6 +115,7 @@ class UserController extends Controller
     public function update(User $user,Request $request)
     { //dd($request);
        User::where('id',$user->id)->update(['name'=>request()->name]); 
+       User::where('id',$user->id)->update(['email'=>request()->email]); 
        User::where('id',$user->id)->update(['password'=>Hash::make(request()->password)]);
        User::where('id',$user->id)->update(['national_id'=>request()->national_id]);
        return redirect()->route('home');

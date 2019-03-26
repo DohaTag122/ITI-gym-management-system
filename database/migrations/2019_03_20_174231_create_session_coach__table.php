@@ -13,18 +13,17 @@ class CreateSessionCoachTable extends Migration
      */
     public function up()
     {
-        Schema::create('session_coach', function (Blueprint $table) {
+        Schema::create('coach_session', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('session_id');
             $table->foreign('session_id')
-                ->references('id')->on('sessions');
+                ->references('id')->on('sessions')->onDelete('cascade');
 
             $table->unsignedBigInteger('coach_id');
             $table->foreign('coach_id')
-                ->references('id')->on('coaches');
-
-
+                ->references('id')->on('coaches')->onDelete('cascade');
+                
             $table->timestamps();
         });
     }

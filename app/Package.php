@@ -25,6 +25,9 @@ class Package extends Model
         $dollars = $cents / 100;
         return $dollars;
     }
+    /**
+     * Mutator on price
+     */
     public function setPackagePriceAttribute($dollars){
         $this->attributes['package_price'] = $dollars * 100 ;
     }

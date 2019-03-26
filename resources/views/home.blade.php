@@ -111,6 +111,8 @@
                                     <th>Show</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
+                                    <th>Action </th>
+                                    
                                 </tr>
                                 </thead>
                             </table>
@@ -196,12 +198,17 @@
                 { data: 'email', name: 'email' },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'updated_at', name: 'updated_at' },
-
+                
+               
+               
+                   
                 /* Show */ {
                     mRender: function (data, type, row) {
+                        
                         return '<a href="/users/'+row.id+'/show" class="table-delete" data-id="' + row.id + '">Show</a>'
                     }
                 },
+               
                 /* EDIT */ {
                     mRender: function (data, type, row) {
                         return '<a href="/users/'+row.id+'/edit " class="table-edit" data-id="' + row.id + '">EDIT</a>'
@@ -212,7 +219,21 @@
                     mRender: function (data, type, row) {
                         return '<a href="#" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
                     }
+
+                    
                 },
+                
+                /*Banned*/
+                {
+                    mRender: function (data, type, row) {
+                        if(row.banned==0)
+                        return '<a href="#" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">Enable</a>'
+                        else
+                        return '<a href="#" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">Disable</a>'
+                        
+                    }
+                },
+               
             ],
             'paging'      : true,
             'lengthChange': true,
