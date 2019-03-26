@@ -24,14 +24,13 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
 
-        <li class="{{ (request()->is('users*')) ? 'active' : '' }}">
+           
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="{{ (request()->is('users*')) ? 'active' : '' }}">
                 <a href="{{route('home')}}">
                     <i class="fas fa-users"></i> <span>Users</span>
                 </a>
             </li>
-
-           
-        <ul class="sidebar-menu" data-widget="tree">
             <li class="{{ (request()->is('gym_managers*')) ? 'active' : '' }}">
                 <a href="{{route('users.index')}}">
                     <i class="fa fa-th"></i> <span>Gym Managers</span>
