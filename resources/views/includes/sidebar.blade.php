@@ -52,6 +52,7 @@
                     <i class="fas fa-dumbbell"></i><span>&nbsp;Gyms</span>
                 </a>
             </li>
+
             <li class="{{ (request()->is('packages*','sessions*')) ? 'active menu-open' : '' }} treeview">
                 <a href="#">
                     <i class="fas fa-box-open"></i>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Gym;
 use App\City;
+use App\User;
+
 
 use App\Http\Requests\gyms\StoreGymRequest;
 use App\Http\Requests\gyms\UpdateGymRequest;
@@ -28,12 +30,11 @@ class GymController extends Controller
      */
     public function create()
     {
-        
-        $gyms = Gym::all();
-        $cities = City::all();
+        $city_managers = User::where('role',2);
+        dd($city_managers);
         return view('gyms.create',[
             'gyms' => $gyms,
-            'cities' => $cities,
+            'city_managers' => $city_managers,
         ]);
 
     
