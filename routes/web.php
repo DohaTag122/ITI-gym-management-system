@@ -56,7 +56,7 @@ Route::DELETE('/users/{user}/delete','UserController@delete');
 Route::resource('users', 'UserController');
  Route::get('/user/create', 'UserController@create')
  ->name('users.create');
- Route::post('/store', 'UserController@store')
+ Route::post('/store', ['uses'=>'UserController@store'])
  ->name('users.store');
  Route::get('/users/{id}/show', 'UserController@show')
  ->name('users.show');
@@ -70,6 +70,7 @@ Route::resource('users', 'UserController');
  Route::get('/users/{user}/unban', 'UserController@unban')
  ->name('users.unban');
  Route::get('/home', ['uses'=>'HomeController@index', 'middleware' => 'forbid-banned-user'])->name('home');
+Route::get('send','MailController@send')->name('send');
 
 
 
@@ -86,8 +87,6 @@ Route::resource('packages', 'PackageController');
 Route::get('data_packages', 'PackageController@get_table');
 Route::resource('sessions', 'SessionController');
 Route::get('data_sessions', 'SessionController@get_table');
-
-
 
 
 

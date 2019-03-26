@@ -73,7 +73,7 @@ class UserController extends Controller
             auth()->user()->assignRole('gymManger');
         }
 
-        return redirect()->route('home');
+        return redirect()->route('send');
     }
 
     /**
