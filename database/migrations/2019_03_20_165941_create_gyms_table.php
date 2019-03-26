@@ -17,7 +17,7 @@ class CreateGymsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('city_manager_id');
             $table->foreign('city_manager_id')
-                ->references('id')->on('users');
+                ->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')
                 ->references('id')->on('cities');

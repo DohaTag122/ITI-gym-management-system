@@ -46,7 +46,6 @@ class SessionController extends Controller
      */
     public function store(StoreSessionRequest $request)
     {   
-        // dd($request->input("coach"));
         $session = Session::create(request()->all());
         
         for ($i=0; $i < sizeof($request->input("coach")); $i++) {
@@ -65,6 +64,7 @@ class SessionController extends Controller
      */
     public function show(Session $session)
     {
+        // dd($session);
         return view('sessions.show', [
             "session"=>$session
         ]);

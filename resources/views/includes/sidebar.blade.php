@@ -31,20 +31,16 @@
                     <i class="fas fa-users"></i> <span>Users</span>
                 </a>
             </li>
-            <li class="{{ (request()->is('gym_managers*')) ? 'active' : '' }}">
-                <a href="{{route('users.index')}}">
-                    <i class="fa fa-th"></i> <span>Gym Managers</span>
-                </a>
-            </li>
-
             <li class="{{ (request()->is('city_managers*')) ? 'active' : '' }}">
                 <a href="{{route('users.index')}}">
                     <i class="fa fa-th"></i> <span>City Managers</span>
                 </a>
             </li>
-
-           
-
+            <li class="{{ (request()->is('gym_managers*')) ? 'active' : '' }}">
+                <a href="{{route('users.index')}}">
+                    <i class="fa fa-th"></i> <span>Gym Managers</span>
+                </a>
+            </li>
             <li class="{{ (request()->is('cities*')) ? 'active' : '' }}">
                 <a href="{{route('cities.index')}}">
                     <i class="fas fa-city"></i><span>&nbsp;Cities</span>

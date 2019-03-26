@@ -66,7 +66,12 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <a class="btn btn-success" id="coach_toggle" data-toggle="modal" data-target="#CoachModal"><i class="fas fa-user-plus"></i>&nbsp;Add Coaches To Your Session</a>
+                            <label>Session Coaches</label>
+                            <select name="coach[]" class="form-control select2" multiple="multiple" data-placeholder="Select a Coach" style="width:100%">
+                                @foreach($coaches as $coach)
+                                    <option value="{{$coach->id}}">{{$coach->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div  class="form-group">
                             <label for="gym_id">Gym</label>
@@ -75,33 +80,9 @@
                                     <option value="{{$gym->id}}">{{$gym->name}}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div>            
                         <a href="{{route('sessions.index')}}" class="btn btn-danger"><i class="far fa-arrow-alt-circle-left"></i>&nbsp;Back</a>
                         <button type="submit" class="btn btn-primary"><i class="fas fa-clipboard-check"></i>&nbsp;Create</button>
-                        {{-- Modal --}}
-                        <div class="modal fade" id="CoachModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 class="modal-title" id="exampleModalLabel">Add Coaches To Your session</h3>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div id="coach_container">
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <div>
-                                            <button type="button" id="add-coach" class="btn btn-success">Add More Coaches</button>
-                                            <button type="button" row_delete="" id="delete_item"  class="btn btn-primary" data-dismiss="modal">Done</button>
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Dismiss</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
@@ -112,47 +93,7 @@
     
 @endsection
 @section('extra_scripts')
-<!-- timepicker -->
-<script>
-const drawElement = (tagname, attributes = {}, text) => {
-    const element = document.createElement(tagname);
-    for (let attr in attributes) {
-        element.setAttribute(attr, attributes[attr]);
-    }
-    if (text) {
-        element.appendChild(document.createTextNode(text));
-    }
-    return element;
-}
-const appendElement = (parent, ...children) => {
-    for (let child of children) {
-        parent.appendChild(child);
-    }
-}
-const appendBodySceleton = (...children) => {
-        for (let i = (children.length - 1); i >= 0; i--) {
-            document.body.insertBefore(children[i], document.body.firstChild);
-        }
-}
-const insertAfter = (newNode, referenceNode) => {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-}
-document.getElementById("add-coach").addEventListener("click", ()=>{
-    const coach_div = drawElement("div");
-    appendElement(document.getElementById('coach_container'), coach_div);
-    // insertAfter(coach_div, document.getElementById("first-coach"));
-    coach_div.innerHTML = `<div class="form-group">
-            <label for="coach">Coach Name</label>
-            <select class="form-control" name="coach[]">
-                @foreach($coaches as $coach)
-                    <option value="{{$coach->id}}">{{$coach->name}}</option>
-              @endforeach
-            </select>
-            </div>`;
 
-});
-
-</script>
 <script>
   $(function () {
     //Initialize Select2 Elements
@@ -219,5 +160,8 @@ document.getElementById("add-coach").addEventListener("click", ()=>{
       showInputs: false
     })
   })
+</script>
+<script>
+    $('.select2').select2();
 </script>
 @endsection
