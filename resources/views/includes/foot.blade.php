@@ -35,3 +35,6 @@
 <script src="{{asset('/AdminLTE/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('/AdminLTE/dist/js/demo.js')}}"></script>
+
+<!-- Select2 -->
+<script src="{{asset('/AdminLTE/bower_components/select2/dist/js/select2.full.min.js')}}"></script>

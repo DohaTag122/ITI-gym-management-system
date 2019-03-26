@@ -18,4 +18,10 @@ class Session extends Model
         return $this->belongsToMany('App\Member', 'purchases', 'session_id', 'member_id');
     }
 
+    public function gym()
+    {
+        return $this->belongsTo('App\Gym');
+    }
+
+
 }
