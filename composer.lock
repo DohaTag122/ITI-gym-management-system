@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
+    "content-hash": "d47ab992c6d29d6b570816ad99148bfc",
+=======
     "content-hash": "36edb64a3cd4b2fc03eba5989321fd7c",
+>>>>>>> 05a7e1ed75cf80204f8c3ccfbca55233d418932a
     "packages": [
         {
             "name": "cybercog/laravel-ban",
@@ -3528,6 +3532,58 @@
             "time": "2019-03-06T09:39:45+00:00"
         },
         {
+            "name": "webpatser/laravel-countries",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webpatser/laravel-countries.git",
+                "reference": "d55bc8e1d7c8da22532694378b44ffae11879653"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webpatser/laravel-countries/zipball/d55bc8e1d7c8da22532694378b44ffae11879653",
+                "reference": "d55bc8e1d7c8da22532694378b44ffae11879653",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Webpatser\\Countries": "src/"
+                },
+                "classmap": [
+                    "src/commands"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christoph Kempen",
+                    "email": "christoph@downsized.nl",
+                    "homepage": "http://downsized.nl/",
+                    "role": "developer"
+                },
+                {
+                    "name": "Paul Kievits",
+                    "role": "developer"
+                }
+            ],
+            "description": "Laravel Countries is a bundle for Laravel, providing Almost ISO 3166_2, 3166_3, currency, Capital and more for all countries.",
+            "homepage": "https://github.com/webpatser/laravel-countries",
+            "keywords": [
+                "countries",
+                "iso_3166_2",
+                "iso_3166_3",
+                "laravel"
+            ],
+            "time": "2018-06-27T11:58:05+00:00"
+        },
+        {
             "name": "yajra/laravel-datatables",
             "version": "v1.5.0",
             "source": {
@@ -5786,7 +5842,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "tymon/jwt-auth": 20
+        "tymon/jwt-auth": 20,
+        "webpatser/laravel-countries": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

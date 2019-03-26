@@ -46,8 +46,8 @@ class SessionController extends Controller
      */
     public function store(StoreSessionRequest $request)
     {   
-        // dd($request->input("coach"));
         $session = Session::create(request()->all());
+        
         for ($i=0; $i < sizeof($request->input("coach")); $i++) {
             $coach = coach::find($request->get('coach')[$i]);
             $session->coaches()->attach($coach);
@@ -62,9 +62,12 @@ class SessionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Session $session)
     {
-        
+        // dd($session);
+        return view('sessions.show', [
+            "session"=>$session
+        ]);
     }
 
     /**
@@ -75,10 +78,8 @@ class SessionController extends Controller
      */
     public function edit(Session $session)
     {
-        // dd($session);
         $gyms = Gym::all();
         $coaches = Coach::all();
-        dd($session);
         return view('sessions.edit', compact('session', 'gyms', 'coaches'));
 
     }
@@ -92,7 +93,6 @@ class SessionController extends Controller
      */
     public function update(UpdateSessionRequest $request, Session $session)
     {
-        dd($session);
         $session->update($request->all());
         return redirect()->route('packages.index');
 

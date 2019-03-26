@@ -35,9 +35,14 @@
            <label for="exampleInputImage1">Cover Image</label>
            <?php  echo Form::file('image');?>
 
-           <select class="form-control" name="city_id">
-               @foreach($cities as $city)
-                   <option value="{{$city->id}}">{{$city->name}}</option>
+           <label for="exampleInputName1">City Manger Name</label>
+           <select class="form-control" name="city_manager_id">
+               @foreach($users as $user)
+                    @foreach($city_managers as $city_manager)
+                        @if(city_manager->id == user->id)
+                            <option value="{{$user->id}}">{{$user->name}}</option>
+                        @endif
+                    @endforeach
                @endforeach
            </select>
        </div>

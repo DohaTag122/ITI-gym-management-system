@@ -23,7 +23,7 @@ class Session extends Model
 
     public function coaches()
     {
-        return $this->belongsToMany('App\Coach', 'coach_session', 'session_id', 'coach_id');
+        return $this->belongsToMany('App\Coach', 'coach_session', 'session_id', 'coach_id')->withTimestamps();
     }
     public function gym()
     {
