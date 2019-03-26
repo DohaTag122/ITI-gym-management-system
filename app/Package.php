@@ -10,7 +10,7 @@ class Package extends Model
 
     public function sessions()
     {
-        return $this->belongsToMany('App\Session', 'session_package', 'package_id', 'session_id');
+        return $this->belongsToMany('App\Session')->withTimestamps()->withPivot('session_amount');
     }
 
     public function gyms()
@@ -25,6 +25,9 @@ class Package extends Model
         $dollars = $cents / 100;
         return $dollars;
     }
+    /**
+     * Mutator on price
+     */
     public function setPackagePriceAttribute($dollars){
         $this->attributes['package_price'] = $dollars * 100 ;
     }

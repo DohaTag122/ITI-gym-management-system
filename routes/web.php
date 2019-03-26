@@ -17,16 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 //! Please write your Routes on your specified space to avoid merge conflicts
 //*Ziad Routes
 
 Route::get('/relation', function () {
-    $sessions = \App\Session::first();
-    $packages = \App\Package::first();
+    $city = \App\City::find('1');
+    dd($city->City_manager->count());
+//    $sessions = \App\Session::first();
+//    $packages = \App\Package::first();
 
 //    dd($sessions->packages);
-    dd($packages->sessions);
+//    dd($packages->sessions);
 
 //    dd($packages->sessions);
 });
@@ -40,7 +42,7 @@ Route::post('/data_source', function () {
     return datatables()->query(\Illuminate\Support\Facades\DB::table('users'))->toJson();
 });
 
-Route::DELETE('/users/{user}','UserController@delete');
+Route::DELETE('/users/{user}/delete','UserController@delete');
 
 
 
@@ -61,10 +63,13 @@ Route::resource('users', 'UserController');
  Route::get('/users/{id}/edit', 'UsersController@edit')
  ->name('users.edit');
  Route::put('/users/{id}', 'UsersController@update')
- ->name('users.update')
-; 
+ ->name('users.update');
 
-
+ Route::get('/users/{user}/ban', 'UserController@ban')
+ ->name('users.ban');
+ Route::get('/users/{user}/unban', 'UserController@unban')
+ ->name('users.unban');
+ Route::get('/home', ['uses'=>'HomeController@index', 'middleware' => 'forbid-banned-user'])->name('home');
 
 
 
@@ -79,6 +84,9 @@ Route::resource('users', 'UserController');
 //* Nour Routes
 Route::resource('packages', 'PackageController');
 Route::get('data_packages', 'PackageController@get_table');
+Route::resource('sessions', 'SessionController');
+Route::get('data_sessions', 'SessionController@get_table');
+
 
 
 

@@ -10,7 +10,7 @@ class Coach extends Model
     
     public function session()
     {
-        return $this->belongsToMany('App\Session', 'session_coach', 'coach_id', 'session_id');
+        return $this->belongsToMany('App\Session', 'coach_session', 'coach_id', 'session_id');
     }
 
     public function Gym()

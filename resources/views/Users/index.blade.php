@@ -8,87 +8,6 @@
 @endsection
 
 @section('content')
-    <div class="box box-default">
-        <div class="box-header with-border">
-            <h3 class="box-title">Select2</h3>
-
-            <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-            </div>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Minimal</label>
-                        <select class="form-control select2" style="width: 100%;">
-                            <option selected="selected">Alabama</option>
-                            <option>Alaska</option>
-                            <option>California</option>
-                            <option>Delaware</option>
-                            <option>Tennessee</option>
-                            <option>Texas</option>
-                            <option>Washington</option>
-                        </select>
-                    </div>
-                    <!-- /.form-group -->
-                    <div class="form-group">
-                        <label>Disabled</label>
-                        <select class="form-control select2" disabled="disabled" style="width: 100%;">
-                            <option selected="selected">Alabama</option>
-                            <option>Alaska</option>
-                            <option>California</option>
-                            <option>Delaware</option>
-                            <option>Tennessee</option>
-                            <option>Texas</option>
-                            <option>Washington</option>
-                        </select>
-                    </div>
-                    <!-- /.form-group -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Multiple</label>
-                        <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
-                                style="width: 100%;">
-                            <option>Alabama</option>
-                            <option>Alaska</option>
-                            <option>California</option>
-                            <option>Delaware</option>
-                            <option>Tennessee</option>
-                            <option>Texas</option>
-                            <option>Washington</option>
-                        </select>
-                    </div>
-                    <!-- /.form-group -->
-                    <div class="form-group">
-                        <label>Disabled Result</label>
-                        <select class="form-control select2" style="width: 100%;">
-                            <option selected="selected">Alabama</option>
-                            <option>Alaska</option>
-                            <option disabled="disabled">California (disabled)</option>
-                            <option>Delaware</option>
-                            <option>Tennessee</option>
-                            <option>Texas</option>
-                            <option>Washington</option>
-                        </select>
-                    </div>
-                    <!-- /.form-group -->
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
-            Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-            the plugin.
-        </div>
-    </div>
-
         <section class="content">
             <div class="row">
                 <div class="col-xs-12">
@@ -182,16 +101,14 @@
 
                 // success:function(response) {
                 //
-                //     console.log(response.data);
+                //     console.log(response);
                 // },
                 // error: function (response) {
                 //     alert(' Cant Save This Documents !');
                 //     console.log(response);
                 // }
             },
-
             columns: [
-                // response.data,
                 { data: 'id', name: 'id' },
                 { data: 'name', name: 'name' },
                 { data: 'email', name: 'email' },
@@ -211,12 +128,13 @@
                 /* EDIT */ {
                     mRender: function (data, type, row) {
                         return '<a href="/users/'+row.id+'/edit " class="table-edit" data-id="' + row.id + '">EDIT</a>'
-                    }
+                    }      
                 },
-
+              
+              
                 /* DELETE */ {
                     mRender: function (data, type, row) {
-                        return '<a href="/users/'+row.id+'/delete" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
+                        return '<a href="#" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
                     }
 
                     
@@ -225,10 +143,10 @@
                 /*Banned*/
                 {
                     mRender: function (data, type, row) {
-                        if(row.banned_at==null)
-                        return '<a href="/users/'+row.id+'/ban"  row_id="' + row.id + '">Enable</a>'
+                        if(row.banned==0)
+                        return '<a href="#" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">Enable</a>'
                         else
-                        return '<a href="/users/'+row.id+'/unban" row_id="' + row.id + '" >Disable</a>'
+                        return '<a href="#" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">Disable</a>'
                         
                     }
                 },
@@ -274,10 +192,7 @@
         });
 
     </script>}
+    
 
 
-    <script>
-            //Initialize Select2 Elements
-            $('.select2').select2();
-    </script>
 @endsection

@@ -23,24 +23,28 @@
         </form>
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
+
+        <li class="{{ (request()->is('users*')) ? 'active' : '' }}">
+                <a href="{{route('home')}}">
+                    <i class="fas fa-users"></i> <span>Users</span>
+                </a>
+            </li>
+
+           
         <ul class="sidebar-menu" data-widget="tree">
             <li class="{{ (request()->is('gym_managers*')) ? 'active' : '' }}">
-                <a href="pages/widgets.html">
+                <a href="{{route('users.index')}}">
                     <i class="fa fa-th"></i> <span>Gym Managers</span>
                 </a>
             </li>
 
             <li class="{{ (request()->is('city_managers*')) ? 'active' : '' }}">
-                <a href="pages/widgets.html">
+                <a href="{{route('users.index')}}">
                     <i class="fa fa-th"></i> <span>City Managers</span>
                 </a>
             </li>
 
-            <li class="{{ (request()->is('users*')) ? 'active' : '' }}">
-                <a href="pages/widgets.html">
-                    <i class="fas fa-users"></i> <span>Users</span>
-                </a>
-            </li>
+           
 
             <li class="{{ (request()->is('cities*')) ? 'active' : '' }}">
                 <a href="{{route('cities.index')}}">
@@ -63,7 +67,9 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/charts/morris.html"><i class="fas fa-male"></i>&nbsp;Sessions</a></li>
+                    <li class="{{ (request()->is('sessions*')) ? 'active' : '' }}">
+                        <a href="{{route('sessions.index')}}"><i class="fas fa-male"></i>&nbsp;Sessions</a>
+                    </li>
                     <li class="{{ (request()->is('packages*')) ? 'active' : '' }}">
                         <a href="{{route('packages.index')}}"><i class="fas fa-people-carry"></i>&nbsp;Packages</a>
                     </li>

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\coaches;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCoachRequest extends FormRequest
+class StoreUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,22 @@ class StoreCoachRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'bail|required|alpha|max:25',
-            'gym_id' => 'required|exists:gyms,id' ,
+            "national_id"=>"unique:users",
+            "email"=>"unique:users",
+            "password"=>"min:6"
         ];
+
+
     }
+
     public function messages()
     {
         return [
-            'name.required' => 'The coach name is required',
-            'name.alpha'    => 'The coach name must be only letters',
-            'name.max'      => 'The coach name may have 15 characters at most',
-            'gym_id.exists' => 'This gym id is not stored in the database',
+            'national_id.unique' => 'National_ID can not be duplicate',
+            'email.unique' => 'National_ID can not be duplicate',
+            'password.unique' => 'The min char is 6',
+
+            
         ];
     }
 }

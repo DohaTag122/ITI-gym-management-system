@@ -22,7 +22,11 @@
     </div>
     <div class="form-group">
       <label for="pwd">Password:</label>
-      <input type="password" class="form-control" name="password" id="pwd" >
+      <input type="password" class="form-control" name="password" id="pwd" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email"  name="email" value="{{$user->email}}">
     </div>
     <div class="form-group">
       <label for="email">National_ID:</label>

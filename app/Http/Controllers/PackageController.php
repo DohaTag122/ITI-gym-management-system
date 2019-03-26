@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Package;
-use Illuminate\Http\Request;
-use App\Http\Requests\package\StorePackageRequest;
 use App\Http\Requests\package\UpdatePackageRequest;
+use App\Http\Requests\package\StorePackageRequest;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
+use App\Session;
+use App\Package;
 use App\User;
 use App\Gym;
-use App\Session;
+
 
 class PackageController extends Controller
 {
@@ -45,12 +47,20 @@ class PackageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StorePackageRequest $request)
-    {
-        $answers = $request->input('session_id');
-        dd($answers);
-        Package::create(request()->all());        
-        return redirect()->route('packages.index');
+    {        
+        if(array_sum(Input::get('session_amount')) > Input::get('number_of_sessions')){
+            return redirect()->back()->withErrors('Session amounts were more than your number of sessions')->withInput();
+        }
+    
+        $package = Package::create(request()->all());
 
+        for ($i=0; $i < sizeof($request->input("session_amount")); $i++) {
+
+            $session = Session::find($request->get('session_id')[$i]);
+            $package->sessions()->attach($session, ["session_amount"=>Input::get('session_amount')[0]]);
+            
+        }
+        return redirect()->route('packages.index');
     }
 
     /**
@@ -100,7 +110,6 @@ class PackageController extends Controller
      */
     public function destroy($id)
     {
-        // dd($id);
         Package::find($id)->delete();
         return response()->json(array('user'=>$id));
 

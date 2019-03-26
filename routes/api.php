@@ -13,9 +13,30 @@ use Illuminate\Http\Request;
 |
 */
 Route::post('login', 'Api\MemberController@login');
-Route::post('register', 'Api\MemberController@register');
-Route::get('auth/signup/activate/{token}', 'Api\MemberController@signupActivate');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('auth/signup/activate/{token}', 'Api\MemberController@signupActivate');
+Route::post('register', 'Api\MemberController@register');
+
+//Route::group(['middleware' => 'auth.jwt'], function () {
+
+Route::middleware(['auth:api'])->group(function () {
+
+    Route::get('/test', function (Request $request) {
+        return response()->json([
+            'test' => 'test',
+        ], 401);
+        });
+
+
+    Route::PUT('/members/{member}','Api\MemberController@update');
+
+    Route::get('/sessions','Api\MemberController@sessions');
+
+    Route::get('/sessions_details','Api\MemberController@sessions_details');
+
+    Route::post('/sessions/{id}/attend','Api\MemberController@attend');
+
+
+    Route::get('/attendances','Api\MemberController@attendances_history');
+
 });
