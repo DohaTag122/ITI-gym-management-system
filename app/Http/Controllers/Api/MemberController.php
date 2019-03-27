@@ -6,6 +6,7 @@ use App\Attendance;
 use App\Http\Requests\EditMemberRequest;
 use App\Http\Resources\AttendanceResource;
 use App\Notifications\SignupActivate;
+use App\Notifications\WelcomeNotify;
 use App\Purchase;
 use App\Session;
 use Carbon\Carbon;
@@ -15,6 +16,7 @@ use App\Http\Requests\RegisterAuthRequest;
 use App\Member;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Storage;
 use JWTAuth;
 //use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -34,14 +36,23 @@ class MemberController extends Controller
         $user->gender = $request->gender;
         $user->date_of_birth = $request->date_of_birth;
         $user->password = bcrypt($request->password);
+
+        $path = Storage::disk('public')->put('avatars', $request->image);
+        $user->profile_image = $path;
         $user->activation_token = str_random(60);
 
         $user->save();
+
+        $image_name = 'member_'.$user->id.'.jpg';
+
+
 
         if ($this->loginAfterSignUp) {
             return $this->login($request);
         }
         $user->notify(new SignupActivate($user));
+
+
 
         return response()->json([
             'success' => true,
@@ -54,6 +65,7 @@ class MemberController extends Controller
 
         $input = $request->only('email', 'password');
         $input['active'] = 1;
+
 //        $input['deleted_at'] = null;
         $jwt_token = null;
         Config::set( 'auth.defaults.guard', 'api' );
@@ -63,7 +75,7 @@ class MemberController extends Controller
         Config::set('jwt.user', Member::class);
 
 
-
+//        dd($jwt_token = JWTAuth::attempt($input));
         if (!$jwt_token = JWTAuth::attempt($input)) {
             return response()->json([
                 'success' => false,
@@ -71,8 +83,13 @@ class MemberController extends Controller
             ], 401);
         }
 
+
+        $current_date = Carbon::now()->setTimezone('Africa/Cairo')->toDateString();
+        Auth::user()->last_log_in = $current_date;
+
         return response()->json([
             'success' => true,
+            'data'=>Auth::user(),
             'token' => $jwt_token,
         ]);
     }
@@ -122,21 +139,24 @@ class MemberController extends Controller
         $user->active = true;
         $user->activation_token = '';
         $user->save();
+        $user->notify(new WelcomeNotify($user));
         return $user;
     }
 
 
-    public function update(EditMemberRequest $request,$member)
+    public function update(EditMemberRequest $request)
     {
+
+        $member_id = Auth::user()->id;
 
         $data = $request->only('name', 'password','gender','date_of_birth','profile_image');
 
-        $updated_member = Member::find($member);
+        $updated_member = Member::find($member_id);
 
         if($updated_member)
         {
             $updated_member->update($data);
-            $member_data = Member::findorFail($member);
+            $member_data = $updated_member;
         }
         else
             {
@@ -151,6 +171,7 @@ class MemberController extends Controller
     public function sessions_details()
     {
         $member_id = Auth::user()->id;
+
         $purchases = Member::find($member_id)->purchases->count();
         $attendances = Member::find($member_id)->attendances->count();
         $remaining = $purchases - $attendances;
@@ -158,6 +179,7 @@ class MemberController extends Controller
 
         return response()->json(["total_sessions"=>$purchases,"remaining_sessions" => $remaining]);
     }
+
 
 
     public function sessions()
@@ -168,6 +190,8 @@ class MemberController extends Controller
 
         return response()->json(["sessions"=>$sessions]);
     }
+
+
 
     public function attend($id)
     {
