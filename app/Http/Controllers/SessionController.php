@@ -64,10 +64,9 @@ class SessionController extends Controller
      */
     public function show(Session $session)
     {
-        // dd($session);
-        return view('sessions.show', [
-            "session"=>$session
-        ]);
+        $gyms = Gym::all();
+        $coaches = Coach::all();
+        return view('sessions.show', compact('session', 'gyms', 'coaches'));
     }
 
     /**
@@ -80,7 +79,6 @@ class SessionController extends Controller
     {
         $gyms = Gym::all();
         $coaches = Coach::all();
-        // dd($gym_session);
         return view('sessions.edit', compact('session', 'gyms', 'coaches'));
 
     }
