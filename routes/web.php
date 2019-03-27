@@ -54,18 +54,6 @@ Route::DELETE('/users/{user}/delete','UserController@delete');
 
 //Doha Routes
 Route::resource('users', 'UserController');
-<<<<<<< HEAD
- Route::get('/user/create', 'UserController@create')
- ->name('users.create');
- Route::post('/store', ['uses'=>'UserController@store'])
- ->name('users.store');
- Route::get('/users/{id}/show', 'UserController@show')
- ->name('users.show');
- Route::get('/users/{id}/edit', 'UsersController@edit')
- ->name('users.edit');
- Route::put('/users/{id}', 'UsersController@update')
- ->name('users.update');
-=======
 //  Route::get('/user/create', 'UserController@create')
 //  ->name('users.create');
 //  Route::post('/store', 'UserController@store')
@@ -76,7 +64,6 @@ Route::resource('users', 'UserController');
 //  ->name('users.edit');
 //  Route::put('/users/{id}', 'UsersController@update')
 //  ->name('users.update');
->>>>>>> 84ca800f6c23d52a6f59137c148aa38147e25f34
 
  Route::get('/users/{user}/ban', 'UserController@ban')
  ->name('users.ban');
@@ -84,7 +71,7 @@ Route::resource('users', 'UserController');
  ->name('users.unban');
  Route::get('/home', ['uses'=>'HomeController@index', 'middleware' => 'forbid-banned-user'])->name('home');
 Route::get('send','MailController@send')->name('send');
-
+Route::get('/cityMangers','UserController@ShowCityManger')->name('ShowCityMangers');
 
 
 

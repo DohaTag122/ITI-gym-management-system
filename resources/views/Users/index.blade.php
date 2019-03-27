@@ -8,74 +8,82 @@
 @endsection
 
 @section('content')
-        <section class="content">
-            <div class="row">
-                <div class="col-xs-12">
-                    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">Data Table With Full Features</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <table id="example" class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Created At</th>
-                                    <th>Updated At</th>
-                                    <th>Show</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                    <th>Action </th>
-                                    
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <meta name="csrf-token" content="{{ csrf_token() }}">
+
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Data Table With Full Features</h3>
                 </div>
-                <!-- /.col -->
+
+                     @role('admin')
+                    <!-- City manager will have this permission also  -->
+                    <a href="{{route('users.create')}}" class="btn btn-success">Add User</a>
+                        @endrole
+
+
+                     @role('cityManager')
+                    <!-- City manager will have this permission also  -->
+                    <a href="{{route('users.create')}}" class="btn btn-success">Add User</a>
+                     @endrole
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Created At</th>
+                            <th>Updated At</th>
+                            <th>Show</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                            @role('admin|cityManager')
+                            <th>Ban </th>
+                            @endrole
+                           
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- /.box-body -->
             </div>
-            <!-- /.row -->
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
 
 
 
-            <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Are you to delete this item</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-footer">
-                            <div>
-                                <div id="csrf_value"  hidden >@csrf</div>
-                                {{--@method('DELETE')--}}
-                                <button type="button" row_delete="" id="delete_item"  class="btn btn-primary" data-dismiss="modal">Yes</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
-                            </div>
-
-                        </div>
+    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Are you to delete this item</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <div>
+                        <div id="csrf_value"  hidden >@csrf</div>
+                        {{--@method('DELETE')--}}
+                        <button type="button" row_delete="" id="delete_item"  class="btn btn-primary" data-dismiss="modal">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
                     </div>
+
                 </div>
             </div>
-        </section>
-        <!-- /.content -->
+        </div>
+    </div>
+</section>
+<!-- /.content -->
 
-        @role('admin')
-        <!-- City manager will have this permission also  -->
-        <a href="{{route('users.create')}}" class="btn btn-success">Add User</a>
-        @endrole
-
-        
 
 
 @endsection
@@ -101,18 +109,21 @@
 
                 // success:function(response) {
                 //
-                //     console.log(response);
+                //     console.log(response.data);
                 // },
                 // error: function (response) {
                 //     alert(' Cant Save This Documents !');
                 //     console.log(response);
                 // }
             },
+
             columns: [
+                // response.data,
                 { data: 'id', name: 'id' },
                 { data: 'name', name: 'name' },
                 { data: 'email', name: 'email' },
                 { data: 'created_at', name: 'created_at' },
+                
                 { data: 'updated_at', name: 'updated_at' },
                 
                
@@ -121,36 +132,40 @@
                 /* Show */ {
                     mRender: function (data, type, row) {
                         
-                        return '<a href="/users/'+row.id+'/show" class="table-delete" data-id="' + row.id + '">Show</a>'
+                        return '<a class="btn btn-info" href="/users/'+row.id+'/show" class="table-delete" data-id="' + row.id + '">Show</a>'
                     }
                 },
                
                 /* EDIT */ {
                     mRender: function (data, type, row) {
-                        return '<a href="/users/'+row.id+'/edit " class="table-edit" data-id="' + row.id + '">EDIT</a>'
-                    }      
+                        return '<a class="btn btn-warning" href="/users/'+row.id+'/edit " class="table-edit" data-id="' + row.id + '">EDIT</a>'
+                    }
                 },
-              
-              
+
                 /* DELETE */ {
                     mRender: function (data, type, row) {
-                        return '<a href="#" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
+                        return '<a class="btn btn-danger" href="/users/'+row.id+'/delete" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
                     }
 
                     
-                },
-                
+                },@role('admin|cityManager')
+              
                 /*Banned*/
                 {
+                    
+                    
+                   
                     mRender: function (data, type, row) {
-                        if(row.banned==0)
-                        return '<a href="#" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">Enable</a>'
+                        if(row.banned_at==null)
+                        return '<a  class="label label-danger" href="/users/'+row.id+'/ban"  row_id="' + row.id + '">Ban</a>'
                         else
-                        return '<a href="#" class="table-delete" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">Disable</a>'
+                        return '<a class="label label-warning" href="/users/'+row.id+'/unban" row_id="' + row.id + '" >Unban</a>'
                         
                     }
+                    
                 },
-               
+              
+                @endrole 
             ],
             'paging'      : true,
             'lengthChange': true,
@@ -192,7 +207,10 @@
         });
 
     </script>}
-    
 
 
+    <script>
+            //Initialize Select2 Elements
+            $('.select2').select2();
+    </script>
 @endsection

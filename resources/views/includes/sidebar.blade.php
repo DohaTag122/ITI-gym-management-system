@@ -26,16 +26,22 @@
 
            
         <ul class="sidebar-menu" data-widget="tree">
+        @role('admin')
             <li class="{{ (request()->is('users*')) ? 'active' : '' }}">
-                <a href="{{route('home')}}">
+              
+                <a href="{{route('users.index')}}">
+                
                     <i class="fas fa-users"></i> <span>Users</span>
                 </a>
             </li>
+            @endrole
+            @role('admin|cityManager')
             <li class="{{ (request()->is('city_managers*')) ? 'active' : '' }}">
-                <a href="{{route('users.index')}}">
+                <a href="{{route('ShowCityMangers')}}">
                     <i class="fa fa-th"></i> <span>City Managers</span>
                 </a>
             </li>
+            @endrole
             <li class="{{ (request()->is('gym_managers*')) ? 'active' : '' }}">
                 <a href="{{route('users.index')}}">
                     <i class="fa fa-th"></i> <span>Gym Managers</span>

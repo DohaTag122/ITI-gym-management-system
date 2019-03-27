@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\Gym;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\User\StoreUserRequest;
+
 
 class UserController extends Controller
 {
@@ -36,9 +38,9 @@ class UserController extends Controller
     public function create()
     { 
         // dd(User::all());
-        $users = User::all();
+        $gyms= Gym::all();
         return view('Users.create',[
-            'users' => $users,
+            'gyms' => $gyms,
         ]);
     }
 
@@ -61,16 +63,16 @@ class UserController extends Controller
             "role" => $request->role,
        ]);
        
-        if(request()->all()['role']=="admin")
+        if(request()->all()['email']=="admin@admin.com")
         { 
           
           $user->assignRole('admin');
         }elseif(request()->all()['role']=="cityManager")
         {
-            auth()->user()->assignRole('cityManger');
-        }elseif(request()->all()['role']=="gymManger")
+            $user->assignRole('cityManager');;
+        }elseif(request()->all()['role']=="gymManager")
         {
-            auth()->user()->assignRole('gymManger');
+            $user->assignRole('gymManager');
         }
 
         return redirect()->route('send');
@@ -155,4 +157,29 @@ class UserController extends Controller
         $user = User::find($id)->unban();
         return redirect()->route('home');
     }
+
+    public function ShowCityManger(){
+  /*      $users = User::with(['roles' => function($q){
+        $q->where('name', 'admin');
+    }])->get();*/
+
+
+//$adminUsers = User::with('roles')->where('role', 'admin')->get();
+//$users = DB::table('users')->belongsTo('roles')->where('role', 'admin')->get();
+
+
+
+       //   $users = User::whereHas('roles', function($q){$q->whereIn('id', [4]);})->get();
+
+
+    /*   $users = DB::table('users')
+       ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id') ->where('model_has_roles.role_id', '=', 4);
+*/
+       $users = User::role('admin')->get();
+        return view('Users.cityManger', [
+            'users' => $users
+        ]);
+
+    }
+
 }
