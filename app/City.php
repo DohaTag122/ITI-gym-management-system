@@ -11,7 +11,7 @@ class City extends Model
 
     public function City_manager()
     {
-        return $this->belongsToMany('App\User', 'user_city', 'user_id', 'city_id');
+        return $this->belongsToMany('App\User', 'user_city', 'city_id', 'user_id');
     }
 }
 
