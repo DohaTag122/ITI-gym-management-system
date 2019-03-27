@@ -64,17 +64,23 @@
                         </div>
                         <div class="form-group">
                             <label>Session Coaches</label>
-                            <select name="coach[]" class="form-control select2" multiple="multiple" data-placeholder="Select a Coach" style="width:100%">
+                            <select class="form-control" multiple  style="width:100%" disabled>
                                 @foreach($coaches as $coach)
-                                    <option value="{{$coach->id}}">{{$coach->name}}</option>
+                                    @foreach ($session->coaches as $pivot_coach)
+                                    @if ($pivot_coach->id == $coach->id)
+                                    <option>{{$coach->name}}</option>
+                                    @endif
+                                    @endforeach
                                 @endforeach
                             </select>
                         </div>
                         <div  class="form-group">
                             <label for="gym_id">Gym</label>
-                            <select class="form-control" name="gym_id">
+                            <select class="form-control" name="gym_id" disabled="">
                                 @foreach($gyms as $gym)
+                                    @if ($gym->id == $session->gym_id)
                                     <option value="{{$gym->id}}">{{$gym->name}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>            
