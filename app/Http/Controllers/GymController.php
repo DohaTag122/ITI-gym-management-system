@@ -126,7 +126,7 @@ class GymController extends Controller
 
 
     public function managers_of_city(Request $request, $id) {
-        dd("aho");
+        
         if ($request->ajax()) {
             return response()->json([
                 'managers_of_city' => City::find($id)->City_manager,

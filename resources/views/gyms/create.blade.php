@@ -38,35 +38,33 @@
            <?php  echo Form::file('image');?>
 
            <label for="exampleInputName1">City Manger Name</label>
-           <select class="form-control" name="city_manager_id" id="city_manager_id">
-                <script>
-                    $('#city_id').on('change', e => {
-                        $('#city_manager_id').empty()
-                        $.ajax({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            url: `gyms/${e.value}/managers_of_city`,
-                            dataType : 'json',
-                            type: 'get',
-                            success: data => {
-                                // data.users.forEach(managers_of_city =>
-                                //     $('#managers_of_city').append(`<option value="${managers_of_city.id}">${managers_of_city.name}</option>`)
-                                // )
-                                console.log(data);
-                            },
-                            error : response => {
-                                alert('error');
-                                console.log(response);
-                            }
-                        })
-                    })
-                </script>                        
-           </select>
+           <select class="form-control" name="city_manager_id" id="city_manager_id"></select>
+
+                              
        </div>
 
     
    <button type="submit" class="btn btn-primary">Submit</button>
    </form>
+
+   <script>
+        $('#city_id').on('change', e => {
+            $('#city_manager_id').empty()       
+            $.ajax({
+                url: `/gyms/${e.value}/managers_of_city`,
+                success : data => {
+                    alert('success'); 
+                    //console.log(managers_of_city);
+                    data.managers_of_city.forEach(manager_of_city =>
+                        $('#city_manager_id').append(`<option value="${manager_of_city.id}">${manager_of_city.name}</option>`)
+                    )
+                },
+                error : response => {
+                    alert('error');
+                    //console.log(response);
+                }
+            })
+        })
+    </script>          
 
 @endsection
