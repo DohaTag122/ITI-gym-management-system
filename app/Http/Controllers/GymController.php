@@ -30,13 +30,18 @@ class GymController extends Controller
      */
     public function create()
     {
-        $city_managers = User::where('role',2);
-        dd($city_managers);
+        $gyms   = Gym::all();
+        $cities = City::all();
+        //$managers_of_city = City::find(1)->City_manager;
+        //$managers_of_cities = City::all()->City_manager;
         return view('gyms.create',[
             'gyms' => $gyms,
-            'city_managers' => $city_managers,
+            'cities' => $cities,
+            //'managers_of_cities' => $managers_of_cities,
         ]);
-
+        // foreach ($city->City_manager as $cc){
+        //     dd($city->City_manager);
+        // }
     
     }
 
@@ -117,5 +122,15 @@ class GymController extends Controller
     public function gyms_table()
     {
         return datatables()->of(Gym::query())->toJson();
+    }
+
+
+    public function managers_of_city(Request $request, $id) {
+        dd("aho");
+        if ($request->ajax()) {
+            return response()->json([
+                'managers_of_city' => City::find($id)->City_manager,
+            ]);
+        }
     }
 }

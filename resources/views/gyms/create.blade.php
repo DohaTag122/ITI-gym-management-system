@@ -4,6 +4,7 @@
 @section('extra_css')
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
 @endsection
 
@@ -26,9 +27,10 @@
            <input name="name" type="text" class="form-control"  placeholder="Enter Name">
            
            <label for="exampleInputName1">City Name</label>
-           <select class="form-control" name="city_id">
+           <select class="form-control" name="city_id" id="city_id">
                @foreach($cities as $city)
-                   <option value="{{$city->id}}">{{$city->name}}</option>
+                   <option value="{{$city->id}}">{{$city->name}}</option>                <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
                @endforeach
            </select>
 
@@ -36,14 +38,30 @@
            <?php  echo Form::file('image');?>
 
            <label for="exampleInputName1">City Manger Name</label>
-           <select class="form-control" name="city_manager_id">
-               @foreach($users as $user)
-                    @foreach($city_managers as $city_manager)
-                        @if(city_manager->id == user->id)
-                            <option value="{{$user->id}}">{{$user->name}}</option>
-                        @endif
-                    @endforeach
-               @endforeach
+           <select class="form-control" name="city_manager_id" id="city_manager_id">
+                <script>
+                    $('#city_id').on('change', e => {
+                        $('#city_manager_id').empty()
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            url: `gyms/${e.value}/managers_of_city`,
+                            dataType : 'json',
+                            type: 'get',
+                            success: data => {
+                                // data.users.forEach(managers_of_city =>
+                                //     $('#managers_of_city').append(`<option value="${managers_of_city.id}">${managers_of_city.name}</option>`)
+                                // )
+                                console.log(data);
+                            },
+                            error : response => {
+                                alert('error');
+                                console.log(response);
+                            }
+                        })
+                    })
+                </script>                        
            </select>
        </div>
 
