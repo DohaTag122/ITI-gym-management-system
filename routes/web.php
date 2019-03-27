@@ -54,6 +54,10 @@ Route::DELETE('/users/{user}/delete','UserController@delete');
 
 //Doha Routes
 Route::resource('users', 'UserController');
+//Route::group(['middleware' => ['role:admin']], function () {
+  //  get('users', 'UserController@index');
+//});
+Route::get('users', 'UserController@index')->name('users.index');
  Route::get('/user/create', 'UserController@create')
 ->name('users.create');
  Route::post('/store', 'UserController@store')
