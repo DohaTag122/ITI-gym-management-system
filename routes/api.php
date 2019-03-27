@@ -28,7 +28,7 @@ Route::middleware(['auth:api'])->group(function () {
         });
 
 
-    Route::PUT('/members/{member}','Api\MemberController@update');
+    Route::PUT('/members/edit','Api\MemberController@update');
 
     Route::get('/sessions','Api\MemberController@sessions');
 

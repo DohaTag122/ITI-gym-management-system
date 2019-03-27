@@ -77,10 +77,7 @@
 @endrole
 
 
-@role('cityManager')
-<!-- City manager will have this permission also  -->
-<a href="{{route('users.create')}}" class="btn btn-success">Add User</a>
-@endrole
+
 
 @endsection
 

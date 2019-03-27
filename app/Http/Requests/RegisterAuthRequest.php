@@ -26,6 +26,7 @@ class RegisterAuthRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|email|unique:members',
+            'image' => 'required| mimes:jpeg,jpg,png | max:1000',
             'password' => 'required|string|min:6|max:10',
             'gender'=> 'required|string',
             'date_of_birth'=> 'required|date_format:Y-m-d',

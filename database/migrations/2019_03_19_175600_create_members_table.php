@@ -25,6 +25,7 @@ class CreateMembersTable extends Migration
             $table->rememberToken();
             $table->boolean('active')->default(false);
             $table->string('activation_token');
+            $table->date('last_log_in')->nullable();
             $table->timestamps();
         });
     }

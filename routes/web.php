@@ -70,7 +70,8 @@ Route::resource('users', 'UserController');
  Route::get('/users/{user}/unban', 'UserController@unban')
  ->name('users.unban');
  Route::get('/home', ['uses'=>'HomeController@index', 'middleware' => 'forbid-banned-user'])->name('home');
-
+Route::get('send','MailController@send')->name('send');
+Route::get('/cityMangers','UserController@ShowCityManger')->name('ShowCityMangers');
 
 
 
@@ -86,8 +87,6 @@ Route::resource('packages', 'PackageController');
 Route::get('data_packages', 'PackageController@get_table');
 Route::resource('sessions', 'SessionController');
 Route::get('data_sessions', 'SessionController@get_table');
-
-
 
 
 
