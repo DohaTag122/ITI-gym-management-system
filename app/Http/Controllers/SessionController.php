@@ -64,10 +64,9 @@ class SessionController extends Controller
      */
     public function show(Session $session)
     {
-        // dd($session);
-        return view('sessions.show', [
-            "session"=>$session
-        ]);
+        $gyms = Gym::all();
+        $coaches = Coach::all();
+        return view('sessions.show', compact('session', 'gyms', 'coaches'));
     }
 
     /**
@@ -78,6 +77,7 @@ class SessionController extends Controller
      */
     public function edit(Session $session)
     {
+        
         $gyms = Gym::all();
         $coaches = Coach::all();
         return view('sessions.edit', compact('session', 'gyms', 'coaches'));
@@ -94,7 +94,7 @@ class SessionController extends Controller
     public function update(UpdateSessionRequest $request, Session $session)
     {
         $session->update($request->all());
-        return redirect()->route('packages.index');
+        return redirect()->route('sessions.index');
 
     }
 

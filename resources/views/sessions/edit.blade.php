@@ -14,12 +14,12 @@
                         </ul>
                     </div>
                     @endif
-                    <form action="{{route('sessions.update', $session->id)}}" method="POST">
+                    <form action="{{route('sessions.update', $session)}}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                             <label for="name">Session Name</label>
-                            <input name="name" type="text" class="form-control" id="name"  placeholder="Enter Session Name" value="{{$session->name}}">
+                            <input name="name" type="text" class="form-control" id="name"  placeholder="{{$session->name}}" disabled="">
                         </div>
                         <div class="form-group">
                             <label for="day">Date </label>
@@ -58,23 +58,29 @@
                             <label for="price">Session Price</label>
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input class="form-control" type="text" name="price" id="price" value="{{$session->price}}">
+                                <input class="form-control" type="text" name="price" id="price" placeholder="{{$session->price}}" disabled="">
                                 <span class="input-group-addon">.00</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Session Coaches</label>
-                            <select name="coach[]" class="form-control select2" multiple="multiple" data-placeholder="Select a Coach" style="width:100%">
+                            <select class="form-control" multiple  style="width:100%" disabled>
                                 @foreach($coaches as $coach)
-                                    <option value="{{$coach->id}}">{{$coach->name}}</option>
+                                    @foreach ($session->coaches as $pivot_coach)
+                                    @if ($pivot_coach->id == $coach->id)
+                                    <option>{{$coach->name}}</option>
+                                    @endif
+                                    @endforeach
                                 @endforeach
                             </select>
                         </div>
                         <div  class="form-group">
                             <label for="gym_id">Gym</label>
-                            <select class="form-control" name="gym_id">
+                            <select class="form-control" name="gym_id" disabled="">
                                 @foreach($gyms as $gym)
+                                    @if ($gym->id == $session->gym_id)
                                     <option value="{{$gym->id}}">{{$gym->name}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>            
@@ -92,4 +98,3 @@
     $('.select2').select2();
 </script>
 @endsection
-

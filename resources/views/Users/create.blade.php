@@ -33,6 +33,10 @@
            <label for="exampleInputEmail1">Password </label>
            <input name="password" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
        </div>
+       <div class="form-group">
+           <label for="exampleInputEmail1"> National_ID</label>
+           <input name="national_id" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+       </div>
 
        <div class="form-group">
            <label for="exampleInputEmail1">Image </label>

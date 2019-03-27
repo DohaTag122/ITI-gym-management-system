@@ -57,6 +57,7 @@ class UserController extends Controller
             "name" => $request->name,
             "email" => $request->email,
             "password" => Hash::make($request->password),
+            "national_id"=>$request->national_id,
             "image" => $request->image,
             "ban" => $request->ban,
             "gymid" => $request->gymid,
