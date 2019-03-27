@@ -83,6 +83,10 @@ class MemberController extends Controller
             ], 401);
         }
 
+
+        $current_date = Carbon::now()->setTimezone('Africa/Cairo')->toDateString();
+        Auth::user()->last_log_in = $current_date;
+
         return response()->json([
             'success' => true,
             'data'=>Auth::user(),
@@ -144,7 +148,7 @@ class MemberController extends Controller
     {
 
         $member_id = Auth::user()->id;
-//        dd(Auth::user());
+
         $data = $request->only('name', 'password','gender','date_of_birth','profile_image');
 
         $updated_member = Member::find($member_id);
@@ -152,7 +156,7 @@ class MemberController extends Controller
         if($updated_member)
         {
             $updated_member->update($data);
-            $member_data = Member::findorFail($member_id);
+            $member_data = $updated_member;
         }
         else
             {

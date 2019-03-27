@@ -4,6 +4,7 @@
 @section('extra_css')
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
 @endsection
 
@@ -26,9 +27,10 @@
            <input name="name" type="text" class="form-control"  placeholder="Enter Name">
            
            <label for="exampleInputName1">City Name</label>
-           <select class="form-control" name="city_id">
+           <select class="form-control" name="city_id" id="city_id">
                @foreach($cities as $city)
-                   <option value="{{$city->id}}">{{$city->name}}</option>
+                   <option value="{{$city->id}}">{{$city->name}}</option>                <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
                @endforeach
            </select>
 
@@ -36,19 +38,33 @@
            <?php  echo Form::file('image');?>
 
            <label for="exampleInputName1">City Manger Name</label>
-           <select class="form-control" name="city_manager_id">
-               @foreach($users as $user)
-                    @foreach($city_managers as $city_manager)
-                        @if(city_manager->id == user->id)
-                            <option value="{{$user->id}}">{{$user->name}}</option>
-                        @endif
-                    @endforeach
-               @endforeach
-           </select>
+           <select class="form-control" name="city_manager_id" id="city_manager_id"></select>
+
+                              
        </div>
 
     
    <button type="submit" class="btn btn-primary">Submit</button>
    </form>
+
+   <script>
+        $('#city_id').on('change', e => {
+            $('#city_manager_id').empty()       
+            $.ajax({
+                url: `/gyms/${e.value}/managers_of_city`,
+                success : data => {
+                    alert('success'); 
+                    //console.log(managers_of_city);
+                    data.managers_of_city.forEach(manager_of_city =>
+                        $('#city_manager_id').append(`<option value="${manager_of_city.id}">${manager_of_city.name}</option>`)
+                    )
+                },
+                error : response => {
+                    alert('error');
+                    //console.log(response);
+                }
+            })
+        })
+    </script>          
 
 @endsection

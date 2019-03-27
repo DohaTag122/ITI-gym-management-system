@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\createAdmin::class
+        Commands\createAdmin::class,
     ];
 
     /**
@@ -24,9 +24,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+
+//        everyMinute
+        $schedule->command('notify:send_reminder')->daily();
+
     }
+
+
 
     /**
      * Register the commands for the application.

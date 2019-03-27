@@ -44,7 +44,8 @@ class WelcomeNotify extends Notification implements ShouldQueue
                     ->subject('Welcome !')
                     ->line('Thanks for signup! ')
 //                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('Thank you for using our application!')
+                    ->from('GymSystem@GymSystem.com');
     }
 
     /**
