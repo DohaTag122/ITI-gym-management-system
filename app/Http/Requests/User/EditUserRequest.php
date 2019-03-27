@@ -4,7 +4,7 @@ namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUserRequest extends FormRequest
+class EditUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,14 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            "national_id"=>"unique:users",
-            "email"=>"unique:users",
-            "password"=>"min:6"
+            
+                "national_id"=>"unique:users",
+                
+                "password"=>"min:6"
+        
+    
         ];
-
-
     }
-
     public function messages()
     {
         return [

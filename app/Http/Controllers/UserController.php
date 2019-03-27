@@ -11,6 +11,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\User\StoreUserRequest;
+use App\Http\Requests\User\EditUserRequest;
 
 
 class UserController extends Controller
@@ -115,7 +116,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(User $user,Request $request)
+    public function update(User $user,EditUserRequest $request)
     { //dd($request);
        User::where('id',$user->id)->update(['name'=>request()->name]); 
        User::where('id',$user->id)->update(['email'=>request()->email]); 

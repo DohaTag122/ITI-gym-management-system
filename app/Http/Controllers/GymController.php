@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Gym;
 use App\City;
 use App\User;
+use DB;
 
 
 use App\Http\Requests\gyms\StoreGymRequest;
@@ -125,12 +126,12 @@ class GymController extends Controller
     }
 
 
-    public function managers_of_city(Request $request, $id) {
+    public function get_managers($id) {
         
-        if ($request->ajax()) {
-            return response()->json([
-                'managers_of_city' => City::find($id)->City_manager,
-            ]);
-        }
+        $managers_id   = DB::table("user_city")->where("city_id",$id)->pluck("user_city.user_id");
+        $users = User::find($managers_id);
+        $managers_Name = User::get(['users.id', 'users.name']);   
+        return json_encode($managers_Name);
+        
     }
 }

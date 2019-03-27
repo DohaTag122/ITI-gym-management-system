@@ -28,12 +28,12 @@
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>City Manager Id</th>
+                                    <th>City Manager Name</th>
                                     <th>City Id</th>
                                     <th>Name</th>
                                     <th>Image</th>
                                     <th>Created At</th>
-                                    <th>Updated At</th>
+                                    <!-- <th>Updated At</th> -->
                                     <th>Show</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -123,7 +123,7 @@
                     }
                 },
                 { data: 'created_at', name: 'created_at' },
-                { data: 'updated_at', name: 'updated_at' },
+                //{ data: 'updated_at', name: 'updated_at' },
 
                 
                 /* Show */ {

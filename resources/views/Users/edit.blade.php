@@ -8,7 +8,18 @@
 
 @endsection
 
+
 @section('content')
+@if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+@endif
+
 
 
 <div class="container">
@@ -20,10 +31,7 @@
       <label for="email">Name:</label>
       <input type="text" class="form-control" name="name" id="name" value="{{$user->name}}">
     </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" name="password" id="pwd" required>
-    </div>
+   
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="email" class="form-control" id="email"  name="email" value="{{$user->email}}">

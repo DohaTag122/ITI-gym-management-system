@@ -5,7 +5,7 @@
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> 
 @endsection
 
 @section('content')
@@ -47,7 +47,7 @@
    <button type="submit" class="btn btn-primary">Submit</button>
    </form>
 
-   <script>
+   <!-- <script>
         $('#city_id').on('change', e => {
             $('#city_manager_id').empty()       
             $.ajax({
@@ -65,6 +65,38 @@
                 }
             })
         })
-    </script>          
+    </script>           -->
+
+    <script type="text/javascript">
+    jQuery(document).ready(function ()
+    {
+            jQuery('select[name="city_id"]').on('change',function(){
+               var countryID = jQuery(this).val();
+               if(countryID)
+               {
+                  jQuery.ajax({
+                     headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                     },
+                     url : 'get_managers/'+countryID,
+                     type : "GET",
+                     dataType : "json",
+                     success:function(data)
+                     {
+                        console.log(data);
+                        jQuery('select[name="city_manager_id"]').empty();
+                        jQuery.each(data, function(id,name){
+                           $('select[name="city_manager_id"]').append('<option value="'+ id +'">'+ name +'</option>');
+                        });
+                     }
+                  });
+               }
+               else
+               {
+                  $('select[name="city_manager_id"]').append('<option value="fady">fady</option>');;
+               }
+            });
+    });
+    </script>
 
 @endsection
