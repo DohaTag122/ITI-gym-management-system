@@ -16,7 +16,11 @@
 
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Data Table With Full Features</h3>
+                    <h3 class="box-title">Data Table With Full Features</h3><br>
+                    @role('admin|cityManager')
+                    <a href="{{route('users.create')}}" class="btn btn-success">Add User</a>
+                    @endrole
+
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -70,18 +74,6 @@
     </div>
 </section>
 <!-- /.content -->
-
-@role('admin')
-<!-- City manager will have this permission also  -->
-<a href="{{route('users.create')}}" class="btn btn-success">Add User</a>
-@endrole
-
-
-@role('cityManager')
-<!-- City manager will have this permission also  -->
-<a href="{{route('users.create')}}" class="btn btn-success">Add User</a>
-@endrole
-
 @endsection
 
 

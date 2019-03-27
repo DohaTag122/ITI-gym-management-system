@@ -23,8 +23,6 @@ class EditMemberRequest extends FormRequest
      */
     public function rules()
     {
-
-
         return [
             'name' => 'required|string',
             'password' => 'required|string|min:6|max:10',

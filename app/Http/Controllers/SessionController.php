@@ -19,7 +19,6 @@ class SessionController extends Controller
      */
     public function index()
     {
-        // dd(Session::with('gym')->get()[0]->gym);
         return view('sessions/index');
     }
 
@@ -77,7 +76,7 @@ class SessionController extends Controller
      */
     public function edit(Session $session)
     {
-        
+
         $gyms = Gym::all();
         $coaches = Coach::all();
         return view('sessions.edit', compact('session', 'gyms', 'coaches'));

@@ -25,11 +25,10 @@ class UpdateSessionRequest extends FormRequest
      */
     public function rules()
     {
-        $now = date("Y-m-d", time() - 60 * 60 * 24);
-        // dd(Input::get());
+        $yesterday = date("Y-m-d", time() - 60 * 60 * 24);
         return [
             'name'=>"bail|unique:sessions,name,".$this->route('session')->id,
-            'day'=>'bail|required|date|after:'.$now,
+            'day'=>'bail|required|date|after:'.$yesterday,
             'start_at'=>['bail','required', new Overlap(Input::get())],
             'finish_at'=>'bail|required',
         ];
