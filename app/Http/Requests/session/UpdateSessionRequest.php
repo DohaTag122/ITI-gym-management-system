@@ -3,6 +3,8 @@
 namespace App\Http\Requests\session;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\Overlap;
+use Illuminate\Support\Facades\Input;
 
 class UpdateSessionRequest extends FormRequest
 {
@@ -23,13 +25,24 @@ class UpdateSessionRequest extends FormRequest
      */
     public function rules()
     {
+        $now = date("Y-m-d", time() - 60 * 60 * 24);
+        // dd(Input::get());
         return [
-            'name'=>"bail|required|Alpha|max:16|unique:sessions,name,".$this->route('session')->id,
-            'day'=>'bail|required|date',
-            'start_at'=>'bail|required',
+            'name'=>"bail|unique:sessions,name,".$this->route('session')->id,
+            'day'=>'bail|required|date|after:'.$now,
+            'start_at'=>['bail','required', new Overlap(Input::get())],
             'finish_at'=>'bail|required',
-            'price'=>'bail|required|numeric|min:1',
-            'gym_id'=>"required|exists:gyms,id",
+        ];
+    }
+    /**
+    * Get the error messages for the defined validation rules.
+    *
+    * @return array
+    */
+    public function messages()
+    {
+        return [
+            'day.after' => 'The chosen date has passed, pick a new date please !',
         ];
     }
 }

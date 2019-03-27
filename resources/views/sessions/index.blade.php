@@ -12,6 +12,11 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Session Table</h3><br>
+                    @if (session('alert'))
+                        <div class="alert alert-warning">
+                            {{ session('alert') }}
+                        </div>
+                    @endif
                     <a href='{{route('sessions.create')}}' style="margin-top: 10px;" class="btn btn-success"><i class="fas fa-folder-plus"></i>&nbsp;Create Session</a>
                 </div>
                 <!-- /.box-header -->
