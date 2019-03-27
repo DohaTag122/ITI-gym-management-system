@@ -12,6 +12,8 @@
                             <th>Starts At</th>
                             <th>Finishes At </th>
                             <th>Price</th>
+                            <th>Coaches</th>
+                            <th>Gym</th>
                             <th>Created At</th>
                         </tr>
                         <tr>
@@ -20,7 +22,23 @@
                             <td>{{\Carbon\Carbon::parse($session->start_at)->format('h:i A')}}</td>
                             <td>{{\Carbon\Carbon::parse($session->finish_at)->format('h:i A')}}</td>
                             <td>{{$session->price}}</td>
-                            <td>{{ \Carbon\Carbon::parse($session->created_at)->format('l jS \\of F Y h:i:s A')}}</td>
+                            <td>
+                                @foreach($coaches as $coach)
+                                    @foreach ($session->coaches as $pivot_coach)
+                                    @if ($pivot_coach->id == $coach->id)
+                                    {{$coach->name}}<br>
+                                    @endif
+                                    @endforeach
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach($gyms as $gym)
+                                    @if ($gym->id == $session->gym_id)
+                                    {{$gym->name}}
+                                    @endif
+                                @endforeach
+                            </td>
+                            <td>{{ \Carbon\Carbon::parse($session->created_at)->format('h:i A \\, l jS \\of F Y ')}}</td>
                         </tr>
                     </table>
                 </div>
