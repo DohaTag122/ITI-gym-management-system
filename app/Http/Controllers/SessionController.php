@@ -80,6 +80,7 @@ class SessionController extends Controller
     {
         $gyms = Gym::all();
         $coaches = Coach::all();
+        // dd($gym_session);
         return view('sessions.edit', compact('session', 'gyms', 'coaches'));
 
     }
@@ -94,7 +95,7 @@ class SessionController extends Controller
     public function update(UpdateSessionRequest $request, Session $session)
     {
         $session->update($request->all());
-        return redirect()->route('packages.index');
+        return redirect()->route('sessions.index');
 
     }
 

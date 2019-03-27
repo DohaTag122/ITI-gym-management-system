@@ -13,7 +13,7 @@ class UpdateSessionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class UpdateSessionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>"bail|required|Alpha|max:16|unique:session,name,".$this->session->id,
+            'name'=>"bail|required|Alpha|max:16|unique:sessions,name,".$this->route('session')->id,
             'day'=>'bail|required|date',
             'start_at'=>'bail|required',
             'finish_at'=>'bail|required',

@@ -14,12 +14,12 @@
                         </ul>
                     </div>
                     @endif
-                    <form action="{{route('sessions.update', $session->id)}}" method="POST">
+                    <form action="{{route('sessions.update', $session)}}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                             <label for="name">Session Name</label>
-                            <input name="name" type="text" class="form-control" id="name"  placeholder="Enter Session Name" value="{{$session->name}}">
+                            <input name="name" type="text" class="form-control" id="name"  placeholder="{{$session->name}}" disabled="">
                         </div>
                         <div class="form-group">
                             <label for="day">Date </label>
@@ -58,7 +58,7 @@
                             <label for="price">Session Price</label>
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input class="form-control" type="text" name="price" id="price" value="{{$session->price}}">
+                                <input class="form-control" type="text" name="price" id="price" placeholder="{{$session->price}}" disabled="">
                                 <span class="input-group-addon">.00</span>
                             </div>
                         </div>
@@ -92,4 +92,3 @@
     $('.select2').select2();
 </script>
 @endsection
-

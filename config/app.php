@@ -165,7 +165,8 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
 //        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
  //       Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
-        'Webpatser\Countries\CountriesServiceProvider',
+         'Webpatser\Countries\CountriesServiceProvider',
+
 
 
         /*
@@ -235,6 +236,7 @@ return [
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
 //        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
         'Carbon' => 'Carbon\Carbon',
+        'Countries' => 'Webpatser\Countries\CountriesFacade',
     ],
 
 ];
