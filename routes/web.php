@@ -54,10 +54,10 @@ Route::DELETE('/users/{user}/delete','UserController@delete');
 
 //Doha Routes
 Route::resource('users', 'UserController');
-//Route::group(['middleware' => ['role:admin']], function () {
-  //  get('users', 'UserController@index');
-//});
-Route::get('users', 'UserController@index')->name('users.index');
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('users', 'UserController@index')->name('users.index');
+});
+
  Route::get('/user/create', 'UserController@create')
 ->name('users.create');
  Route::post('/store', 'UserController@store')
@@ -75,7 +75,12 @@ Route::get('users', 'UserController@index')->name('users.index');
  ->name('users.unban');
  Route::get('/home', ['uses'=>'HomeController@index', 'middleware' => 'forbid-banned-user'])->name('home');
 Route::get('send','MailController@send')->name('send');
-Route::get('/cityMangers','UserController@ShowCityManger')->name('ShowCityMangers');
+Route::group(['middleware' => ['role:admin|cityMangaer']], function () {
+   
+    Route::get('/cityMangers','UserController@ShowCityManger')->name('ShowCityMangers');
+
+});
+
 
 
 
