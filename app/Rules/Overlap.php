@@ -32,21 +32,27 @@ class Overlap implements Rule
     {
         
         $sessions = Session::all();
-        $date_to_compare = $this->data["day"];
+        if(empty($sessions)){
+            return true;
+        }else{
+            $date_to_compare = $this->data["day"];
 
-        $from = strtotime(Carbon::create($date_to_compare . $value));
-        $to = strtotime(Carbon::create($date_to_compare . $this->data["finish_at"]));
+            $from = strtotime(Carbon::create($date_to_compare . $value));
+            $to = strtotime(Carbon::create($date_to_compare . $this->data["finish_at"]));
         
-        foreach($sessions as $session){
-            $from_compare = strtotime(Carbon::create($session->day . $session->start_at));
-            $to_compare = strtotime(Carbon::create($session->day . $session->finish_at));
+            foreach ($sessions as $session) {
+                $from_compare = strtotime(Carbon::create($session->day . $session->start_at));
+                $to_compare = strtotime(Carbon::create($session->day . $session->finish_at));
             
-            if(($from > $from_compare && $from < $to_compare) ||($from_compare > $from && $from_compare < $to)){
-                return false;
-            }else{
-                return true;
+                if (($from > $from_compare && $from < $to_compare) ||($from_compare > $from && $from_compare < $to)) {
+                    return false;
+                } else {
+                    return true;
+                }
             }
-        }   
+
+        }
+           
     }
 
     /**
