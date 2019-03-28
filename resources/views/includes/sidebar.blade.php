@@ -89,10 +89,21 @@
                 </a>
             </li>
 
-            <li class="{{ (request()->is('purchases*')) ? 'active' : '' }}">
+            <li class="{{ (request()->is('stripe*')) ? 'active' : '' }} treeview">
                 <a href="pages/widgets.html">
                     <i class="fas fa-shopping-cart"></i><span>&nbsp;Purchase</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
                 </a>
+                <ul class="treeview-menu">
+                    <li class="{{ (request()->is('stripe/session*')) ? 'active' : '' }}">
+                        <a href="{{route('stripe.session')}}"><i class="fas fa-male"></i>&nbsp;Purchase Session</a>
+                    </li>
+                    <li class="{{ (request()->is('stripe/packages*')) ? 'active' : '' }}">
+                        <a href="{{route('stripe.package')}}"><i class="fas fa-people-carry"></i>&nbsp;Purchase Package</a>
+                    </li>
+                </ul>
             </li>
 
             <li class="{{ (request()->is('purchases*')) ? 'active' : '' }}">

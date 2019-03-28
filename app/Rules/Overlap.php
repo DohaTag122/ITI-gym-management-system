@@ -32,7 +32,7 @@ class Overlap implements Rule
     {
         
         $sessions = Session::all();
-        if(empty($sessions)){
+        if($sessions->isEmpty()){
             return true;
         }else{
             $date_to_compare = $this->data["day"];

@@ -29,7 +29,7 @@ class HomeController extends Controller
          //$role = Role::create(['name' => 'cityManager']);
          //$role = Role::create(['name' => 'gymManager']);
         // $permission = Permission::create(['name' => 'addUser']);
-         //auth()->user()->assignRole('admin');
+        //  auth()->user()->assignRole('admin');
        
         return view('home');
     }

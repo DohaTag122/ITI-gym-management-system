@@ -163,7 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-         'Webpatser\Countries\CountriesServiceProvider',
+        'Webpatser\Countries\CountriesServiceProvider',
 
 
 
