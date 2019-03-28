@@ -78,6 +78,7 @@ Route::get('send','MailController@send')->name('send');
 Route::group(['middleware' => ['role:admin|cityMangaer']], function () {
    
     Route::get('/cityMangers','UserController@ShowCityManger')->name('ShowCityMangers');
+    Route::post('/cityMangers_table', 'UserController@cityMangers_table');
 
 });
 
