@@ -23,24 +23,24 @@
        @csrf
        <div class="form-group">
            <label for="exampleInputEmail1">Name</label>
-           <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+           <input name="name" type="text" class="form-control" >
        </div>
        <div class="form-group">
            <label for="exampleInputEmail1"> Email</label>
-           <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+           <input name="email" type="email" class="form-control" >
        </div>
        <div class="form-group">
            <label for="exampleInputEmail1">Password </label>
-           <input name="password" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+           <input name="password" type="password" class="form-control" >
        </div>
        <div class="form-group">
            <label for="exampleInputEmail1"> National_ID</label>
-           <input name="national_id" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+           <input name="national_id" type="text" class="form-control" >
        </div>
 
        <div class="form-group">
            <label for="exampleInputEmail1">Upload Image </label>
-           <input name="image" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+           <input name="image" type="text" class="form-control"  >
        </div>
        
        
