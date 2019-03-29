@@ -18,7 +18,7 @@
 
                         <div  class="form-group">
                             <label for="gym">Gym</label>
-                            <select name="gym_id" id="gym_id" class="form-control dynamic" data-dependent="session">
+                            <select name="gym_id" id="gym_id" class="form-control dynamic" data-dependent="session_id">
                                 <option value="" >Select Gym</option>
                                 @foreach($gyms as $gym)
                                 <option value="{{ $gym->id}}">{{ $gym->name }}</option>
@@ -30,6 +30,11 @@
                             <label for="session">Session</label>
                             <select name="session_id" id="session_id" class="form-control dynamic">
                                 <option value="" >Select Session</option>
+                                @foreach ($data as $row)
+                                    {{info($row->name)}}
+                                    <option value="{{$row->id}}">{{$row->name}}</option>
+                                    {{info($row->name)}}
+                                @endforeach
                             </select>
                         </div>
                         <script
@@ -61,8 +66,8 @@ $(document).ready(function(){
             let dependent = $(this).data('dependent');
             let _token = $('input[name="_token"]').val();
             $.ajax({
-                url:"{{ route('fetchSessions') }}",
-                method:"POST",
+                url:"{{ route('stripe.session') }}",
+                method:"GET",
                 data:{
                     select:select,
                     value:value,
@@ -70,7 +75,8 @@ $(document).ready(function(){
                     dependent:dependent
                 },
                 success:function(result){
-                    $('#'+dependent).html(result);
+                    // $('#session_id').html(result);
+                    console.log(result);
                 }
             })
         }

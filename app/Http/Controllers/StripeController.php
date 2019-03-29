@@ -13,25 +13,38 @@ class StripeController extends Controller
     public function stripePackage(){
         $gyms = DB::table('gyms')->get();
         $members = DB::table('members')->get();
+        $packages = DB::table('packages')->get();
+
         return view('payments/stripe_package', [
             "gyms"=>$gyms,
             "members"=>$members,
+            "packages"=>$packages,
         ]);
     }
 
-    public function stripeSession(){
+    public function stripeSession(Request $request){
         $gyms = DB::table('gyms')->get();
         $members = DB::table('members')->get();
+        $sessions = DB::table('sessions')->get();
+        $select = 'gym_id';
+        $value = $request->get('value');
+        $dependent = $request->get('dependent');
+        // info("1 ---->".$select);
+        $data = DB::table('sessions')
+            ->where('gym_id', $value)
+            ->get();
         return view('payments/stripe_session', [
             "gyms"=>$gyms,
             "members"=>$members,
+            "sessions"=>$sessions,
+            "data"=>$data
         ]);
     }
 
     
     function fetchPackages(Request $request){
 
-        $select = $request->get('select');
+        $select = 'gym_id';
         $value = $request->get('value');
         $dependent = $request->get('dependent');
         $data = DB::table('packages')
@@ -43,6 +56,7 @@ class StripeController extends Controller
         foreach ($data as $row) {
             $output .= '<option value="'.$row->id.'">'.$row->name.'</option>';
         }
+        return response()->toJson($output);
         echo $output;
     }
 
@@ -50,16 +64,17 @@ class StripeController extends Controller
         $select = 'gym_id';
         $value = $request->get('value');
         $dependent = $request->get('dependent');
-        info("1 ---->".$select);
+        // info("1 ---->".$select);
         $data = DB::table('sessions')
             ->where('gym_id', $value)
             ->get();
-        info("2 ---->".$data);
-        $output = '<option value="">Select '.ucfirst($dependent).'</option>';
+        // info("2 ---->".$data);
+        $output = '<option value="">Select Session</option>';
             
         foreach ($data as $row) {
-            info(["3 ---->",$row]);
+            // info(["3 ---->",$row]);
             $output .= '<option value="'.$row->id.'">'.$row->name.'</option>';
+            // info(["4 ---->",$output]);
         }
         echo $output;
     }

@@ -14,10 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-        //Seed the countries
-    	// $this->call('CountriesSeeder');
-        // $this->command->info('Seeded the countries!');
+        
+        $this->call('CountriesSeeder');
+        $this->command->info('Seeded the countries!');  
+
         $this->call([UsersTableSeeder::class, RolesAndPermissionsSeeder::class, CountriesSeeder::class]);
         factory(App\City::class, 13)->create();
         factory(App\Gym::class, 25)->create();
