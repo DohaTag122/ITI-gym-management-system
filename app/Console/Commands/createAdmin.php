@@ -47,13 +47,14 @@ class CreateAdmin extends Command
         if(User::where('email', '=', $email)->exists()){
             $this->info('Admin Email is already taken');
         }else{
-            User::create([
+            $user = User::create([
                 "name" => "Admin",
                 "email" => $email,
                 "password" => Hash::make($password),
                 "image" => "temp/adminphoto",
                 "banned" => 0,
             ]);
+            $user->assignRole('admin');
             $this->info('Admin Created Successfully');
         }
         
