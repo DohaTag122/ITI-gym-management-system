@@ -97,6 +97,8 @@ class StripeController extends Controller
             'amount'   => $price,
             'currency' => 'usd'
         ));
+        return redirect()->back()->with('message', 'You purchased the package successfully!');
+
     }
 
     public function stripePost_session(Request $request){
