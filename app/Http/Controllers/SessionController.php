@@ -47,10 +47,11 @@ class SessionController extends Controller
     {   
         $session = Session::create(request()->all());
         
-        for ($i=0; $i < sizeof($request->input("coach")); $i++) {
-            $coach = coach::find($request->get('coach')[$i]);
+        foreach ($request->input("coach") as $coach_input) {
+            $coach = Coach::find($coach_input);
             $session->coaches()->attach($coach);
         }
+        
         return redirect()->route('sessions.index');
 
     }

@@ -30,7 +30,7 @@ class StoreSessionRequest extends FormRequest
             'name'=>"bail|required|Alpha|max:16",
             'day'=>'bail|required|date|after:'.$now,
             'start_at'=>['bail','required', new Overlap(Input::get())],
-            'finish_at'=>'bail|required',
+            'finish_at'=>'bail|required|after:start_at',
             'price'=>'bail|required|numeric|min:1',
             'gym_id'=>"required|exists:gyms,id",
         ];

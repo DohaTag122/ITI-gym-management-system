@@ -21,17 +21,20 @@ Auth::routes();
 //! Please write your Routes on your specified space to avoid merge conflicts
 //*Ziad Routes
 
-Route::get('/relation', function () {
-    $city = \App\City::find('1');
-    dd($city->City_manager->count());
-//    $sessions = \App\Session::first();
-//    $packages = \App\Package::first();
+Route::get('attendances', 'AttendanceController@index')->name('attendances.index');
+Route::post('/attendaces_table','AttendanceController@AttendancesTable');
 
-//    dd($sessions->packages);
-//    dd($packages->sessions);
-
-//    dd($packages->sessions);
-});
+//Route::get('/relation', function () {
+//    $city = \App\City::find('1');
+//    dd($city->City_manager->count());
+////    $sessions = \App\Session::first();
+////    $packages = \App\Package::first();
+//
+////    dd($sessions->packages);
+////    dd($packages->sessions);
+//
+////    dd($packages->sessions);
+//});
 
 /*
 Route::get('/home', function () {
@@ -78,6 +81,7 @@ Route::get('send','MailController@send')->name('send');
 Route::group(['middleware' => ['role:admin|cityMangaer']], function () {
    
     Route::get('/cityMangers','UserController@ShowCityManger')->name('ShowCityMangers');
+    Route::post('/cityMangers_table', 'UserController@cityMangers_table');
 
 });
 
@@ -96,6 +100,11 @@ Route::resource('packages', 'PackageController');
 Route::get('data_packages', 'PackageController@get_table');
 Route::resource('sessions', 'SessionController');
 Route::get('data_sessions', 'SessionController@get_table');
+Route::get('stripe/package', 'StripeController@stripePackage')->name('stripe.package');
+Route::get('stripe/session', 'StripeController@stripeSession')->name('stripe.session');
+Route::post('charge', 'StripeController@stripePost');
+Route::post('stripe/package/fetch', 'StripeController@fetchPackages')->name('fetchPackages');
+Route::post('stripe/sessions/fetch', 'StripeController@fetchSessions')->name('fetchSessions');
 
 
 

@@ -10,5 +10,11 @@ class Gym extends Model
     public function sessions()
     {
         return $this->hasMany('App\Session');
-    }    
+    }
+
+    public function city()
+    {
+        return $this->belongsTo('App\City');
+
+    }
 }

@@ -79,6 +79,7 @@
             </div>
         </div>
     </div>
+</section>
 @endsection
 @section('extra_scripts')
 <script>

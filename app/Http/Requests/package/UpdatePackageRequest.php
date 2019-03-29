@@ -28,6 +28,7 @@ class UpdatePackageRequest extends FormRequest
             'package_price'=>'bail|required|numeric|min:1',
             'number_of_sessions'=>'bail|required|numeric|min:1',
             'gym_id'=>"required|exists:gyms,id",
+            'session_amount'=>['required', new ExceedLimit(Input::get())]
         ];
     }
 }

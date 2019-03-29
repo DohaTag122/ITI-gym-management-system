@@ -21,11 +21,11 @@ Route::post('register', 'Api\MemberController@register');
 
 Route::middleware(['auth:api'])->group(function () {
 
-    Route::get('/test', function (Request $request) {
-        return response()->json([
-            'test' => 'test',
-        ], 401);
-        });
+//    Route::get('/test', function (Request $request) {
+//        return response()->json([
+//            'test' => 'test',
+//        ], 401);
+//        });
 
 
     Route::PUT('/members/edit','Api\MemberController@update');

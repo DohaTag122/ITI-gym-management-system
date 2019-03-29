@@ -30,7 +30,7 @@ class UpdateSessionRequest extends FormRequest
             'name'=>"bail|unique:sessions,name,".$this->route('session')->id,
             'day'=>'bail|required|date|after:'.$yesterday,
             'start_at'=>['bail','required', new Overlap(Input::get())],
-            'finish_at'=>'bail|required',
+            'finish_at'=>'bail|required|after:start_at',
         ];
     }
     /**

@@ -193,9 +193,14 @@ class UserController extends Controller
        ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id') ->where('model_has_roles.role_id', '=', 4);
 */
        $users = User::role('admin')->get();
+    //    dd($users);
         return view('Users.cityManger', [
             'users' => $users
         ]);
+    }
+    public function cityMangers_table(){
+        $users = User::role('admin')->get();
+        return datatables($users)->toJson();
 
     }
 

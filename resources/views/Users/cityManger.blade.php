@@ -94,7 +94,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/data_source',
+                url: '/cityMangers_table',
                 dataType : 'json',
                 type: 'post',
                 // processData: false,
