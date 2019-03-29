@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\Gym;
 use App\City;
 use App\User;
@@ -21,7 +23,7 @@ class GymController extends Controller
      */
     public function index()
     {
-        //
+        //dd(auth()->user());
         return view ('gyms.index');
     }
 
@@ -122,7 +124,30 @@ class GymController extends Controller
 
     public function gyms_table()
     {
-        return datatables()->of(Gym::query())->toJson();
+        $logged_user = Auth::user();
+
+        if($logged_user->hasRole('admin'))
+        {
+            return datatables()->of(Gym::query())->toJson();
+        }
+      
+        if($logged_user->hasRole('cityManager'))
+        {
+                $gyms = Gym::where("city_manager_id",$logged_user->id)->get();
+                return datatables($gyms)->toJson();
+            
+        }
+        if($logged_user->hasRole('gymManager'))
+        {
+                if(User::where("id",$logged_user->id)->get('gym_id')){
+                    $gyms = Gym::where("id",$gym_id)->get('gym_id');
+                    return datatables($gyms)->toJson();
+
+                }else{
+                    return response()->json(array('user'=>$logged_user->id)); 
+                }
+            
+        }
     }
 
 

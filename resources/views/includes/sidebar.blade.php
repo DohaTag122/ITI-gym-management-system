@@ -47,18 +47,20 @@
                     <i class="fa fa-th"></i> <span>Gym Managers</span>
                 </a>
             </li>
+            @role('admin|cityManager')
             <li class="{{ (request()->is('cities*')) ? 'active' : '' }}">
                 <a href="{{route('cities.index')}}">
                     <i class="fas fa-city"></i><span>&nbsp;Cities</span>
                 </a>
             </li>
-
+            @endrole
+            @role('admin|cityManager')
             <li class="{{ (request()->is('gyms*')) ? 'active' : '' }}">
                 <a href="{{route('gyms.index')}}">
                     <i class="fas fa-dumbbell"></i><span>&nbsp;Gyms</span>
                 </a>
             </li>
-
+            @endrole
             <li class="{{ (request()->is('packages*','sessions*')) ? 'active menu-open' : '' }} treeview">
                 <a href="#">
                     <i class="fas fa-box-open"></i>
@@ -76,13 +78,13 @@
                     </li>
                 </ul>
             </li>
-
+            @role('admin|cityManager|gymManager')
             <li class="{{ (request()->is('coaches*')) ? 'active' : '' }}">
                 <a href="{{route('coaches.index')}}">
                     <i class="fas fa-clipboard-list"></i> <span>Coaches</span>
                 </a>
             </li>
-
+            @endrole
             <li class="{{ (request()->is('attendances*')) ? 'active' : '' }}">
                 <a href="{{route('attendances.index')}}">
                     <i class="fa fa-th"></i> <span>Attendance</span>

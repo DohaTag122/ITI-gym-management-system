@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\Coach;
 use App\Gym;
+use App\User;
 use App\Http\Requests\coaches\StoreCoachRequest;
 use App\Http\Requests\coaches\UpdateCoachRequest;
 
@@ -27,7 +30,27 @@ class CoachController extends Controller
     public function create()
     {
         $coaches = Coach::all();
-        $gyms = Gym::all();
+        $logged_user = Auth::user();
+        if($logged_user->hasRole('admin'))
+        {
+            $gyms = Gym::all();
+        }
+      
+        if($logged_user->hasRole('cityManager'))
+        {
+            $gyms = Gym::where("city_manager_id",$logged_user->id)->get();
+        }
+        if($logged_user->hasRole('gymManager'))
+        {
+            if(User::where("id",$logged_user->id)->get('gym_id')){
+                $gym_id = User::where("id",$logged_user->id)->get('gym_id');
+                $gyms = Gym::where("id",$gym_id)->get();
+            }else{
+                $gyms = "";
+            }
+
+            
+        }
         return view('coaches.create',[
             'coaches' => $coaches,
             'gyms' => $gyms,
@@ -73,7 +96,26 @@ class CoachController extends Controller
     public function edit(Coach $coach)
     {
         //
-        $gyms = Gym::all();
+        
+        $logged_user = Auth::user();
+        if($logged_user->hasRole('admin'))
+        {
+            $gyms = Gym::all();
+        }
+        if($logged_user->hasRole('cityManager'))
+        {
+            $gyms = Gym::where("city_manager_id",$logged_user->id)->get();
+        }
+        if($logged_user->hasRole('gymManager'))
+        {
+            if(User::where("id",$logged_user->id)->get('gym_id')){
+
+            $gym_id = User::where("id",$logged_user->id)->get('gym_id');
+            $gyms = Gym::where("id",$gym_id)->get();
+            }else{
+            $gyms = "";   
+            }
+        }
         return view('coaches.edit', [
             'coach' => $coach,
             'gyms' =>  $gyms, 
@@ -111,6 +153,35 @@ class CoachController extends Controller
 
     public function coaches_table()
     {
-        return datatables()->of(Coach::query())->toJson();
+        $logged_user = Auth::user();
+
+        if($logged_user->hasRole('admin'))
+        {
+            return datatables()->of(Coach::query())->toJson();
+        }
+      
+        if($logged_user->hasRole('cityManager'))
+        {
+            
+                $gyms_in_city = Gym::where("city_manager_id",$logged_user->id)->get();
+                // dd($gyms_in_city);
+                if(!$gyms_in_city->isEmpty()){
+                    return datatables(Coach::where("gym_id",$gyms_in_city->id)->get())->toJson();
+                }else{
+                    return response()->json(array('user'=>$logged_user->id));
+                }
+                // $coachs = Coach::where("gym_id",$gyms_in_city->id)->get();
+                // return datatables($coachs)->toJson();
+        }
+        if($logged_user->hasRole('gymManager'))
+        {       
+                if(User::where("id",$logged_user->id)->get('gym_id')){
+                    $gym_id = User::where("id",$logged_user->id)->get('gym_id');
+                    $coachs = Coach::where("gym_id",$gym_id)->get();
+                    return datatables($coachs)->toJson();
+                }else{
+                    return response()->json(array('user'=>$logged_user->id)); 
+                }
+        }
     }
 }
