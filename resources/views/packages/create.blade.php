@@ -23,7 +23,7 @@
                         
                         <div  class="form-group">
                             <label for="gym_id">Gym</label>
-                            <select class="form-control" name="gym_id">
+                            <select class="form-control" name="gym_id" id="gym_id">
                                 @foreach($gyms as $gym)
                                     <option value="{{$gym->id}}">{{$gym->name}}</option>
                                 @endforeach
@@ -32,7 +32,7 @@
 
                         <div class="form-group">
                             <label>Sessions</label>
-                            <select name="session[]" class="form-control select2" multiple="multiple" data-placeholder="Select a Session" style="width:100%">
+                            <select id="sessions_select" name="session[]" class="form-control select2" multiple="multiple" data-placeholder="Select a Session" style="width:100%">
                                  @foreach($sessions as $session)
                                     <option value="{{$session->id}}">{{$session->name}}</option>
                                 @endforeach
@@ -68,12 +68,19 @@
                 success:function(response) {
 
                     console.log(response);
-                    var $dropdown = $('#session_id');
+                    var $dropdown = $('#sessions_select');
+                    $dropdown.select2('destroy');
+
                     $dropdown.find('option').remove();
-                    for(var i =0;i<response['data'].length;i++)
-                    {   console.log(i);
-                        $dropdown.append($("<option />").val(response['data'][i]['id']).text(response['data'][i]['name']));
+                    if(response['data'].length > 0 )
+                    {
+                        for(var i =0;i<response['data'].length;i++)
+                        {   console.log(i);
+                            $dropdown.append($("<option />").val(response['data'][i]['id']).text(response['data'][i]['name']));
+                        }
                     }
+
+                    $dropdown.select2();
 
                 },
 
