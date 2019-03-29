@@ -2,27 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="caa65f93-9636-4143-bcdd-08a4c1872f0c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/Users/gymManger.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PackageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PackageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StripeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StripeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Rules/ExceedLimit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rules/ExceedLimit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_20_172851_create_sessions__table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_20_172851_create_sessions__table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_20_173818_create_packages__table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_20_173818_create_packages__table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_20_174422_create_purchases__table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_20_174422_create_purchases__table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/RolesAndPermissionsSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RolesAndPermissionsSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Users/cityManger.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Users/cityManger.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Users/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/includes/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/includes/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/packages/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/packages/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/packages/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/packages/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/payments/stripe_package.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/payments/stripe_package.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/payments/stripe_session.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/payments/stripe_session.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sessions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sessions/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sessions/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sessions/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sessions/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sessions/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="107" column="27" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="27" />
+            <state relative-caret-position="130">
+              <caret line="109" column="53" selection-start-line="109" selection-start-column="37" selection-end-line="109" selection-end-column="53" />
               <folding>
                 <element signature="e#7#389#0#PHP" expanded="true" />
               </folding>
@@ -47,20 +29,38 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StripeController.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PackageController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+            <state relative-caret-position="195">
+              <caret line="35" column="36" lean-forward="true" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/packages/create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="80" column="21" lean-forward="true" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StripeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="58" column="26" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/payments/stripe_package.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="49" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
+            <state relative-caret-position="248">
+              <caret line="79" column="75" selection-start-line="79" selection-start-column="75" selection-end-line="79" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -68,8 +68,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/payments/stripe_session.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="84" column="21" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
+            <state relative-caret-position="308">
+              <caret line="82" column="89" lean-forward="true" selection-start-line="82" selection-start-column="89" selection-end-line="82" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -78,9 +78,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>$jwt_token</find>
-      <find>user</find>
-      <find>Illuminate\Auth\Middleware\EnsureEmailIsVerified</find>
       <find>routeMiddleware</find>
       <find>toMail</find>
       <find>User</find>
@@ -101,13 +98,16 @@
       <find>attend</find>
       <find>attenda</find>
       <find>Data Table With Full Features</find>
-      <find>fetchSessions</find>
       <find>stripe/package</find>
       <find>stripePackage</find>
       <find>fetchPackages</find>
       <find>session_id</find>
-      <find>stripePost</find>
       <find>charge</find>
+      <find>stripePost</find>
+      <find>select2</find>
+      <find>packages/create</find>
+      <find>fetchSessions</find>
+      <find>gym_id</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -116,7 +116,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_20_173818_create_packages__table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_20_174024_create_session_package__table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_20_174231_create_session_coach__table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_20_182006_create_user_details_table.php" />
@@ -162,11 +161,12 @@
         <option value="$PROJECT_DIR$/app/Session.php" />
         <option value="$PROJECT_DIR$/resources/views/Attendances/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AttendanceController.php" />
-        <option value="$PROJECT_DIR$/resources/views/payments/stripe_session.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/payments/stripe_package.blade.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/StripeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/packages/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/payments/stripe_session.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/payments/stripe_package.blade.php" />
       </list>
     </option>
   </component>
@@ -301,19 +301,6 @@
             <path>
               <item name="gym-management-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="gym-management-system" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gym-management-system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gym-management-system" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gym-management-system" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gym-management-system" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -332,6 +319,13 @@
               <item name="gym-management-system" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gym-management-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gym-management-system" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="packages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="gym-management-system" type="b2602c69:ProjectViewProjectNode" />
@@ -442,12 +436,12 @@
       <workItem from="1553693524811" duration="16363000" />
       <workItem from="1553812565341" duration="11147000" />
       <workItem from="1553871586191" duration="1628000" />
-      <workItem from="1553873942809" duration="5650000" />
+      <workItem from="1553873942809" duration="6376000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145242000" />
+    <option name="totallyTimeSpent" value="145968000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -463,9 +457,9 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26815644" />
+      <window_info content_ui="combo" id="Project" order="1" weight="0.26815644" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49960095" visible="true" weight="0.37459284" />
+      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49960095" weight="0.37459284" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
@@ -484,9 +478,9 @@
     </layout>
     <layout-to-restore>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.25778133" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26815644" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49960095" visible="true" weight="0.31758958" />
+      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49960095" visible="true" weight="0.37459284" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
@@ -508,9 +502,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_23_015415_add_gym_id_column_to_users.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_20_174024_create_session_package__table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -763,13 +754,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PackageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="118" column="53" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/Users/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -825,30 +809,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/payments/stripe_session.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="84" column="21" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="107" column="27" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="27" />
-          <folding>
-            <element signature="e#7#389#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/payments/stripe_package.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="49" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -856,10 +816,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PackageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="35" column="36" lean-forward="true" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="109" column="53" selection-start-line="109" selection-start-column="37" selection-end-line="109" selection-end-column="53" />
+          <folding>
+            <element signature="e#7#389#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StripeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+        <state relative-caret-position="100">
+          <caret line="58" column="26" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/packages/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="80" column="21" lean-forward="true" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/payments/stripe_session.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="82" column="89" lean-forward="true" selection-start-line="82" selection-start-column="89" selection-end-line="82" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/payments/stripe_package.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="79" column="75" selection-start-line="79" selection-start-column="75" selection-end-line="79" selection-end-column="75" />
         </state>
       </provider>
     </entry>

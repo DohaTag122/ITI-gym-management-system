@@ -77,7 +77,7 @@
                     {
                         for(var i =0;i<response['data'].length;i++)
                         {   console.log(i);
-                            $dropdown.append($("<option />").val(response['data'][i]['price']).text(response['data'][i]['name']).attr('price',response['data'][i]['price']));
+                            $dropdown.append($("<option />").val(response['data'][i]['id']).text(response['data'][i]['name']).attr('price',response['data'][i]['price']));
                         }
                     }
 
