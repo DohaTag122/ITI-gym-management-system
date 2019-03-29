@@ -95,8 +95,9 @@ class PackageController extends Controller
      */
     public function edit(Package $package)
     {
+        $sessions = Session::all();
         $gyms = Gym::all();
-        return view('packages.edit', compact('package', 'gyms'));
+        return view('packages.edit', compact('package', 'gyms', 'sessions'));
 
     }
 

@@ -56,12 +56,17 @@ class UserController extends Controller
     {  // dd( User::create(request()->all()));
         // dd(request()->all());
         // dd($request->all());
+        $path=null;
+        if($request->image){
+      //  $path= $request->image->store('uploads');
+      $path = Storage::disk('public')->putFile('uploads', $request->file('image'));
+        }
        $user= User::create([
             "name" => $request->name,
             "email" => $request->email,
             "password" => Hash::make($request->password),
             "national_id"=>$request->national_id,
-            "image" => $request->image,
+            "image" => $path,
             "ban" => $request->ban,
             "gymid" => $request->gym_id,
             "role" => $request->role,
@@ -73,12 +78,7 @@ class UserController extends Controller
        // $avatarName = $request->image;
          //$user->image = $avatarName;
        
-        if($request->image==""){
-            $user->image = "img/user2-160x160.jpg";
-        }
-        if($request->image){
-            $request->image->storeAs('upload',$request->image);
-           }
+        
 
        
         if(request()->all()['email']=="admin@admin.com")

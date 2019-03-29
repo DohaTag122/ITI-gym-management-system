@@ -41,7 +41,7 @@
 
        <div class="form-group">
            <label for="exampleInputEmail1">Upload Image </label>
-           <input name="image" type="file" value="img/user2-160x160.jpg" class="form-control"  >
+           <input name="image" type="file" value="NULL" class="form-control"  >
        </div>
        
        

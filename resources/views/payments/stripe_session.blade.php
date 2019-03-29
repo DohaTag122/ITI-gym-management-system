@@ -5,7 +5,12 @@
         <div class="col-md-6">
             <div class="box box-info">
                 <div class="box-body">
-                    <form action="/charge" method="POST">
+                    @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                    </div>
+                    @endif
+                    <form action="/charge_session" method="POST">
                         {{ csrf_field() }}
                         <div  class="form-group">
                             <label for="member">Member Name</label>
@@ -36,8 +41,8 @@
                         id="stripe_id"
                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key="{{ env('STRIPE_KEY') }}"
-                        data-amount="2099"
                         data-name="Session"
+                        data-amount=""
                         data-description="Purchasing Session"
                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                         data-locale="auto"
