@@ -29,7 +29,6 @@ class StorePackageRequest extends FormRequest
         return [
             'name'=>"bail|required|Alpha|max:16",
             'gym_id'=>"required|exists:gyms,id",
-            'session_amount'=>['required', new ExceedLimit(Input::get())]
         ];
     }
 }

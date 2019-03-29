@@ -26,18 +26,11 @@ class StripeController extends Controller
         $gyms = DB::table('gyms')->get();
         $members = DB::table('members')->get();
         $sessions = DB::table('sessions')->get();
-        $select = 'gym_id';
-        $value = $request->get('value');
-        $dependent = $request->get('dependent');
-        // info("1 ---->".$select);
-        $data = DB::table('sessions')
-            ->where('gym_id', $value)
-            ->get();
+        
         return view('payments/stripe_session', [
             "gyms"=>$gyms,
             "members"=>$members,
             "sessions"=>$sessions,
-            "data"=>$data
         ]);
     }
 
@@ -70,7 +63,7 @@ class StripeController extends Controller
 
 
     public function stripePost_package(Request $request){
-//        dd($request->all());
+        dd($request->all());
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $customer = Customer::create(array(
