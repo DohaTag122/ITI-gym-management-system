@@ -73,11 +73,7 @@ class StripeController extends Controller
             'email' => $request->stripeEmail,
             'source'  => $request->stripeToken
         ));
-        $charge = Charge::create(array(
-            'customer' => $customer->id,
-            'amount'   => 1999,
-            'currency' => 'usd'
-        ));
+
 
         $package_id = $request->input('package');
         $member_id = $request->input('member_id');
@@ -86,14 +82,22 @@ class StripeController extends Controller
 
         $sessions = $package->sessions;
 
+        $price =0;
         foreach ($sessions as $session)
         {
             $purchase['member_id'] = $member_id;
             $purchase['session_id'] = $session->id;
             $purchase['init_price'] = $session->price;
 
+            $price += $session->price;
             Purchase::create($purchase);
         }
+
+        $charge = Charge::create(array(
+            'customer' => $customer->id,
+            'amount'   => $price,
+            'currency' => 'usd'
+        ));
 
 //        Purchase::create($request->all());
 
