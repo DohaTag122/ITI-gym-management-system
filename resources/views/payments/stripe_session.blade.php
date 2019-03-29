@@ -60,23 +60,6 @@
 
             var gym_id = $('#gym_id').val();
             $.ajax({
-<<<<<<< HEAD
-                url:"{{ route('stripe.session') }}",
-                method:"GET",
-                data:{
-                    select:select,
-                    value:value,
-                    _token:_token,
-                    dependent:dependent
-                },
-                success:function(result){
-                    // $('#session_id').html(result);
-                    console.log(result);
-                }
-            })
-        }
-    });
-=======
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
@@ -86,7 +69,6 @@
                 data: {
                     gym_id:gym_id,
                 },
->>>>>>> fe563fb186d2805eec92b13a0aa2ce21f0758a2c
 
                 success:function(response) {
 

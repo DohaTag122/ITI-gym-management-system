@@ -58,9 +58,13 @@
                             <label for="price">Session Price</label>
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input class="form-control" type="text" name="price" id="price" placeholder="{{$session->price}}" disabled="">
+                                <input class="form-control" type="text" name="price" id="price" placeholder="{{$session->price}}" disabled>
                                 <span class="input-group-addon">.00</span>
                             </div>
+                        </div>
+                        <div  class="form-group">
+                            <label for="session_amount">Session amount </label>
+                            <input class="form-control" type="number" name="session_amount" id="session_amount" placeholder="{{$session->price}}" disabled>
                         </div>
                         <div class="form-group">
                             <label>Session Coaches</label>
