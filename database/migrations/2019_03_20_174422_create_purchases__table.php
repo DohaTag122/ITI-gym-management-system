@@ -24,11 +24,7 @@ class CreatePurchasesTable extends Migration
             $table->foreign('session_id')
                 ->references('id')->on('sessions');
 
-            $table->unsignedBigInteger('package_id')->nullable();
-            $table->foreign('package_id')
-                ->references('id')->on('packages');
-
-            $table->float('init_price')->unsigned();
+            $table->unsignedDecimal('init_price', 10, 8);
             $table->timestamps();
         });
     }

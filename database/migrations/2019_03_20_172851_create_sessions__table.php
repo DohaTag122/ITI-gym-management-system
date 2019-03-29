@@ -21,7 +21,6 @@ class CreateSessionsTable extends Migration
             $table->time('finish_at');
             $table->unsignedDecimal('price', 10,2);
             $table->unsignedBigInteger('gym_id');
-            $table->unsignedBigInteger('session_amount');
             $table->foreign('gym_id')
                 ->references('id')->on('gyms');
             $table->timestamps();
