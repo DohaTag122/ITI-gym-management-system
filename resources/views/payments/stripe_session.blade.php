@@ -5,7 +5,7 @@
         <div class="col-md-6">
             <div class="box box-info">
                 <div class="box-body">
-                    <form action="/charge" method="POST">
+                    <form action="/charge_session" method="POST">
                         {{ csrf_field() }}
                         <div  class="form-group">
                             <label for="member">Member Name</label>
@@ -30,19 +30,14 @@
                             <label for="session">Session</label>
                             <select name="session_id" id="session_id" class="form-control dynamic">
                                 <option value="" >Select Session</option>
-                                @foreach ($data as $row)
-                                    {{info($row->name)}}
-                                    <option value="{{$row->id}}">{{$row->name}}</option>
-                                    {{info($row->name)}}
-                                @endforeach
                             </select>
                         </div>
                         <script
                         id="stripe_id"
                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key="{{ env('STRIPE_KEY') }}"
-                        data-amount="2099"
                         data-name="Session"
+                        data-amount=""
                         data-description="Purchasing Session"
                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                         data-locale="auto"

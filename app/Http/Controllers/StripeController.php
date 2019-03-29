@@ -78,4 +78,21 @@ class StripeController extends Controller
 
         dd($charge);
     }
+    public function stripePost_session(Request $request){
+        dd($request->all());
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        $customer = Customer::create(array(
+            'email' => $request->stripeEmail,
+            'source'  => $request->stripeToken
+        ));
+        $charge = Charge::create(array(
+            'customer' => $customer->id,
+            'amount'   => 1999,
+            'currency' => 'usd'
+        ));
+
+        dd($charge);
+
+    }
 }
