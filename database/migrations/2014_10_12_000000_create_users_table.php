@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('national_id')->default(0);
-            $table->string('image')->default("img/user2-160x160.jpg");
+            $table->string('image')->nullable();
             $table->boolean('banned')->default(0);
             
             $table->rememberToken();
