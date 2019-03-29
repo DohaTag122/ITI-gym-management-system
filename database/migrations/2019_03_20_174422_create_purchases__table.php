@@ -20,15 +20,11 @@ class CreatePurchasesTable extends Migration
             $table->foreign('member_id')
                 ->references('id')->on('members');
 
-            $table->unsignedBigInteger('session_id');
+            $table->unsignedBigInteger('session_id')->nullable();
             $table->foreign('session_id')
                 ->references('id')->on('sessions');
 
-//            $table->string('name');
-
-            $table->float('init_price')->unsigned();
-//            $table->string('credit_card');
-//            $table->boolean('attend')->default(0);
+            $table->unsignedDecimal('init_price', 10, 8);
             $table->timestamps();
         });
     }

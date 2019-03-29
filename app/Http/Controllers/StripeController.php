@@ -13,61 +13,64 @@ class StripeController extends Controller
     public function stripePackage(){
         $gyms = DB::table('gyms')->get();
         $members = DB::table('members')->get();
+        $packages = DB::table('packages')->get();
+
         return view('payments/stripe_package', [
             "gyms"=>$gyms,
             "members"=>$members,
+            "packages"=>$packages,
         ]);
     }
 
-    public function stripeSession(){
+    public function stripeSession(Request $request){
         $gyms = DB::table('gyms')->get();
         $members = DB::table('members')->get();
+        $sessions = DB::table('sessions')->get();
+        $select = 'gym_id';
+        $value = $request->get('value');
+        $dependent = $request->get('dependent');
+        // info("1 ---->".$select);
+        $data = DB::table('sessions')
+            ->where('gym_id', $value)
+            ->get();
         return view('payments/stripe_session', [
             "gyms"=>$gyms,
             "members"=>$members,
+            "sessions"=>$sessions,
+            "data"=>$data
         ]);
     }
 
     
     function fetchPackages(Request $request){
 
-        $select = $request->get('select');
-        $value = $request->get('value');
-        $dependent = $request->get('dependent');
-        $data = DB::table('packages')
-        ->where($select, $value)
+        $value = $request->gym_id;
+
+        $packages = DB::table('packages')
+        ->where('gym_id', $value)
         ->get();
-        
-        $output = '<option value="">Select '.ucfirst($dependent).'</option>';
-        
-        foreach ($data as $row) {
-            $output .= '<option value="'.$row->id.'">'.$row->name.'</option>';
-        }
-        echo $output;
+
+        $data['data'] = $packages;
+        return response()->json($data);
+
+
     }
 
     function fetchSessions(Request $request){
-        $select = 'gym_id';
-        $value = $request->get('value');
-        $dependent = $request->get('dependent');
-        info("1 ---->".$select);
-        $data = DB::table('sessions')
+
+        $value = $request->gym_id;
+        $sessions = \Illuminate\Support\Facades\DB::table('sessions')
             ->where('gym_id', $value)
             ->get();
-        info("2 ---->".$data);
-        $output = '<option value="">Select '.ucfirst($dependent).'</option>';
-            
-        foreach ($data as $row) {
-            info(["3 ---->",$row]);
-            $output .= '<option value="'.$row->id.'">'.$row->name.'</option>';
-        }
-        echo $output;
+        $data['data'] = $sessions;
+        return response()->json($data);
+
     }
 
 
 
-    public function stripePost(Request $request){
-        dd($request->all());
+    public function stripePost_package(Request $request){
+//        dd($request->all());
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $customer = Customer::create(array(
@@ -79,5 +82,7 @@ class StripeController extends Controller
             'amount'   => 1999,
             'currency' => 'usd'
         ));
+
+        dd($charge);
     }
 }

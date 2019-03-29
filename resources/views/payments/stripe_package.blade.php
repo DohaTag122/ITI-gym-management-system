@@ -5,7 +5,7 @@
         <div class="col-md-6">
             <div class="box box-info">
                 <div class="box-body">
-                    <form action="/charge" method="POST">
+                    <form action="/charge_package" method="POST">
                         {{ csrf_field() }}
                         <div  class="form-group">
                             <label for="member">Member Name</label>
@@ -51,36 +51,42 @@
 </section>
 @endsection
 @section('extra_scripts')
-<script>
-$(document).ready(function(){
 
-    $('.dynamic').change(function(){
-        if($(this).val() != ''){
+    <script>
+        $(document).on('change','#gym_id',function() {
 
-            let select = $(this).attr("id");
-            let value = $(this).val();
-            let dependent = $(this).data('dependent');
-            let _token = $('input[name="_token"]').val();
+            var gym_id = $('#gym_id').val();
             $.ajax({
-                url:"{{ route('fetchPackages') }}",
-                method:"POST",
-                data:{
-                    select:select,
-                    value:value,
-                    _token:_token,
-                    dependent:dependent
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                success:function(result){
-                    $('#'+dependent).html(result);
-                }
-            })
-        }
-    });
+                url: '{{ route('fetchPackages') }}',
+                dataType : 'json',
+                type: 'get',
+                data: {
+                    gym_id:gym_id,
+                },
 
-    $('#gym').change(function(){
-        $('#package').val('');
-    });
-});
-</script>
+                success:function(response) {
+
+                    console.log(response);
+                    var $dropdown = $('#package');
+                    $dropdown.find('option').remove();
+                    $dropdown.append($("<option />").val('').text(''));
+                    if(response['data'].length >0)
+                    {
+                        for(var i =0;i<response['data'].length;i++)
+                        {   console.log(i);
+                            $dropdown.append($("<option />").val(response['data'][i]['id']).text(response['data'][i]['name']).attr('price',response['data'][i]['price']));
+                        }
+                    }
+
+
+
+                },
+
+            });
+        });
+    </script>
 
 @endsection

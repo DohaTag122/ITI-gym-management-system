@@ -27,10 +27,10 @@ class ExceedLimit implements Rule
     public function passes($attribute, $value)
     {
         if ($value) {
-            if (array_sum($this->data['session_amount']) > $this->data['number_of_sessions']) {
-            return false;
+            if (sizeof($this->data['session_id']) <= $this->data['number_of_sessions']) {
+            return true;
             }else{
-                return true;
+                return false;
             }
 
         }

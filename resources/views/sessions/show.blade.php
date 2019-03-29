@@ -41,6 +41,7 @@
                             <td>{{ \Carbon\Carbon::parse($session->created_at)->format('h:i A \\, l jS \\of F Y ')}}</td>
                         </tr>
                     </table>
+                    <a href="{{route('sessions.index')}}" class="btn btn-danger"><i class="far fa-arrow-alt-circle-left"></i>&nbsp;Back</a>
                 </div>
             </div>
         </div>

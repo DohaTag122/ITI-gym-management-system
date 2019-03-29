@@ -19,8 +19,9 @@
 @endif
 
 
-   <form action="{{route('users.store')}}" method="POST">
+   <form action="{{route('users.store')}}" method="POST"  enctype="multipart/form-data">
        @csrf
+      
        <div class="form-group">
            <label for="exampleInputEmail1">Name</label>
            <input name="name" type="text" class="form-control" >
@@ -40,7 +41,7 @@
 
        <div class="form-group">
            <label for="exampleInputEmail1">Upload Image </label>
-           <input name="image" type="text" class="form-control"  >
+           <input name="image" type="file" value="img/user2-160x160.jpg" class="form-control"  >
        </div>
        
        

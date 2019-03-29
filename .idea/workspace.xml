@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="caa65f93-9636-4143-bcdd-08a4c1872f0c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/Attendances/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gym-management-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gym-management-system.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Attendance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Attendance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Gym.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Gym.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/MemberController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/MemberController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/includes/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/includes/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/package/StorePackageRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/package/StorePackageRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/package/UpdatePackageRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/package/UpdatePackageRequest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="24" column="11" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="11" />
+            <state relative-caret-position="130">
+              <caret line="109" column="53" selection-start-line="109" selection-start-column="37" selection-end-line="109" selection-end-column="53" />
               <folding>
                 <element signature="e#7#389#0#PHP" expanded="true" />
               </folding>
@@ -38,52 +29,64 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AttendanceController.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PackageController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-              <folding>
-                <element signature="e#40#59#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="135">
+              <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Attendance.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Requests/package/StorePackageRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Session.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="29" column="54" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
-              <folding>
-                <element signature="e#23#62#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Gym.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+            <state relative-caret-position="152">
+              <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/Attendances/index.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Requests/package/UpdatePackageRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="155" column="9" lean-forward="true" selection-start-line="155" selection-start-column="9" selection-end-line="155" selection-end-column="9" />
+            <state relative-caret-position="152">
+              <caret line="26" column="90" selection-start-line="26" selection-start-column="90" selection-end-line="26" selection-end-column="90" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/packages/create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="80" column="21" lean-forward="true" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StripeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="58" column="26" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/payments/stripe_package.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="98">
+              <caret line="69" column="26" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/payments/stripe_session.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="82" column="89" lean-forward="true" selection-start-line="82" selection-start-column="89" selection-end-line="82" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -92,16 +95,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&lt;table</find>
-      <find>post</find>
-      <find>form_delete</find>
-      <find>delete_item</find>
-      <find>delete_toggle</find>
-      <find>city</find>
-      <find>extra_scripts</find>
-      <find>$jwt_token</find>
-      <find>user</find>
-      <find>Illuminate\Auth\Middleware\EnsureEmailIsVerified</find>
       <find>routeMiddleware</find>
       <find>toMail</find>
       <find>User</find>
@@ -122,6 +115,16 @@
       <find>attend</find>
       <find>attenda</find>
       <find>Data Table With Full Features</find>
+      <find>stripe/package</find>
+      <find>stripePackage</find>
+      <find>fetchPackages</find>
+      <find>charge</find>
+      <find>stripePost</find>
+      <find>select2</find>
+      <find>packages/create</find>
+      <find>fetchSessions</find>
+      <find>gym_id</find>
+      <find>session_id</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -130,12 +133,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_20_165941_create_gyms_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_20_170802_create_coaches_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_20_172056_create_user_city_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_20_173818_create_packages__table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_20_174024_create_session_package__table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_20_174231_create_session_coach__table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_20_182006_create_user_details_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_19_002201_create_permission_tables.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_20_172851_create_sessions__table.php" />
@@ -147,7 +144,6 @@
         <option value="$PROJECT_DIR$/vendor/tymon/jwt-auth/src/JWTAuth.php" />
         <option value="$PROJECT_DIR$/config/auth.php" />
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
         <option value="$PROJECT_DIR$/app/Http.1/Controllers/Api/MemberController.php" />
         <option value="$PROJECT_DIR$/app/City.php" />
@@ -178,9 +174,16 @@
         <option value="$PROJECT_DIR$/app/Attendance.php" />
         <option value="$PROJECT_DIR$/app/Gym.php" />
         <option value="$PROJECT_DIR$/app/Session.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/Attendances/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AttendanceController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/StripeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/packages/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/payments/stripe_session.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/payments/stripe_package.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/package/StorePackageRequest.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/package/UpdatePackageRequest.php" />
       </list>
     </option>
   </component>
@@ -299,6 +302,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -315,20 +319,22 @@
               <item name="gym-management-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="gym-management-system" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Console" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="gym-management-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="gym-management-system" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Console" type="462c0819:PsiDirectoryNode" />
-              <item name="Commands" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Requests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="gym-management-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="gym-management-system" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Notifications" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Requests" type="462c0819:PsiDirectoryNode" />
+              <item name="package" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="gym-management-system" type="b2602c69:ProjectViewProjectNode" />
@@ -389,10 +395,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../The-School" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -401,13 +407,13 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/Attendances" />
       <recent name="$PROJECT_DIR$/resources/views/layouts" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -459,12 +465,14 @@
       <workItem from="1553597096985" duration="3228000" />
       <workItem from="1553619882062" duration="7796000" />
       <workItem from="1553693524811" duration="16363000" />
-      <workItem from="1553812565341" duration="11024000" />
+      <workItem from="1553812565341" duration="11147000" />
+      <workItem from="1553871586191" duration="1628000" />
+      <workItem from="1553873942809" duration="6541000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137841000" />
+    <option name="totallyTimeSpent" value="146133000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -480,7 +488,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.25937748" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26815644" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49960095" visible="true" weight="0.37459284" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
@@ -501,9 +509,9 @@
     </layout>
     <layout-to-restore>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.25778133" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26815644" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49960095" visible="true" weight="0.31758958" />
+      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49960095" visible="true" weight="0.37459284" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
@@ -525,50 +533,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/auth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="52" column="11" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/tymon/jwt-auth/src/Http/Middleware/Authenticate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="15" column="4" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding>
-            <element signature="e#7#219#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="62" column="29" lean-forward="true" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_23_015415_add_gym_id_column_to_users.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_20_174024_create_session_package__table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#23#63#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/includes/head.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -767,13 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -811,13 +768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PackageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="118" column="53" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/Users/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -832,37 +782,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Gym.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="29" column="54" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="24" column="11" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="11" />
-          <folding>
-            <element signature="e#7#389#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AttendanceController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="360">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="e#40#59#0#PHP" expanded="true" />
           </folding>
@@ -872,14 +795,97 @@
     <entry file="file://$PROJECT_DIR$/app/Attendance.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="29" column="54" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
+          <folding>
+            <element signature="e#23#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Gym.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/Attendances/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="155" column="9" lean-forward="true" selection-start-line="155" selection-start-column="9" selection-end-line="155" selection-end-column="9" />
+        <state relative-caret-position="77">
+          <caret line="142" column="39" selection-start-line="142" selection-start-column="39" selection-end-line="142" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="42" column="38" lean-forward="true" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="109" column="53" selection-start-line="109" selection-start-column="37" selection-end-line="109" selection-end-column="53" />
+          <folding>
+            <element signature="e#7#389#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StripeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="58" column="26" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/packages/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="80" column="21" lean-forward="true" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/payments/stripe_session.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="82" column="89" lean-forward="true" selection-start-line="82" selection-start-column="89" selection-end-line="82" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/payments/stripe_package.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="69" column="26" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PackageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/package/StorePackageRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/package/UpdatePackageRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="26" column="90" selection-start-line="26" selection-start-column="90" selection-end-line="26" selection-end-column="90" />
         </state>
       </provider>
     </entry>
