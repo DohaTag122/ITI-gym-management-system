@@ -48,23 +48,23 @@ class PackageController extends Controller
      */
     public function store(StorePackageRequest $request)
     {
-
-
-
+    
+        $sessions = Session::all();
+        $number_of_sessions = sizeof($request->session);
+        $session_prices = 0;
+        foreach ($request->session as $session_request) {
+            foreach($sessions as $session){
+                if($session_request == $session->id){
+                    $session_prices += $session->price;
+                }
+            }
+        }
         $package = new Package();
-        $package->number_of_sessions =2;
-        $package->package_price =2;
+        $package->number_of_sessions = $number_of_sessions;
+        $package->package_price = $session_prices;
         $package->name =$request->input('name');
         $package->gym_id =$request->input('gym_id');
         $package->save();
-//        dd($request);
-//
-//
-//        foreach ($request->input("session_amount") as $key=>$single_amount) {
-//            $session = Session::find($request->get('session_id')[$key]);
-//            $package->sessions()->attach($session, ["session_amount"=> $single_amount]);
-//        }
-
         return redirect()->route('packages.index');
     }
 
@@ -95,8 +95,9 @@ class PackageController extends Controller
      */
     public function edit(Package $package)
     {
+        $sessions = Session::all();
         $gyms = Gym::all();
-        return view('packages.edit', compact('package', 'gyms'));
+        return view('packages.edit', compact('package', 'gyms', 'sessions'));
 
     }
 

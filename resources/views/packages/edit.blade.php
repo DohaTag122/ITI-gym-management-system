@@ -21,18 +21,6 @@
                             <label for="name">Package Name</label>
                             <input name="name" type="text" class="form-control" id="name"  value={{$package->name}}>
                         </div>
-                        <div class="form-group">
-                            <label for="number_of_sessions">No. Of sessions</label>
-                            <input type="number" name="number_of_sessions" value="{{$package->number_of_sessions}}" class="form-control"></input>
-                        </div>
-                        <div class="form-group">
-                            <label for="package_price">Package Price</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">$</span>
-                                <input class="form-control" type="text" name="package_price" id="package_price" value="{{$package->package_price}}">
-                                <span class="input-group-addon">.00</span>
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <label for="gym_id">Gym</label>
@@ -46,6 +34,15 @@
                                 @endforeach
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label>Sessions</label>
+                            <select id="sessions_select" name="session[]" class="form-control select2" multiple="multiple" data-placeholder="Select a Session" style="width:100%">
+                                 @foreach($sessions as $session)
+                                    <option value="{{$session->id}}">{{$session->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <a href="{{route('packages.index')}}" class="btn btn-danger"><i class="far fa-arrow-alt-circle-left"></i>&nbsp;Back</a>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -56,4 +53,113 @@
 </section>
 
 
+@endsection
+@section('extra_scripts')
+    <script>
+        $(document).on('change','#gym_id',function() {
+
+            var gym_id = $('#gym_id').val();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '{{ route('fetchSessions') }}',
+                dataType : 'json',
+                type: 'get',
+                data: {
+                    gym_id:gym_id,
+                },
+
+                success:function(response) {
+
+                    console.log(response);
+                    var $dropdown = $('#sessions_select');
+                    $dropdown.select2('destroy');
+
+                    $dropdown.find('option').remove();
+                    if(response['data'].length > 0 )
+                    {
+                        for(var i =0;i<response['data'].length;i++)
+                        {   console.log(i);
+                            $dropdown.append($("<option />").val(response['data'][i]['id']).text(response['data'][i]['name']));
+                        }
+                    }
+
+                    $dropdown.select2();
+
+                },
+
+        });
+        });
+    </script>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' })
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true;
+    })
+
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass   : 'iradio_minimal-blue'
+    })
+    //Red color scheme for iCheck
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+      checkboxClass: 'icheckbox_minimal-red',
+      radioClass   : 'iradio_minimal-red'
+    })
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass   : 'iradio_flat-green'
+    })
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    //Timepicker
+    $('.timepicker').timepicker({
+      showInputs: false
+    })
+  })
+</script>
+<script>
+    $('.select2').select2();
+</script>
 @endsection
