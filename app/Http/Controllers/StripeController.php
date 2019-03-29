@@ -99,8 +99,6 @@ class StripeController extends Controller
             'currency' => 'usd'
         ));
 
-//        Purchase::create($request->all());
-
         return redirect('/stripe/package');
 //        dd($charge);
     }
