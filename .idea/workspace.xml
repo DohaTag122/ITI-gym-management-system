@@ -2,10 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="caa65f93-9636-4143-bcdd-08a4c1872f0c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Users/gymManger.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PackageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PackageController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StripeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StripeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/payments/stripe_package.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/payments/stripe_package.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Rules/ExceedLimit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rules/ExceedLimit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Session.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_20_172851_create_sessions__table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_20_172851_create_sessions__table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_20_173818_create_packages__table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_20_173818_create_packages__table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_03_20_174422_create_purchases__table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_03_20_174422_create_purchases__table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/RolesAndPermissionsSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RolesAndPermissionsSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Users/cityManger.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Users/cityManger.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Users/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/includes/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/includes/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/packages/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/packages/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/packages/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/packages/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/payments/stripe_session.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/payments/stripe_session.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sessions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sessions/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sessions/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sessions/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sessions/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sessions/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
-              <caret line="104" column="27" selection-start-line="104" selection-start-column="13" selection-end-line="104" selection-end-column="27" />
+              <caret line="107" column="27" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="27" />
               <folding>
                 <element signature="e#7#389#0#PHP" expanded="true" />
               </folding>
@@ -34,8 +50,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StripeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="73" column="18" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
+            <state relative-caret-position="272">
+              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
             </state>
           </provider>
         </entry>
@@ -53,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/resources/views/payments/stripe_session.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="152">
-              <caret line="79" column="21" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="21" />
+              <caret line="84" column="21" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -426,12 +442,12 @@
       <workItem from="1553693524811" duration="16363000" />
       <workItem from="1553812565341" duration="11147000" />
       <workItem from="1553871586191" duration="1628000" />
-      <workItem from="1553873942809" duration="5178000" />
+      <workItem from="1553873942809" duration="5650000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144770000" />
+    <option name="totallyTimeSpent" value="145242000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -812,14 +828,14 @@
     <entry file="file://$PROJECT_DIR$/resources/views/payments/stripe_session.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
-          <caret line="79" column="21" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="21" />
+          <caret line="84" column="21" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
-          <caret line="104" column="27" selection-start-line="104" selection-start-column="13" selection-end-line="104" selection-end-column="27" />
+          <caret line="107" column="27" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="27" />
           <folding>
             <element signature="e#7#389#0#PHP" expanded="true" />
           </folding>
@@ -842,8 +858,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StripeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="73" column="18" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
+        <state relative-caret-position="272">
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
         </state>
       </provider>
     </entry>

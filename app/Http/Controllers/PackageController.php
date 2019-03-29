@@ -66,8 +66,14 @@ class PackageController extends Controller
      */
     public function show(Package $package)
     {
+        
+        $gyms = Gym::all();
+        $sessions = Session::all();
+        
         return view('packages.show', [
-            "package"=>$package
+            "package"=>$package,
+            "gyms"=>$gyms,
+            "sessions"=>$sessions
         ]);
     }
 

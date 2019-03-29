@@ -65,6 +65,14 @@
                                 <span class="input-group-addon">.00</span>
                             </div>
                         </div>
+                        <div  class="form-group">
+                            <label for="gym_id">Gym</label>
+                            <select class="form-control" name="gym_id">
+                                @foreach($gyms as $gym)
+                                    <option value="{{$gym->id}}">{{$gym->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label>Session Coaches</label>
                             <select name="coach[]" class="form-control select2" multiple="multiple" data-placeholder="Select a Coach" style="width:100%">
@@ -73,14 +81,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div  class="form-group">
-                            <label for="gym_id">Gym</label>
-                            <select class="form-control" name="gym_id">
-                                @foreach($gyms as $gym)
-                                    <option value="{{$gym->id}}">{{$gym->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>            
+            
                         <a href="{{route('sessions.index')}}" class="btn btn-danger"><i class="far fa-arrow-alt-circle-left"></i>&nbsp;Back</a>
                         <button type="submit" class="btn btn-primary"><i class="fas fa-clipboard-check"></i>&nbsp;Create</button>
                     </form>

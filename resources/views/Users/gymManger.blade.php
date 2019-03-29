@@ -71,7 +71,10 @@
 </section>
 <!-- /.content -->
 
-
+@role('cityManager')
+<!-- City manager will have this permission also  -->
+<a href="{{route('users.create')}}" class="btn btn-success">Add User</a>
+@endrole
 
 
 
@@ -91,7 +94,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/cityMangers_table',
+                url: '/gymMangers_table',
                 dataType : 'json',
                 type: 'post',
                 // processData: false,

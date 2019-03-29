@@ -78,7 +78,7 @@ Route::group(['middleware' => ['role:admin']], function () {
  ->name('users.unban');
  Route::get('/home', ['uses'=>'HomeController@index', 'middleware' => 'forbid-banned-user'])->name('home');
 Route::get('send','MailController@send')->name('send');
-Route::group(['middleware' => ['role:admin|cityMangaer']], function () {
+Route::group(['middleware' => ['role:admin|cityManager']], function () {
    
     Route::get('/cityMangers','UserController@ShowCityManger')->name('ShowCityMangers');
     Route::post('/cityMangers_table', 'UserController@cityMangers_table');
@@ -86,7 +86,10 @@ Route::group(['middleware' => ['role:admin|cityMangaer']], function () {
 });
 
 
-
+   
+    
+Route::get('/gymMangers','UserController@ShowGymManger')->name('ShowGymMangers');
+Route::post('/gymMangers_table', 'UserController@gymMangers_table');
 
 
 

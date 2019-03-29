@@ -45,7 +45,7 @@
             </li>
             @endrole
             <li class="{{ (request()->is('gym_managers*')) ? 'active' : '' }}">
-                <a href="{{route('users.index')}}">
+                <a href="{{route('ShowGymMangers')}}">
                     <i class="fa fa-th"></i> <span>Gym Managers</span>
                 </a>
             </li>
