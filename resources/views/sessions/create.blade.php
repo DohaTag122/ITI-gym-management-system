@@ -67,7 +67,7 @@
                         </div>
                         <div  class="form-group">
                             <label for="gym_id">Gym</label>
-                            <select class="form-control" name="gym_id">
+                            <select class="form-control" name="gym_id" id="gym_id">
                                 @foreach($gyms as $gym)
                                     <option value="{{$gym->id}}">{{$gym->name}}</option>
                                 @endforeach
@@ -75,7 +75,7 @@
                         </div>
                         <div class="form-group">
                             <label>Session Coaches</label>
-                            <select name="coach[]" class="form-control select2" multiple="multiple" data-placeholder="Select a Coach" style="width:100%">
+                            <select name="coach[]" class="form-control select2" multiple="multiple" data-placeholder="Select a Coach" style="width:100%" id="Coaches">
                                 @foreach($coaches as $coach)
                                     <option value="{{$coach->id}}">{{$coach->name}}</option>
                                 @endforeach
@@ -114,15 +114,18 @@
                 success:function(response) {
 
                     console.log(response);
-                    var $dropdown = $('#session_id');
-                    $dropdown.find('option').remove();
-                    $dropdown.append($("<option />").val('').text(''));
-                    if(response['data'].length >0) {
-                        for (var i = 0; i < response['data'].length; i++) {
-                            console.log(i);
-                            $dropdown.append($("<option />").val(response['data'][i]['id']).text(response['data'][i]['name']).attr('price', response['data'][i]['price']));
+
+                        var $dropdown = $('#Coaches');
+                        $dropdown.find('option').remove();
+                        $dropdown.append($("<option />").val('').text(''));
+                         if(response['data'].length >0)
+                         {
+                             for(var i =0;i<response['data'].length;i++)
+                            {   console.log(i);
+                                 $dropdown.append($("<option />").val(response['data'][i]['id']).text(response['data'][i]['name']).attr('price',response['data'][i]['price']));
+                            }
                         }
-                    }
+
 
                 },
 

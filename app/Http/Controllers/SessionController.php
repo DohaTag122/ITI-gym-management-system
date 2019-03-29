@@ -119,13 +119,13 @@ class SessionController extends Controller
         return datatables()->of(Session::with('gym'))->toJson();
     }
 
-    function fetchCoaches(Request $request)
+    public function fetchCoaches(Request $request)
     {
         $value = $request->gym_id;
-        $sessions = \Illuminate\Support\Facades\DB::table('coaches')
+        $coaches = \Illuminate\Support\Facades\DB::table('coaches')
             ->where('gym_id', $value)
             ->get();
-        $data['data'] = $sessions;
+        $data['data'] = $coaches;
         return response()->json($data);
     }
 
