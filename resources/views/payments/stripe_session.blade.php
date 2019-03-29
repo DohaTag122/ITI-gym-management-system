@@ -55,17 +55,12 @@
 </section>
 @endsection
 @section('extra_scripts')
-<script>
-$(document).ready(function(){
+    <script>
+        $(document).on('change','#gym_id',function() {
 
-    $('.dynamic').change(function(){
-        if($(this).val() != ''){
-
-            let select = $(this).attr("id");
-            let value = $(this).val();
-            let dependent = $(this).data('dependent');
-            let _token = $('input[name="_token"]').val();
+            var gym_id = $('#gym_id').val();
             $.ajax({
+<<<<<<< HEAD
                 url:"{{ route('stripe.session') }}",
                 method:"GET",
                 data:{
@@ -81,11 +76,32 @@ $(document).ready(function(){
             })
         }
     });
+=======
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '{{ route('fetchSessions') }}',
+                dataType : 'json',
+                type: 'get',
+                data: {
+                    gym_id:gym_id,
+                },
+>>>>>>> fe563fb186d2805eec92b13a0aa2ce21f0758a2c
 
-    $('#gym').change(function(){
-        $('#session_id').val('');
-    });
-});
-</script>
+                success:function(response) {
 
+                    console.log(response);
+                    var $dropdown = $('#session_id');
+                    $dropdown.find('option').remove();
+                    for(var i =0;i<response['data'].length;i++)
+                    {   console.log(i);
+                        $dropdown.append($("<option />").val(response['data'][i]['id']).text(response['data'][i]['name']));
+                    }
+
+
+                },
+
+        });
+        });
+    </script>
 @endsection

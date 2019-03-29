@@ -26,7 +26,8 @@ class StoreUserRequest extends FormRequest
         return [
             "national_id"=>"unique:users",
             "email"=>"unique:users",
-            "password"=>"min:6"
+            "password"=>"min:6",
+            "image"=>'image|mimes:jpeg,jpg'
         ];
 
 
@@ -38,7 +39,8 @@ class StoreUserRequest extends FormRequest
             'national_id.unique' => 'National_ID can not be duplicate',
             'email.unique' => 'Email can not be duplicate',
             'password.unique' => 'The min char is 6',
-
+            'image.image'=>'Not valid Image',
+            'image.mimes'=>'Not valid Extnion'
             
         ];
     }

@@ -12,7 +12,8 @@ use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\EditUserRequest;
-
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -54,6 +55,7 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {  // dd( User::create(request()->all()));
         // dd(request()->all());
+        // dd($request->all());
        $user= User::create([
             "name" => $request->name,
             "email" => $request->email,
@@ -61,9 +63,23 @@ class UserController extends Controller
             "national_id"=>$request->national_id,
             "image" => $request->image,
             "ban" => $request->ban,
-            "gymid" => $request->gymid,
+            "gymid" => $request->gym_id,
             "role" => $request->role,
        ]);
+
+       //Storage::put($request->image, "uploades");
+      //$path = Storage::putFile('upload', $request->image,$request->image);
+
+       // $avatarName = $request->image;
+         //$user->image = $avatarName;
+       
+        if($request->image==""){
+            $user->image = "img/user2-160x160.jpg";
+        }
+        if($request->image){
+            $request->image->storeAs('upload',$request->image);
+           }
+
        
         if(request()->all()['email']=="admin@admin.com")
         { 
@@ -184,7 +200,7 @@ class UserController extends Controller
         ]);
     }
     public function cityMangers_table(){
-        $users = User::role('admin')->get();
+        $users = User::role('cityManager')->get();
         return datatables($users)->toJson();
 
     }
