@@ -65,6 +65,10 @@
                                 <span class="input-group-addon">.00</span>
                             </div>
                         </div>
+                        <div  class="form-group">
+                            <label for="session_amount">Session amount </label>
+                            <input class="form-control" type="number" name="session_amount" id="session_amount">
+                        </div>
                         <div class="form-group">
                             <label>Session Coaches</label>
                             <select name="coach[]" class="form-control select2" multiple="multiple" data-placeholder="Select a Coach" style="width:100%">
