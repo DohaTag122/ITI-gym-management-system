@@ -12,7 +12,6 @@
                             <th>Starts At</th>
                             <th>Finishes At </th>
                             <th>Price</th>
-                            <th>Session Amount</th>
                             <th>Coaches</th>
                             <th>Gym</th>
                             <th>Created At</th>
@@ -23,7 +22,6 @@
                             <td>{{\Carbon\Carbon::parse($session->start_at)->format('h:i A')}}</td>
                             <td>{{\Carbon\Carbon::parse($session->finish_at)->format('h:i A')}}</td>
                             <td>{{$session->price}}</td>
-                            <td>{{$session->session_amount}}</td>
                             <td>
                                 @foreach($coaches as $coach)
                                     @foreach ($session->coaches as $pivot_coach)
