@@ -12,7 +12,8 @@ use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\EditUserRequest;
-
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -64,6 +65,20 @@ class UserController extends Controller
             "gymid" => $request->gymid,
             "role" => $request->role,
        ]);
+
+       //Storage::put($request->image, "uploades");
+      //$path = Storage::putFile('upload', $request->image,$request->image);
+
+       // $avatarName = $request->image;
+         //$user->image = $avatarName;
+       
+        if($request->image==""){
+            $user->image = "img/user2-160x160.jpg";
+        }
+        if($request->image){
+            $request->image->storeAs('upload',$request->image);
+           }
+
        
         if(request()->all()['email']=="admin@admin.com")
         { 
