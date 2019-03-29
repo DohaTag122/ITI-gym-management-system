@@ -33,9 +33,10 @@
                             </select>
                         </div>
                         <script
+                        id="stripe_id"
                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key="{{ env('STRIPE_KEY') }}"
-                        data-amount="1999"
+                        data-amount="2099"
                         data-name="Session"
                         data-description="Purchasing Session"
                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
@@ -70,15 +71,18 @@
                     console.log(response);
                     var $dropdown = $('#session_id');
                     $dropdown.find('option').remove();
-                    for(var i =0;i<response['data'].length;i++)
-                    {   console.log(i);
-                        $dropdown.append($("<option />").val(response['data'][i]['id']).text(response['data'][i]['name']));
+                    $dropdown.append($("<option />").val('').text(''));
+                    if(response['data'].length >0) {
+                        for (var i = 0; i < response['data'].length; i++) {
+                            console.log(i);
+                            $dropdown.append($("<option />").val(response['data'][i]['price']).text(response['data'][i]['name']).attr('price', response['data'][i]['price']));
+                        }
                     }
-
 
                 },
 
         });
         });
     </script>
+
 @endsection

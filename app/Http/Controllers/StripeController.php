@@ -31,19 +31,17 @@ class StripeController extends Controller
     
     function fetchPackages(Request $request){
 
-        $select = $request->get('select');
-        $value = $request->get('value');
-        $dependent = $request->get('dependent');
-        $data = DB::table('packages')
-        ->where($select, $value)
+
+        $value = $request->gym_id;
+
+        $packages = DB::table('packages')
+        ->where('gym_id', $value)
         ->get();
-        
-        $output = '<option value="">Select '.ucfirst($dependent).'</option>';
-        
-        foreach ($data as $row) {
-            $output .= '<option value="'.$row->id.'">'.$row->name.'</option>';
-        }
-        echo $output;
+
+        $data['data'] = $packages;
+        return response()->json($data);
+
+
     }
 
     function fetchSessions(Request $request){
@@ -59,8 +57,8 @@ class StripeController extends Controller
 
 
 
-    public function stripePost(Request $request){
-        dd($request->all());
+    public function stripePost_package(Request $request){
+//        dd($request->all());
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $customer = Customer::create(array(
@@ -72,5 +70,7 @@ class StripeController extends Controller
             'amount'   => 1999,
             'currency' => 'usd'
         ));
+
+        dd($charge);
     }
 }
