@@ -7,6 +7,8 @@ use Stripe\Stripe;
 use Stripe\Customer;
 use Stripe\Charge;
 use DB;
+use App\Session;
+use App\Purchase;
 
 class StripeController extends Controller
 {
@@ -63,7 +65,7 @@ class StripeController extends Controller
 
 
     public function stripePost_package(Request $request){
-        dd($request->all());
+        // dd($request->all());
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $customer = Customer::create(array(
@@ -79,7 +81,7 @@ class StripeController extends Controller
 
         $sessions = $package->sessions;
 
-        $price =0;
+        $price = 0;
         foreach ($sessions as $session)
         {
             $purchase['member_id'] = $member_id;
@@ -98,6 +100,29 @@ class StripeController extends Controller
     }
 
     public function stripePost_session(Request $request){
+        Stripe::setApiKey(env('STRIPE_SECRET'));
 
+        $customer = Customer::create(array(
+            'email' => $request->stripeEmail,
+            'source'  => $request->stripeToken
+        ));
+
+        $session_id = $request->input('session_id');
+        $member_id = $request->input('member_id');
+        
+        $session = Session::find($session_id);
+
+        $purchase['member_id'] = $member_id;
+        $purchase['session_id'] = $session->id;
+        $purchase['init_price'] = $session->price;
+        // dd($purchase);
+        Purchase::create($purchase);
+        $charge = Charge::create(array(
+            'customer' => $customer->id,
+            'amount'   => $session->price,
+            'currency' => 'usd'
+        ));
+
+        return redirect()->back()->with('message', 'You purchased the session successfully!');
     }    
 }

@@ -5,6 +5,11 @@
         <div class="col-md-6">
             <div class="box box-info">
                 <div class="box-body">
+                    @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                    </div>
+                    @endif
                     <form action="/charge_session" method="POST">
                         {{ csrf_field() }}
                         <div  class="form-group">
