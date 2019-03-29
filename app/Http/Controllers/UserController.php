@@ -55,6 +55,7 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {  // dd( User::create(request()->all()));
         // dd(request()->all());
+        // dd($request->all());
        $user= User::create([
             "name" => $request->name,
             "email" => $request->email,
@@ -62,7 +63,7 @@ class UserController extends Controller
             "national_id"=>$request->national_id,
             "image" => $request->image,
             "ban" => $request->ban,
-            "gymid" => $request->gymid,
+            "gymid" => $request->gym_id,
             "role" => $request->role,
        ]);
 
@@ -199,7 +200,7 @@ class UserController extends Controller
         ]);
     }
     public function cityMangers_table(){
-        $users = User::role('admin')->get();
+        $users = User::role('cityManager')->get();
         return datatables($users)->toJson();
 
     }
