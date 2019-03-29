@@ -162,16 +162,16 @@ class CoachController extends Controller
       
         if($logged_user->hasRole('cityManager'))
         {
-            
-                $gyms_in_city = Gym::where("city_manager_id",$logged_user->id)->get();
-                // dd($gyms_in_city);
-                if(!$gyms_in_city->isEmpty()){
-                    return datatables(Coach::where("gym_id",$gyms_in_city->id)->get())->toJson();
+            if(Gym::where("city_manager_id",$logged_user->id)->get()){
+                $ids_of_gyms_in_city = Gym::where("city_manager_id",$logged_user->id)->get('id');
+                if(Coach::where("gym_id",$ids_of_gyms_in_city)->get()){
+                    return datatables(Coach::where("gym_id",$ids_of_gyms_in_city)->get())->toJson();
                 }else{
                     return response()->json(array('user'=>$logged_user->id));
                 }
-                // $coachs = Coach::where("gym_id",$gyms_in_city->id)->get();
-                // return datatables($coachs)->toJson();
+            }else{
+                return response()->json(array('user'=>$logged_user->id));
+            }
         }
         if($logged_user->hasRole('gymManager'))
         {       

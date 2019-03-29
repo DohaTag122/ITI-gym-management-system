@@ -118,7 +118,7 @@
                 { data: 'name', name: 'name' },
                 /* Image */ {
                     mRender: function (data, type, row) {
-                        return '<img src="/img/'+row.image+'" height="50" width="50">'
+                        return '<img src="{{asset('storage/')}}/'+row.image+'" height="50" width="50">'
                     }
                 },
                 { data: 'created_at', name: 'created_at' },

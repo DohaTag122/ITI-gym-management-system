@@ -10,9 +10,9 @@ use App\City;
 use App\User;
 use DB;
 
-
 use App\Http\Requests\gyms\StoreGymRequest;
 use App\Http\Requests\gyms\UpdateGymRequest;
+use Illuminate\Support\Facades\Storage;
 
 class GymController extends Controller
 {
@@ -23,7 +23,6 @@ class GymController extends Controller
      */
     public function index()
     {
-        //dd(auth()->user());
         return view ('gyms.index');
     }
 
@@ -35,17 +34,12 @@ class GymController extends Controller
     {
         $gyms   = Gym::all();
         $cities = City::all();
-        //$managers_of_city = City::find(1)->City_manager;
-        //$managers_of_cities = City::all()->City_manager;
+        
         return view('gyms.create',[
             'gyms' => $gyms,
             'cities' => $cities,
-            //'managers_of_cities' => $managers_of_cities,
         ]);
-        // foreach ($city->City_manager as $cc){
-        //     dd($city->City_manager);
-        // }
-    
+        
     }
 
     /**
@@ -56,12 +50,15 @@ class GymController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $file = $request->file('image');
-        // dd($request->all());
-        // $destinationPath = 'public/img';
-        // $file->move($destinationPath,$file->getClientOriginalName());
-        Gym::create($request->all());
+        $logged_user = Auth::user();
+        $path = Storage::disk('public')->put('gym_img', $request->image);
+
+       Gym::create([
+        "name"   => $request->name,
+        "city_id"=> $request->city_id,
+        "image"  => $path,
+        "city_manager_id"=> $logged_user->id,
+    ]);
         return redirect()->route('gyms.index');
     }
 
@@ -128,7 +125,9 @@ class GymController extends Controller
 
         if($logged_user->hasRole('admin'))
         {
-            return datatables()->of(Gym::query())->toJson();
+            $manager_name = DB::table('users')->select('name')->get();
+            $gyms = Gym::all()->rightJoin('users', 'users.gym_id', '=', 'gyms.id');
+            return datatables()->of($gyms)->toJson();
         }
       
         if($logged_user->hasRole('cityManager'))
