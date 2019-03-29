@@ -37,20 +37,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Requests/package/StorePackageRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
+            <state relative-caret-position="182">
+              <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Requests/package/UpdatePackageRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="26" column="90" selection-start-line="26" selection-start-column="90" selection-end-line="26" selection-end-column="90" />
+            <state relative-caret-position="182">
+              <caret line="27" column="48" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -182,8 +182,8 @@
         <option value="$PROJECT_DIR$/resources/views/packages/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/payments/stripe_session.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/payments/stripe_package.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/package/StorePackageRequest.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/package/UpdatePackageRequest.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/package/StorePackageRequest.php" />
       </list>
     </option>
   </component>
@@ -467,12 +467,12 @@
       <workItem from="1553693524811" duration="16363000" />
       <workItem from="1553812565341" duration="11147000" />
       <workItem from="1553871586191" duration="1628000" />
-      <workItem from="1553873942809" duration="6541000" />
+      <workItem from="1553873942809" duration="6625000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146133000" />
+    <option name="totallyTimeSpent" value="146217000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -488,9 +488,9 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26815644" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26815644" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49960095" visible="true" weight="0.37459284" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49960095" visible="true" weight="0.37459284" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
@@ -875,17 +875,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/package/StorePackageRequest.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/package/UpdatePackageRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
+        <state relative-caret-position="182">
+          <caret line="27" column="48" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/package/UpdatePackageRequest.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/package/StorePackageRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="26" column="90" selection-start-line="26" selection-start-column="90" selection-end-line="26" selection-end-column="90" />
+        <state relative-caret-position="182">
+          <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
         </state>
       </provider>
     </entry>

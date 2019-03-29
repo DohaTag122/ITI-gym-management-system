@@ -26,7 +26,6 @@ class UpdatePackageRequest extends FormRequest
         return [
             'name'=>"bail|required|Alpha|max:16|unique:packages,name,".$this->package->id,
             'gym_id'=>"required|exists:gyms,id",
-            'session_amount'=>['required', new ExceedLimit(Input::get())]
         ];
     }
 }
