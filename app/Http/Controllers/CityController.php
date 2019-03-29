@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DB;
+
 use App\City;
 use App\Http\Requests\cities\StoreCityRequest;
 use App\Http\Requests\cities\UpdateCityRequest;
@@ -103,6 +106,19 @@ class CityController extends Controller
 
     public function cities_table()
     {
-        return datatables()->of(City::query())->toJson();
+        $logged_user = Auth::user();
+
+        if($logged_user->hasRole('admin'))
+        {
+            return datatables()->of(City::query())->toJson();
+        }
+        if($logged_user->hasRole('cityManager'))
+        {
+            $city_id =  DB::table("user_city")->where("user_id",$logged_user->id)->pluck("user_city.city_id");
+            $cities  = City::where("id",$city_id);
+            return datatables($cities)->toJson();
+            
+        }
+               
     }
 }

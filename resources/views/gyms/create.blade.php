@@ -28,7 +28,7 @@
            
            <label for="exampleInputName1">City Name</label>
            <select class="form-control" name="city_id" id="city_id">
-               @foreach($cities as $city)
+           @foreach($cities as $city)
                    <option value="{{$city->id}}">{{$city->name}}</option>                <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
                @endforeach
@@ -46,7 +46,7 @@
     
    <button type="submit" class="btn btn-primary">Submit</button>
    </form>
-
+    
    <!-- <script>
         $('#city_id').on('change', e => {
             $('#city_manager_id').empty()       
@@ -67,7 +67,7 @@
         })
     </script>           -->
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
     jQuery(document).ready(function ()
     {
             jQuery('select[name="city_id"]').on('change',function(){
@@ -97,6 +97,6 @@
                }
             });
     });
-    </script>
+    </script> -->
 
 @endsection
