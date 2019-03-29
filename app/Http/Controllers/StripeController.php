@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Package;
-use App\Purchase;
 use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Customer;
@@ -65,8 +63,7 @@ class StripeController extends Controller
 
 
     public function stripePost_package(Request $request){
-
-//        dd($request->all());
+        dd($request->all());
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $customer = Customer::create(array(
@@ -79,26 +76,7 @@ class StripeController extends Controller
             'currency' => 'usd'
         ));
 
-        $package_id = $request->input('package');
-        $member_id = $request->input('member_id');
-
-        $package = Package::find($package_id);
-
-        $sessions = $package->sessions;
-
-        foreach ($sessions as $session)
-        {
-            $purchase['member_id'] = $member_id;
-            $purchase['session_id'] = $session->id;
-            $purchase['init_price'] = $session->price;
-
-            Purchase::create($purchase);
-        }
-
-//        Purchase::create($request->all());
-
-        return redirect('/stripe/package');
-//        dd($charge);
+        dd($charge);
     }
     public function stripePost_session(Request $request){
         dd($request->all());
