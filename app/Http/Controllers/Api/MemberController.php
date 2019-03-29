@@ -140,6 +140,8 @@ class MemberController extends Controller
         $user->activation_token = '';
         $user->save();
         $user->notify(new WelcomeNotify($user));
+
+//        return redirect('/api/login');
         return $user;
     }
 
@@ -186,6 +188,7 @@ class MemberController extends Controller
     {
         $member_id = Auth::user()->id;
         $attended_sessions = Attendance::where('member_id',$member_id)->pluck('session_id')->toArray();
+
         $sessions = Member::find($member_id)->sessions->whereNotIn('id', $attended_sessions);
 
         return response()->json(["sessions"=>$sessions]);
@@ -244,7 +247,7 @@ class MemberController extends Controller
         }
         else if($attnded > 0)
             {
-                $attendance = "you attend this session";
+                $attendance = "you attended this session";
             }
         else
             {
