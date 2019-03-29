@@ -95,6 +95,41 @@
 @endsection
 @section('extra_scripts')
 
+
+    <script>
+        $(document).on('change','#gym_id',function() {
+
+            var gym_id = $('#gym_id').val();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '{{ route('fetchCoaches') }}',
+                dataType : 'json',
+                type: 'get',
+                data: {
+                    gym_id:gym_id,
+                },
+
+                success:function(response) {
+
+                    console.log(response);
+                    var $dropdown = $('#session_id');
+                    $dropdown.find('option').remove();
+                    $dropdown.append($("<option />").val('').text(''));
+                    if(response['data'].length >0) {
+                        for (var i = 0; i < response['data'].length; i++) {
+                            console.log(i);
+                            $dropdown.append($("<option />").val(response['data'][i]['id']).text(response['data'][i]['name']).attr('price', response['data'][i]['price']));
+                        }
+                    }
+
+                },
+
+            });
+        });
+    </script>
+
 <script>
   $(function () {
     //Initialize Select2 Elements
