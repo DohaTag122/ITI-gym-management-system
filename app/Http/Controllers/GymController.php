@@ -125,7 +125,9 @@ class GymController extends Controller
 
         if($logged_user->hasRole('admin'))
         {
-            return datatables()->of(Gym::query())->toJson();
+            $manager_name = DB::table('users')->select('name')->get();
+            $gyms = Gym::all()->rightJoin('users', 'users.gym_id', '=', 'gyms.id');
+            return datatables()->of($gyms)->toJson();
         }
       
         if($logged_user->hasRole('cityManager'))
