@@ -70,29 +70,34 @@ class StripeController extends Controller
             'email' => $request->stripeEmail,
             'source'  => $request->stripeToken
         ));
+
+
+        $package_id = $request->input('package');
+        $member_id = $request->input('member_id');
+
+        $package = Package::find($package_id);
+
+        $sessions = $package->sessions;
+
+        $price =0;
+        foreach ($sessions as $session)
+        {
+            $purchase['member_id'] = $member_id;
+            $purchase['session_id'] = $session->id;
+            $purchase['init_price'] = $session->price;
+
+            $price += $session->price;
+            Purchase::create($purchase);
+        }
+
         $charge = Charge::create(array(
             'customer' => $customer->id,
-            'amount'   => 1999,
+            'amount'   => $price,
             'currency' => 'usd'
         ));
-
-        dd($charge);
     }
+
     public function stripePost_session(Request $request){
-        dd($request->all());
-        Stripe::setApiKey(env('STRIPE_SECRET'));
 
-        $customer = Customer::create(array(
-            'email' => $request->stripeEmail,
-            'source'  => $request->stripeToken
-        ));
-        $charge = Charge::create(array(
-            'customer' => $customer->id,
-            'amount'   => 1999,
-            'currency' => 'usd'
-        ));
-
-        dd($charge);
-
-    }
+    }    
 }
