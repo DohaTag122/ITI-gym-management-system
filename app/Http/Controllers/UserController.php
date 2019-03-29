@@ -166,7 +166,9 @@ class UserController extends Controller
     public function ban($id)
 
     {
-        $user = User::find($id)->ban();
+        $user = User::find($id)->ban([
+            'comment' => 'Enjoy your ban!',
+        ]);
         return redirect()->route('home');
     }
     public function unban($id)

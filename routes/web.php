@@ -92,6 +92,9 @@ Route::get('/gymMangers','UserController@ShowGymManger')->name('ShowGymMangers')
 Route::post('/gymMangers_table', 'UserController@gymMangers_table');
 
 
+Route::get('/revenue','RevenueController@index')->name('revenue');
+
+
 
 
 

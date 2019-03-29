@@ -111,7 +111,7 @@
             </li>
 
             <li class="{{ (request()->is('purchases*')) ? 'active' : '' }}">
-                <a href="pages/widgets.html">
+                <a href="{{route('revenue')}}">
                     <i class="fa fa-th"></i> <span>Revenue</span>
                 </a>
             </li>
