@@ -205,4 +205,20 @@ class UserController extends Controller
 
     }
 
+
+    public function ShowGymManger(){
+ 
+       $users = User::role('gymManager')->get();
+    //    dd($users);
+        return view('Users.gymManger', [
+            'users' => $users
+        ]);
+    }
+    public function gymMangers_table(){
+        $users = User::role('gymManager')->get();
+        return datatables($users)->toJson();
+
+    }
+
+
 }
