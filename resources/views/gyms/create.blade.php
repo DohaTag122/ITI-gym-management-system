@@ -20,8 +20,8 @@
 @endif
 <a href="{{route('gyms.index')}}" class="btn btn-danger">Back</a>
 
-   <form action="{{route('gyms.store')}}" method="POST">
-       @csrf
+   <form action="{{route('gyms.store')}}" method="POST"enctype="multipart/form-data">
+    {{ csrf_field() }}
        <div class="form-group">
            <label for="exampleInputName1">Name</label>
            <input name="name" type="text" class="form-control"  placeholder="Enter Name">
@@ -35,18 +35,14 @@
            </select>
 
            <label for="exampleInputImage1">Cover Image</label>
-           <?php  echo Form::file('image');?>
-
-           <label for="exampleInputName1">City Manger Name</label>
-           <select class="form-control" name="city_manager_id" id="city_manager_id"></select>
-
-                              
+           <input type="file" name="image" class="form-control" >
+                         
        </div>
 
     
    <button type="submit" class="btn btn-primary">Submit</button>
    </form>
-    
+
    <!-- <script>
         $('#city_id').on('change', e => {
             $('#city_manager_id').empty()       
