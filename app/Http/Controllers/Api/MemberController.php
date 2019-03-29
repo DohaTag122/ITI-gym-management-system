@@ -198,16 +198,17 @@ class MemberController extends Controller
 
         $member_id = Auth::user()->id;
         $session_exist = Member::find($member_id)->sessions->where('id', $id)->count();
+        $attnded = Attendance::where('member_id',$member_id)->where('session_id',$id)->count();
 
-        if($session_exist > 0)
+        if($session_exist > 0 && $attnded  == 0)
         {
             $member_id = Auth::user()->id;
             $Current_day = Carbon::now()->setTimezone('Africa/Cairo');
-            $current_date = Carbon::now()->toDateString();
-            $current_time = Carbon::now()->toTimeString();
+            $current_date = $Current_day->toDateString();
+            $current_time = $Current_day->toTimeString();
 
             $session = Session::findorFail($id);
-            $Session_date = Carbon::parse($session->start_at);
+            $Session_date = Carbon::parse($session->day);
 //            $date = $Session_date->format('Y-m-d');
 //            $time = $Session_date->format('H:i:s');
 //            dd($Current_day." / ".$Session_date);
@@ -241,6 +242,10 @@ class MemberController extends Controller
                     $attendance = "You cant attend this session ".$message;
                 }
         }
+        else if($attnded > 0)
+            {
+                $attendance = "you attend this session";
+            }
         else
             {
                 $attendance = "this session doesn't exist please buy training sessions first";

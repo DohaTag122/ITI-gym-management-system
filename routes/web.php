@@ -21,17 +21,20 @@ Auth::routes();
 //! Please write your Routes on your specified space to avoid merge conflicts
 //*Ziad Routes
 
-Route::get('/relation', function () {
-    $city = \App\City::find('1');
-    dd($city->City_manager->count());
-//    $sessions = \App\Session::first();
-//    $packages = \App\Package::first();
+Route::get('attendances', 'AttendanceController@index')->name('attendances.index');
+Route::post('/attendaces_table','AttendanceController@AttendancesTable');
 
-//    dd($sessions->packages);
-//    dd($packages->sessions);
-
-//    dd($packages->sessions);
-});
+//Route::get('/relation', function () {
+//    $city = \App\City::find('1');
+//    dd($city->City_manager->count());
+////    $sessions = \App\Session::first();
+////    $packages = \App\Package::first();
+//
+////    dd($sessions->packages);
+////    dd($packages->sessions);
+//
+////    dd($packages->sessions);
+//});
 
 /*
 Route::get('/home', function () {

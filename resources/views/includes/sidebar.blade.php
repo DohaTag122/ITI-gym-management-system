@@ -84,7 +84,7 @@
             </li>
 
             <li class="{{ (request()->is('attendances*')) ? 'active' : '' }}">
-                <a href="pages/widgets.html">
+                <a href="{{route('attendances.index')}}">
                     <i class="fa fa-th"></i> <span>Attendance</span>
                 </a>
             </li>

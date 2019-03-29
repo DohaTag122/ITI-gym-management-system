@@ -27,7 +27,7 @@ class Session extends Model
     }
     public function gym()
     {
-        return $this->belongsTo('App\Gym');
+        return $this->belongsTo('App\Gym')->with('city');
 
     }
     /**

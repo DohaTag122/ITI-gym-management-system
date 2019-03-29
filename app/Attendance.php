@@ -13,7 +13,12 @@ class Attendance extends Model
 
     public function session()
     {
-        return $this->belongsTo('App\Session');
+        return $this->belongsTo('App\Session')->with('gym');
+    }
+
+    public function memeber()
+    {
+        return $this->belongsTo('App\Member','member_id','id');
     }
 
 
