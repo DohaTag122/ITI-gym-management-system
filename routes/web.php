@@ -105,8 +105,9 @@ Route::resource('sessions', 'SessionController');
 Route::get('data_sessions', 'SessionController@get_table');
 Route::get('stripe/package', 'StripeController@stripePackage')->name('stripe.package');
 Route::get('stripe/session', 'StripeController@stripeSession')->name('stripe.session');
-Route::post('charge', 'StripeController@stripePost');
-Route::post('stripe/package/fetch', 'StripeController@fetchPackages')->name('fetchPackages');
+Route::post('charge_package', 'StripeController@stripePost_package');
+Route::post('charge_session', 'StripeController@stripePost_session');
+Route::get('stripe/package/fetch', 'StripeController@fetchPackages')->name('fetchPackages');
 Route::get('stripe/sessions/fetch', 'StripeController@fetchSessions')->name('fetchSessions');
 
 

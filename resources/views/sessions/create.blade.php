@@ -66,8 +66,12 @@
                             </div>
                         </div>
                         <div  class="form-group">
-                            <label for="session_amount">Session amount </label>
-                            <input class="form-control" type="number" name="session_amount" id="session_amount">
+                            <label for="gym_id">Gym</label>
+                            <select class="form-control" name="gym_id">
+                                @foreach($gyms as $gym)
+                                    <option value="{{$gym->id}}">{{$gym->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Session Coaches</label>
@@ -77,14 +81,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div  class="form-group">
-                            <label for="gym_id">Gym</label>
-                            <select class="form-control" name="gym_id">
-                                @foreach($gyms as $gym)
-                                    <option value="{{$gym->id}}">{{$gym->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>            
+            
                         <a href="{{route('sessions.index')}}" class="btn btn-danger"><i class="far fa-arrow-alt-circle-left"></i>&nbsp;Back</a>
                         <button type="submit" class="btn btn-primary"><i class="fas fa-clipboard-check"></i>&nbsp;Create</button>
                     </form>

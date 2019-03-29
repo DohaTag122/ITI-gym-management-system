@@ -28,10 +28,7 @@ class StorePackageRequest extends FormRequest
     {
         return [
             'name'=>"bail|required|Alpha|max:16",
-            'package_price'=>'bail|required|numeric|min:1',
-            'number_of_sessions'=>'bail|required|numeric|min:1',
             'gym_id'=>"required|exists:gyms,id",
-            'session_amount'=>['required', new ExceedLimit(Input::get())]
         ];
     }
 }

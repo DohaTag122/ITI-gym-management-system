@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Package;
+use App\Purchase;
 use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Customer;
@@ -26,38 +28,27 @@ class StripeController extends Controller
         $gyms = DB::table('gyms')->get();
         $members = DB::table('members')->get();
         $sessions = DB::table('sessions')->get();
-        $select = 'gym_id';
-        $value = $request->get('value');
-        $dependent = $request->get('dependent');
-        // info("1 ---->".$select);
-        $data = DB::table('sessions')
-            ->where('gym_id', $value)
-            ->get();
+        
         return view('payments/stripe_session', [
             "gyms"=>$gyms,
             "members"=>$members,
             "sessions"=>$sessions,
-            "data"=>$data
         ]);
     }
 
     
     function fetchPackages(Request $request){
 
-        $select = 'gym_id';
-        $value = $request->get('value');
-        $dependent = $request->get('dependent');
-        $data = DB::table('packages')
-        ->where($select, $value)
+        $value = $request->gym_id;
+
+        $packages = DB::table('packages')
+        ->where('gym_id', $value)
         ->get();
-        
-        $output = '<option value="">Select '.ucfirst($dependent).'</option>';
-        
-        foreach ($data as $row) {
-            $output .= '<option value="'.$row->id.'">'.$row->name.'</option>';
-        }
-        return response()->toJson($output);
-        echo $output;
+
+        $data['data'] = $packages;
+        return response()->json($data);
+
+
     }
 
     function fetchSessions(Request $request){
@@ -73,18 +64,44 @@ class StripeController extends Controller
 
 
 
-    public function stripePost(Request $request){
-        dd($request->all());
+    public function stripePost_package(Request $request){
+
+//        dd($request->all());
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $customer = Customer::create(array(
             'email' => $request->stripeEmail,
             'source'  => $request->stripeToken
         ));
+
+
+        $package_id = $request->input('package');
+        $member_id = $request->input('member_id');
+
+        $package = Package::find($package_id);
+
+        $sessions = $package->sessions;
+
+        $price =0;
+        foreach ($sessions as $session)
+        {
+            $purchase['member_id'] = $member_id;
+            $purchase['session_id'] = $session->id;
+            $purchase['init_price'] = $session->price;
+
+            $price += $session->price;
+            Purchase::create($purchase);
+        }
+
         $charge = Charge::create(array(
             'customer' => $customer->id,
-            'amount'   => 1999,
+            'amount'   => $price,
             'currency' => 'usd'
         ));
+
+//        Purchase::create($request->all());
+
+        return redirect('/stripe/package');
+//        dd($charge);
     }
 }

@@ -47,14 +47,24 @@ class PackageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StorePackageRequest $request)
-    {   
-        $package = Package::create(request()->all());
-        
-        foreach ($request->input("session_amount") as $key=>$single_amount) {    
-            $session = Session::find($request->get('session_id')[$key]);
-            $package->sessions()->attach($session, ["session_amount"=> $single_amount]);
+    {
+    
+        $sessions = Session::all();
+        $number_of_sessions = sizeof($request->session);
+        $session_prices = 0;
+        foreach ($request->session as $session_request) {
+            foreach($sessions as $session){
+                if($session_request == $session->id){
+                    $session_prices += $session->price;
+                }
+            }
         }
-        
+        $package = new Package();
+        $package->number_of_sessions = $number_of_sessions;
+        $package->package_price = $session_prices;
+        $package->name =$request->input('name');
+        $package->gym_id =$request->input('gym_id');
+        $package->save();
         return redirect()->route('packages.index');
     }
 

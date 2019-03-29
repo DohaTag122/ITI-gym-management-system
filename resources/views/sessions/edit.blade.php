@@ -62,10 +62,6 @@
                                 <span class="input-group-addon">.00</span>
                             </div>
                         </div>
-                        <div  class="form-group">
-                            <label for="session_amount">Session amount </label>
-                            <input class="form-control" type="number" name="session_amount" id="session_amount" placeholder="{{$session->price}}" disabled>
-                        </div>
                         <div class="form-group">
                             <label>Session Coaches</label>
                             <select class="form-control" multiple  style="width:100%" disabled>

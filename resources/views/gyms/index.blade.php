@@ -33,7 +33,6 @@
                                     <th>Name</th>
                                     <th>Image</th>
                                     <th>Created At</th>
-                                    <!-- <th>Updated At</th> -->
                                     <th>Show</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -104,7 +103,7 @@
                 // contentType: false,
 
                 // success:function(response) {
-                //
+                
                 //     console.log(response);
                 // },
                 // error: function (response) {
@@ -123,9 +122,8 @@
                     }
                 },
                 { data: 'created_at', name: 'created_at' },
-                //{ data: 'updated_at', name: 'updated_at' },
-
                 
+
                 /* Show */ {
                     mRender: function (data, type, row) {
                         return '<a href="gyms/'+row.id+'" class="btn btn-primary" data-id="' + row.id + '">Show</a>'
@@ -141,6 +139,7 @@
                         return '<a href="" class="btn btn-danger" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
                     }
                 },
+              
             ],
             'paging'      : true,
             'lengthChange': true,

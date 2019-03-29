@@ -24,13 +24,14 @@
        <div class="form-group">
            <label for="exampleInputName1">Name</label>
            <input name="name" type="text" class="form-control"  placeholder="Enter Name">
-           
+           @role('admin|cityManager')
            <label for="exampleInputName1">Gym Name</label>
            <select class="form-control" name="gym_id">
                @foreach($gyms as $gym)
                    <option value="{{$gym->id}}">{{$gym->name}}</option>
                @endforeach
            </select>
+           @endrole
        </div>
 
     
