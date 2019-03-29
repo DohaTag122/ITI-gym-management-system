@@ -43,7 +43,7 @@ class MemberController extends Controller
 
         $user->save();
 
-        $image_name = 'member_'.$user->id.'.jpg';
+//        $image_name = 'member_'.$user->id.'.jpg';
 
 
 

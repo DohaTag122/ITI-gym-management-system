@@ -30,11 +30,6 @@
                             <label for="session">Session</label>
                             <select name="session_id" id="session_id" class="form-control dynamic">
                                 <option value="" >Select Session</option>
-                                @foreach ($data as $row)
-                                    {{info($row->name)}}
-                                    <option value="{{$row->id}}">{{$row->name}}</option>
-                                    {{info($row->name)}}
-                                @endforeach
                             </select>
                         </div>
                         <script
