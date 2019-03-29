@@ -104,7 +104,7 @@ Route::get('stripe/package', 'StripeController@stripePackage')->name('stripe.pac
 Route::get('stripe/session', 'StripeController@stripeSession')->name('stripe.session');
 Route::post('charge', 'StripeController@stripePost');
 Route::post('stripe/package/fetch', 'StripeController@fetchPackages')->name('fetchPackages');
-Route::post('stripe/sessions/fetch', 'StripeController@fetchSessions')->name('fetchSessions');
+Route::get('stripe/sessions/fetch', 'StripeController@fetchSessions')->name('fetchSessions');
 
 
 

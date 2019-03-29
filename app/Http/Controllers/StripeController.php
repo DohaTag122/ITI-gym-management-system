@@ -47,21 +47,14 @@ class StripeController extends Controller
     }
 
     function fetchSessions(Request $request){
-        $select = 'gym_id';
-        $value = $request->get('value');
-        $dependent = $request->get('dependent');
-        info("1 ---->".$select);
-        $data = DB::table('sessions')
+
+        $value = $request->gym_id;
+        $sessions = \Illuminate\Support\Facades\DB::table('sessions')
             ->where('gym_id', $value)
             ->get();
-        info("2 ---->".$data);
-        $output = '<option value="">Select '.ucfirst($dependent).'</option>';
-            
-        foreach ($data as $row) {
-            info(["3 ---->",$row]);
-            $output .= '<option value="'.$row->id.'">'.$row->name.'</option>';
-        }
-        echo $output;
+        $data['data'] = $sessions;
+        return response()->json($data);
+
     }
 
 

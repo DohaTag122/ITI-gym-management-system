@@ -18,7 +18,7 @@
 
                         <div  class="form-group">
                             <label for="gym">Gym</label>
-                            <select name="gym_id" id="gym_id" class="form-control dynamic" data-dependent="session">
+                            <select name="gym_id" id="gym_id" class="form-control dynamic" data-dependent="session_id">
                                 <option value="" >Select Gym</option>
                                 @foreach($gyms as $gym)
                                 <option value="{{ $gym->id}}">{{ $gym->name }}</option>
@@ -50,36 +50,35 @@
 </section>
 @endsection
 @section('extra_scripts')
-<script>
-$(document).ready(function(){
+    <script>
+        $(document).on('change','#gym_id',function() {
 
-    $('.dynamic').change(function(){
-        if($(this).val() != ''){
-
-            let select = $(this).attr("id");
-            let value = $(this).val();
-            let dependent = $(this).data('dependent');
-            let _token = $('input[name="_token"]').val();
+            var gym_id = $('#gym_id').val();
             $.ajax({
-                url:"{{ route('fetchSessions') }}",
-                method:"POST",
-                data:{
-                    select:select,
-                    value:value,
-                    _token:_token,
-                    dependent:dependent
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                success:function(result){
-                    $('#'+dependent).html(result);
-                }
-            })
-        }
-    });
+                url: '{{ route('fetchSessions') }}',
+                dataType : 'json',
+                type: 'get',
+                data: {
+                    gym_id:gym_id,
+                },
 
-    $('#gym').change(function(){
-        $('#session_id').val('');
-    });
-});
-</script>
+                success:function(response) {
 
+                    console.log(response);
+                    var $dropdown = $('#session_id');
+                    $dropdown.find('option').remove();
+                    for(var i =0;i<response['data'].length;i++)
+                    {   console.log(i);
+                        $dropdown.append($("<option />").val(response['data'][i]['id']).text(response['data'][i]['name']));
+                    }
+
+
+                },
+
+        });
+        });
+    </script>
 @endsection
