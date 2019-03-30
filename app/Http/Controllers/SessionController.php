@@ -118,4 +118,15 @@ class SessionController extends Controller
     public function get_table(){
         return datatables()->of(Session::with('gym'))->toJson();
     }
+
+    public function fetchCoaches(Request $request)
+    {
+        $value = $request->gym_id;
+        $coaches = \Illuminate\Support\Facades\DB::table('coaches')
+            ->where('gym_id', $value)
+            ->get();
+        $data['data'] = $coaches;
+        return response()->json($data);
+    }
+
 }

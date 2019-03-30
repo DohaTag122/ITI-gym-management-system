@@ -32,9 +32,9 @@
                                     <th>City</th>
                                     @endhasrole
 
-                                    <th>Show</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+{{--                                    <th>Show</th>--}}
+{{--                                    <th>Edit</th>--}}
+{{--                                    <th>Delete</th>--}}
                                 </tr>
                                 </thead>
                             </table>
@@ -129,31 +129,31 @@
 
 <script>
 
-        columns_var.push(
-            // @hasanyrole('admin|cityManager')
-            //
-            // @endhasanyrole
-            // @hasrole('admin')
-            //
-            // @endhasrole
-
-
-            /* Show */ {
-                mRender: function (data, type, row) {
-                    return '<a href="coaches/'+row.id+'" class="btn btn-primary" data-id="' + row.id + '">Show</a>'
-                }
-            },
-            /* EDIT */ {
-                mRender: function (data, type, row) {
-                    return '<a href="coaches/'+row.id+'/edit" class="btn btn-warning" data-id="' + row.id + '">EDIT</a>'
-                }
-            },
-            /* DELETE */ {
-                mRender: function (data, type, row) {
-                    return '<a href="" class="btn btn-danger" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
-                }
-            },
-        )
+        // columns_var.push(
+        //     // @hasanyrole('admin|cityManager')
+        //     //
+        //     // @endhasanyrole
+        //     // @hasrole('admin')
+        //     //
+        //     // @endhasrole
+        //
+        //
+        //     /* Show */ {
+        //         mRender: function (data, type, row) {
+        //             return '<a href="coaches/'+row.id+'" class="btn btn-primary" data-id="' + row.id + '">Show</a>'
+        //         }
+        //     },
+        //     /* EDIT */ {
+        //         mRender: function (data, type, row) {
+        //             return '<a href="coaches/'+row.id+'/edit" class="btn btn-warning" data-id="' + row.id + '">EDIT</a>'
+        //         }
+        //     },
+        //     /* DELETE */ {
+        //         mRender: function (data, type, row) {
+        //             return '<a href="" class="btn btn-danger" row_id="' + row.id + '" data-toggle="modal" data-target="#DeleteModal" id="delete_toggle">DELETE</a>'
+        //         }
+        //     },
+        // )
 
 
         $('#example').DataTable( {

@@ -1,23 +1,19 @@
 @extends('layouts.base')
-
-
-@section('extra_css')
-
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-
-@endsection
-
 @section('content')
-@if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-@endif
-
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-body">
+                    @if ($errors->any())
+                    <div class="alert alert-danger" style="margin: 4px;">
+                        <ul style="list-style: none;">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
 
    <form action="{{route('users.store')}}" method="POST"  enctype="multipart/form-data">
        @csrf
@@ -71,4 +67,9 @@
   
    </form>
 
-   @endsection
+   
+   </div>
+        </div>
+    </div>
+</section>
+@endsection

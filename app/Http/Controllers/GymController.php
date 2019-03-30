@@ -10,9 +10,9 @@ use App\City;
 use App\User;
 use DB;
 
-
 use App\Http\Requests\gyms\StoreGymRequest;
 use App\Http\Requests\gyms\UpdateGymRequest;
+use Illuminate\Support\Facades\Storage;
 
 class GymController extends Controller
 {
@@ -23,7 +23,6 @@ class GymController extends Controller
      */
     public function index()
     {
-        //dd(auth()->user());
         return view ('gyms.index');
     }
 
@@ -35,17 +34,12 @@ class GymController extends Controller
     {
         $gyms   = Gym::all();
         $cities = City::all();
-        //$managers_of_city = City::find(1)->City_manager;
-        //$managers_of_cities = City::all()->City_manager;
+        
         return view('gyms.create',[
             'gyms' => $gyms,
             'cities' => $cities,
-            //'managers_of_cities' => $managers_of_cities,
         ]);
-        // foreach ($city->City_manager as $cc){
-        //     dd($city->City_manager);
-        // }
-    
+        
     }
 
     /**
@@ -54,14 +48,17 @@ class GymController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreGymRequest $request)
     {
-        //
-        $file = $request->file('image');
-        // dd($request->all());
-        // $destinationPath = 'public/img';
-        // $file->move($destinationPath,$file->getClientOriginalName());
-        Gym::create($request->all());
+        $logged_user = Auth::user();
+        $path = Storage::disk('public')->put('gym_img', $request->image);
+
+       Gym::create([
+        "name"   => $request->name,
+        "city_id"=> $request->city_id,
+        "image"  => $path,
+        "city_manager_id"=> $logged_user->id,
+    ]);
         return redirect()->route('gyms.index');
     }
 
@@ -88,9 +85,12 @@ class GymController extends Controller
     public function edit(Gym $gym)
     {
         //
+        $cities = City::all();
+
         $gyms = Gym::all();
         return view('gyms.edit', [
             'gym' => $gym,
+            'cities' => $cities,
         ]);
     }
 
@@ -101,7 +101,7 @@ class GymController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gym $gym)
+    public function update(UpdateGymRequest $request, Gym $gym)
     {
         //
         $gym->update($request->all());
@@ -128,6 +128,10 @@ class GymController extends Controller
 
         if($logged_user->hasRole('admin'))
         {
+            // $cityManagers = User::with('roles')->where('role', 'cityManager')->get();
+          
+            // // $x = Gym::with(['sessions','city'])->get();
+            // // dd($x, $x['sessions'] );
             return datatables()->of(Gym::query())->toJson();
         }
       

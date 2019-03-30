@@ -4,7 +4,7 @@ namespace App\Http\Requests\gyms;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreGymRequest extends FormRequest
+class UpdateGymRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
