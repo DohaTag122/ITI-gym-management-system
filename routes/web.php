@@ -17,125 +17,83 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-//! Please write your Routes on your specified space to avoid merge conflicts
-//*Ziad Routes
-
-Route::get('attendances', 'AttendanceController@index')->name('attendances.index');
-Route::post('/attendaces_table','AttendanceController@AttendancesTable');
-
-//Route::get('/relation', function () {
-//    $city = \App\City::find('1');
-//    dd($city->City_manager->count());
-////    $sessions = \App\Session::first();
-////    $packages = \App\Package::first();
-//
-////    dd($sessions->packages);
-////    dd($packages->sessions);
-//
-////    dd($packages->sessions);
-//});
-
-/*
-Route::get('/home', function () {
-    return view('home');
-});*/
-
-Route::post('/data_source', function () {
-    return datatables()->query(\Illuminate\Support\Facades\DB::table('users'))->toJson();
-});
-
-Route::DELETE('/users/{user}/delete','UserController@delete');
-
-
-
-
-
-
-
-
-
-//Doha Routes
-Route::resource('users', 'UserController');
 Route::group(['middleware' => ['role:admin']], function () {
-    Route::get('users', 'UserController@index')->name('users.index');
+    Route::resource('users', 'UserController');
 });
 
- Route::get('/user/create', 'UserController@create')
-->name('users.create');
- Route::post('/store', 'UserController@store')
- ->name('users.store');
-  Route::get('/users/{id}/show', 'UserController@show')
-->name('users.show');
-  Route::get('/users/{id}/edit', 'UsersController@edit')
-  ->name('users.edit');
-  Route::put('/users/{id}', 'UsersController@update')
-  ->name('users.update');
+/**
+ * Ban Realted Routes
+ */
+Route::get('/users/{user}/ban', 'UserController@ban')->name('users.ban');
+Route::get('/users/{user}/unban', 'UserController@unban') ->name('users.unban');
+Route::get('/home', ['uses'=>'HomeController@index', 'middleware' => 'forbid-banned-user'])->name('home');
 
- Route::get('/users/{user}/ban', 'UserController@ban')
- ->name('users.ban');
- Route::get('/users/{user}/unban', 'UserController@unban')
- ->name('users.unban');
- Route::get('/home', ['uses'=>'HomeController@index', 'middleware' => 'forbid-banned-user'])->name('home');
 Route::get('send','MailController@send')->name('send');
+
 Route::group(['middleware' => ['role:admin|cityManager']], function () {
-   
+
+    /**
+     * City Managers Related Routes
+     */
     Route::get('/cityMangers','UserController@ShowCityManger')->name('ShowCityMangers');
     Route::post('/cityMangers_table', 'UserController@cityMangers_table');
+    /**
+     * Cities Related Routes
+     */
+    Route::resource('cities', 'CityController');
+    Route::post('cities_table', 'CityController@cities_table');
+    /**
+     * Gyms Related Routes
+     */
+    Route::resource('gyms', 'GymController');
+    Route::post('gyms_table', 'GymController@gyms_table');
 
 });
-
-
-   
-    
-Route::get('/gymMangers','UserController@ShowGymManger')->name('ShowGymMangers');
-Route::post('/gymMangers_table', 'UserController@gymMangers_table');
-
-
-Route::get('/revenue','RevenueController@index')->name('revenue');
-
-
-
-//* Nour Routes
-Route::resource('packages', 'PackageController');
-Route::get('data_packages', 'PackageController@get_table');
-Route::resource('sessions', 'SessionController');
-Route::get('data_sessions', 'SessionController@get_table');
-Route::get('stripe/package', 'StripeController@stripePackage')->name('stripe.package');
-Route::get('stripe/session', 'StripeController@stripeSession')->name('stripe.session');
-Route::post('charge_package', 'StripeController@stripePost_package');
-Route::post('charge_session', 'StripeController@stripePost_session');
-Route::get('stripe/package/fetch', 'StripeController@fetchPackages')->name('fetchPackages');
-Route::get('stripe/sessions/fetch', 'StripeController@fetchSessions')->name('fetchSessions');
-Route::get('sessions_fetch', 'SessionController@fetchCoaches')->name('fetchCoaches');
-
-
-
-
-
-
-
-
-
-
-
-//*Sherouk Routes
-
 
 Route::group(['middleware' => 'auth'], function () {
+    /**
+     * Gym Managers Related Routes
+     */
+    Route::get('/gymMangers', 'UserController@ShowGymManger')->name('ShowGymMangers');
+    Route::post('/gymMangers_table', 'UserController@gymMangers_table');
+    Route::get('get_managers/{id}','GymController@get_managers');
 
+    /**
+     * Gym Coaches Related Routes
+     */
+    Route::resource('coaches', 'CoachController');
+    Route::post('coaches_table', 'CoachController@coaches_table');
 
-Route::resource('cities', 'CityController');
-Route::post('cities_table', 'CityController@cities_table');
+    /**
+     * Package Related Routes
+     */
+    Route::resource('packages', 'PackageController');
+    Route::get('data_packages', 'PackageController@get_table');
+    Route::get('stripe/package', 'StripeController@stripePackage')->name('stripe.package');
+    Route::post('charge_package', 'StripeController@stripePost_package');
+    Route::get('stripe/package/fetch', 'StripeController@fetchPackages')->name('fetchPackages');
+    /**
+     * Session Related Routes
+     */
+    Route::resource('sessions', 'SessionController');
+    Route::get('data_sessions', 'SessionController@get_table');
+    Route::get('stripe/session', 'StripeController@stripeSession')->name('stripe.session');
+    Route::post('charge_session', 'StripeController@stripePost_session');
+    Route::get('stripe/sessions/fetch', 'StripeController@fetchSessions')->name('fetchSessions');
+    Route::get('sessions_fetch', 'SessionController@fetchCoaches')->name('fetchCoaches');
 
-Route::resource('gyms', 'GymController');
-Route::post('gyms_table', 'GymController@gyms_table');
-Route::get('get_managers/{id}','GymController@get_managers');
+    /**
+     * Attendance Related Routes
+     */
+    Route::get('attendances', 'AttendanceController@index')->name('attendances.index');
+    Route::post('/attendaces_table', 'AttendanceController@AttendancesTable');
 
-Route::resource('coaches', 'CoachController');
-Route::post('coaches_table', 'CoachController@coaches_table');
+    Route::post('/data_source', function () {
+        return datatables()->query(\Illuminate\Support\Facades\DB::table('users'))->toJson();
+    });
+
 });
-Auth::routes();
+
 
 
 
