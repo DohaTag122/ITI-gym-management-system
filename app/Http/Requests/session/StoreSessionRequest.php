@@ -27,7 +27,7 @@ class StoreSessionRequest extends FormRequest
     {
         $now = date("Y-m-d", time() - 60 * 60 * 24);
         return [
-            'name'=>"bail|required|Alpha|max:16",
+            'name'=>"bail|required|Alpha|max:16|unique:sessions,name",
             'day'=>'bail|required|date|after:'.$now,
             'start_at'=>['bail','required', new Overlap(Input::get())],
             'finish_at'=>'bail|required|after:start_at',
