@@ -10,7 +10,7 @@ class Package extends Model
 
     public function sessions()
     {
-        return $this->belongsToMany('App\Session')->withTimestamps()->withPivot('session_amount');
+        return $this->belongsToMany('App\Session')->withTimestamps();
     }
 
     public function gyms()

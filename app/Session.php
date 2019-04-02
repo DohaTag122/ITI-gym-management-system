@@ -8,7 +8,7 @@ use Carbon\Carbon;
 
 class Session extends Model
 {
-    protected $fillable = ["name", "day","start_at","finish_at","price","session_amount","gym_id"];
+    protected $fillable = ["name", "day","start_at","finish_at","price","gym_id"];
 
     public function packages()
     {
