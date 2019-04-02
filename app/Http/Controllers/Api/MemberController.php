@@ -27,8 +27,6 @@ class MemberController extends Controller
 
     public function register(RegisterAuthRequest $request)
     {
-//        $data = $request->validated();
-//        return $data;
 
         $user = new Member();
         $user->name = $request->name;
@@ -42,10 +40,6 @@ class MemberController extends Controller
         $user->activation_token = str_random(60);
 
         $user->save();
-
-//        $image_name = 'member_'.$user->id.'.jpg';
-
-
 
         if ($this->loginAfterSignUp) {
             return $this->login($request);
@@ -66,7 +60,7 @@ class MemberController extends Controller
         $input = $request->only('email', 'password');
         $input['active'] = 1;
 
-//        $input['deleted_at'] = null;
+
         $jwt_token = null;
         Config::set( 'auth.defaults.guard', 'api' );
         Config::set('auth.providers.users.table', 'members');
@@ -75,7 +69,7 @@ class MemberController extends Controller
         Config::set('jwt.user', Member::class);
 
 
-//        dd($jwt_token = JWTAuth::attempt($input));
+
         if (!$jwt_token = JWTAuth::attempt($input)) {
             return response()->json([
                 'success' => false,
@@ -141,7 +135,7 @@ class MemberController extends Controller
         $user->save();
         $user->notify(new WelcomeNotify($user));
 
-//        return redirect('/api/login');
+
         return $user;
     }
 
@@ -151,8 +145,8 @@ class MemberController extends Controller
 
         $member_id = Auth::user()->id;
 
-        $data = $request->only('name', 'password','gender','date_of_birth','profile_image');
-
+        $data = $request->only('name','gender','date_of_birth','profile_image');
+       
         $updated_member = Member::find($member_id);
 
         if($updated_member)
@@ -166,7 +160,6 @@ class MemberController extends Controller
             }
 
         return response()->json(['data' => $member_data]);
-
     }
 
 
@@ -212,13 +205,7 @@ class MemberController extends Controller
 
             $session = Session::findorFail($id);
             $Session_date = Carbon::parse($session->day);
-//            $date = $Session_date->format('Y-m-d');
-//            $time = $Session_date->format('H:i:s');
-//            dd($Current_day." / ".$Session_date);
-//            dd($Current_day->isSameDay($Session_date));
-//            dd($Session_date->isCurrentDay());
-//            dd($Session_date->isPast());
-//            dd($Session_date->isFuture());
+
             if($Current_day->isSameDay($Session_date))
             {
                 $attendance = new Attendance();
@@ -267,7 +254,6 @@ class MemberController extends Controller
             ->get();
 
         return new AttendanceResource($attendances);
-//        return response()->json(["attendances"=>$attendances]);
     }
 
 
