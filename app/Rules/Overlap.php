@@ -43,8 +43,7 @@ class Overlap implements Rule
             foreach ($sessions as $session) {
                 $from_compare = strtotime(Carbon::create($session->day . $session->start_at));
                 $to_compare = strtotime(Carbon::create($session->day . $session->finish_at));
-            
-                if (($from > $from_compare && $from < $to_compare) ||($from_compare > $from && $from_compare < $to)) {
+                if (($from >= $from_compare && $from <= $to_compare) ||($from_compare >= $from && $from_compare <= $to)) {
                     return false;
                 } else {
                     return true;
