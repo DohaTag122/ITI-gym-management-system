@@ -27,7 +27,7 @@
       <td>{{$gym->city_manager_id}}</td>
       <td>{{$gym->city_id}}</td>
       <td>{{$gym->name}}</td>
-      <td><img src="/img/{{$gym->image}}" height="50" width="50"></td>
+      <td><img src="{{asset('storage/')}}/{{$gym->image}}" height="50" width="50"></td>
       <td>{{$gym->created_at->format('d-m-Y H:i:s')}}</td>
       <td>{{$gym->updated_at->format('d-m-Y H:i:s')}}</td>
     </tr>

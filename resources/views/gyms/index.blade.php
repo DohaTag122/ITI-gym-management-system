@@ -174,7 +174,7 @@
                     table.ajax.reload();
                 },
                 error : function (response) {
-                    alert('error');
+                    alert('You Can\'t Delete this Gym; it has coaches');
                     console.log(response);
                 }
             });

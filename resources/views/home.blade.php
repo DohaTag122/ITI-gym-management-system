@@ -12,68 +12,13 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-            <meta name="csrf-token" content="{{ csrf_token() }}">
+            <div class="text-center callout callout-info">
 
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Data Table With Full Features</h3><br>
-                    @role('admin|cityManager')
-                    <a href="{{route('users.create')}}" class="btn btn-success">Add User</a>
-                    @endrole
-
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <table id="example" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Created At</th>
-                            <th>Updated At</th>
-                            <th>Show</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                            <th>Ban </th>
-                            
-                        </tr>
-                        </thead>
-                    </table>
-                </div>
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-        </div>
-        <!-- /.col -->
-    </div>
-    <!-- /.row -->
-
-
-
-    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Are you to delete this item</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-footer">
-                    <div>
-                        <div id="csrf_value"  hidden >@csrf</div>
-                        {{--@method('DELETE')--}}
-                        <button type="button" row_delete="" id="delete_item"  class="btn btn-primary" data-dismiss="modal">Yes</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
-                    </div>
-
-                </div>
+                <h2>Welcome to GMS</h2>
             </div>
         </div>
     </div>
 </section>
-<!-- /.content -->
 @endsection
 
 

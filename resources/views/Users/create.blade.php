@@ -40,10 +40,13 @@
            <input name="image" type="file" value="NULL" class="form-control"  >
        </div>
        
-       
+       <input type="radio" name="role" value="gymManager"> Gym Manager<br>
+           @role('admin') 
+        <input type="radio" name="role" value="cityManager" > City Manager<br>
+        @endrole
 
-       <div class="form-group">
-           <label for="exampleInputPassword1">gymid</label>
+       <div class="form-group" id="gym_select" hidden>
+           <label for="exampleInputPassword1">Gym</label>
            <select class="form-control" name="gym_id">
                @foreach($gyms as $gym)
                    <option value="{{$gym->id}}">{{$gym->name}}</option>
@@ -53,12 +56,10 @@
 
 
        <div>
-       @role('admin') 
-        <input type="radio" name="role" value="cityManager"> City Manager<br>
-        @endrole
+    
 
        
-         <input type="radio" name="role" value="gymManager"> Gym Manager<br>
+         
        </div>
         
        
@@ -72,4 +73,20 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('extra_scripts')
+    <script>
+    
+    $('input[type=radio][name=role]').change(function() {
+    if (this.value == 'gymManager') {
+        $('#gym_select').show();
+    }
+    else if (this.value == 'cityManager') {
+        $('#gym_select').hide();
+    }
+});
+
+
+    </script>
 @endsection

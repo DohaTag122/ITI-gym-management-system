@@ -10,7 +10,7 @@
 @section('content')
 
 <div class="container">
-  <h2>My Profil</h2>
+  <h2>My Profile</h2>
   <form>
   <div class="form-group">
       <label for="email">Name:</label>

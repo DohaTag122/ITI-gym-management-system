@@ -4,9 +4,11 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-            
+                @if(!empty(Auth::user()->image))
                 <img src="/storage/{{Auth::user()->image }}" class="img-circle" alt="User Image">
-                
+                @else
+                <img src="{{asset('img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                @endif
             </div>
             <div class="pull-left info">
                 <p>{{ ucwords(Auth::user()->name) }}</p>
@@ -104,18 +106,11 @@
                     <li class="{{ (request()->is('stripe/session*')) ? 'active' : '' }}">
                         <a href="{{route('stripe.session')}}"><i class="fas fa-male"></i>&nbsp;Purchase Session</a>
                     </li>
-                    <li class="{{ (request()->is('stripe/packages*')) ? 'active' : '' }}">
+                    <li class="{{ (request()->is('stripe/package*')) ? 'active' : '' }}">
                         <a href="{{route('stripe.package')}}"><i class="fas fa-people-carry"></i>&nbsp;Purchase Package</a>
                     </li>
                 </ul>
             </li>
-
-            <li class="{{ (request()->is('purchases*')) ? 'active' : '' }}">
-                <a href="{{route('revenue')}}">
-                    <i class="fa fa-th"></i> <span>Revenue</span>
-                </a>
-            </li>
-
         </ul>
     </section>
     <!-- /.sidebar -->

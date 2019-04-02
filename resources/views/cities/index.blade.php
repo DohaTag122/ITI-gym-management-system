@@ -164,7 +164,7 @@
                     table.ajax.reload();
                 },
                 error : function (response) {
-                    alert('error');
+                    alert('You can\'t delete this city, it has gyms');
                     console.log(response);
                 }
             });
